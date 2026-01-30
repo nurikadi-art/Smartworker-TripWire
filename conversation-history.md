@@ -322,3 +322,45 @@ Key GHL classes identified:
 
 ## Assistant response 21
 Rewrote ghl-order-form-inject.html with minimal CSS using ONLY `.container-order-form-two-step` as parent selector. Committed and pushed the fix.
+
+## User message 22
+(User requested to continue work from previous session)
+
+## Assistant actions 22
+- Continued implementing GHL button trigger pattern across OTO pages
+- Updated `oto1-ds-smartworker-RU-9usd.html` with:
+  - Loading spinner CSS
+  - Converted CTA buttons from `<a>` to `<button>` elements
+  - Added JavaScript to trigger GHL button `button-C_QhteD2un_btn`
+  - Set decline redirect to OTO2 downsell page
+
+## User message 23
+(User provided full OTO2 GHL HTML with button ID `button-1hGE7efl8t_btn` and specified decline URL: `https://smartworkers.kz/be---book-a-call-long-page-6818-8572-6805`)
+
+## Assistant actions 23
+- Updated `oto2-telegram-jobs-RU-29usd.html`:
+  - Loading spinner CSS already present
+  - Converted CTA buttons from `<a>` to `<button>` elements with spinner spans
+  - Added JavaScript to trigger GHL button `button-1hGE7efl8t_btn`
+  - Set decline redirects to book-a-call page
+
+- Updated `oto2-ds-telegram-jobs-RU-19usd.html`:
+  - Added loading spinner CSS
+  - Converted CTA buttons from `<a>` to `<button>` elements with spinner spans
+  - Added JavaScript to trigger GHL button dynamically
+  - Set decline redirects to book-a-call page
+
+## Technical Pattern Used
+GHL Button Trigger Pattern:
+1. CSS for loading state (`.cta-button.loading`, `.spinner`, `@keyframes spin`)
+2. Button elements with `<span class="btn-text">` and `<span class="spinner">`
+3. JavaScript that:
+   - Finds GHL native button via `[id^="button-"][id$="_btn"]` selector
+   - Adds loading class to custom button
+   - Triggers GHL button click after 300ms delay
+   - Handles decline redirects to next funnel step
+
+Files Updated:
+- `oto1-ds-smartworker-RU-9usd.html` - GHL button: `button-C_QhteD2un_btn`
+- `oto2-telegram-jobs-RU-29usd.html` - GHL button: `button-1hGE7efl8t_btn`
+- `oto2-ds-telegram-jobs-RU-19usd.html` - GHL button: dynamically detected
