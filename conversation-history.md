@@ -152,3 +152,13 @@ can you publish all pages to github pages so i can see changes live
 
 ## Assistant response 7
 Unable to enable GitHub Pages due to permissions ("Resource not accessible by integration"). Provided manual steps for enabling Pages in the repo settings and the expected URLs once enabled.
+
+## User message 8
+the photos dont show on pages
+
+## Assistant actions 8
+- Switched Drive image URLs to Googleusercontent direct links (lh3.googleusercontent.com) to improve hotlink reliability.
+- Updated all story image tags across tripwire and OTO pages to the new URLs.
+
+## Assistant response 8
+Confirmed the image URL updates and asked the user to re-check the pages.
