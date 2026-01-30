@@ -955,11 +955,45 @@ section.alt-bg {
     text-transform: uppercase;
     transition: all 0.3s ease;
     box-shadow: 0 8px 32px rgba(40, 205, 65, 0.3);
+    position: relative;
 }
 
 .cta-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 12px 40px rgba(40, 205, 65, 0.4);
+}
+
+/* Loading state for CTA buttons */
+.cta-button.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.cta-button .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-color: #000;
+    border-radius: 50%;
+    opacity: 0;
+    animation: none;
+}
+
+.cta-button.loading .spinner {
+    opacity: 1;
+    animation: spin 0.8s linear infinite;
+}
+
+.cta-button.loading .btn-text {
+    opacity: 0;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .cta-micro {
@@ -1724,13 +1758,14 @@ section.alt-bg {
                 <div class="offer-price">$29</div>
 
                 <!-- Custom button that triggers hidden GHL button -->
-                <a href="#" onclick="document.querySelector('#button-oto2-tg_btn').click(); return false;" class="cta-button" style="width: 100%; max-width: 520px; display: block; text-decoration: none; text-align: center;">
-                    ДА — ДАЙТЕ МНЕ ДОСТУП К ВАКАНСИЯМ
-                </a>
+                <button type="button" id="upgrade-btn" class="cta-button" style="width: 100%; max-width: 520px; border: none; cursor: pointer;">
+                    <span class="btn-text">ДА — ДАЙТЕ МНЕ ДОСТУП К ВАКАНСИЯМ</span>
+                    <span class="spinner"></span>
+                </button>
 
                 <p class="cta-micro">$29 один раз. Пожизненный доступ к каналу. Это предложение исчезнет, когда вы покинете страницу.</p>
 
-                <a href="#" onclick="document.querySelector('#no-thanks-oto2-ds').click(); return false;" class="no-thanks-link">↓ Нет, спасибо, я сам буду искать клиентов на Upwork ↓</a>
+                <button type="button" id="decline-btn" class="no-thanks-link" style="background: none; border: none; cursor: pointer; font-family: inherit;">↓ Нет, спасибо, я сам буду искать клиентов на Upwork ↓</button>
             </div>
         </div>
     </section>
@@ -1764,16 +1799,15 @@ section.alt-bg {
                 <strong>Пожизненный доступ за $29.</strong>
             </p>
 
-            <!-- GHL Upsell Button (Final CTA) -->
-            <div id="button-oto2-final" class="c-button c-wrapper" data-v0="true" data-options='{"cloneable":false,"draggable":true,"deletable":true,"textOrIcon":true,"action":{"type":"options","value":"sell-product"},"extra":{"productId":"OTO2_TELEGRAM_PRODUCT_ID"},"saleAction":{"type":"options","value":"redirect-url","url":"https://www.outsourcingleader.com/ty-ru"},"borderStyle":"none","width":"auto","fullWidth":false}'>
-                <button class="cta-button" style="margin-top: 32px; border: none; cursor: pointer;">
-                    ПОЛУЧИТЬ ДОСТУП К КАНАЛУ — $29
-                </button>
-            </div>
+            <!-- Custom button that triggers hidden GHL button -->
+            <button type="button" id="upgrade-btn-2" class="cta-button" style="margin-top: 32px; border: none; cursor: pointer; width: 100%; max-width: 520px;">
+                <span class="btn-text">ПОЛУЧИТЬ ДОСТУП К КАНАЛУ — $29</span>
+                <span class="spinner"></span>
+            </button>
 
             <div class="urgency-text">⚠️ Это предложение исчезнет, когда вы покинете страницу</div>
 
-            <a href="#" id="no-thanks-oto2-ds" class="no-thanks-link" style="margin-top: 24px;">Нет, спасибо, я сам найду клиентов →</a>
+            <button type="button" id="decline-btn-2" class="no-thanks-link" style="margin-top: 24px; background: none; border: none; cursor: pointer; font-family: inherit;">Нет, спасибо, я сам найду клиентов →</button>
         </div>
     </section>
 
@@ -1830,6 +1864,67 @@ section.alt-bg {
     </footer>
 
 </div>
+
+<!-- GHL Button Trigger Script -->
+<script>
+(function() {
+    var DECLINE_URL = 'https://smartworkers.kz/be---book-a-call-long-page-6818-8572-6805';
+
+    function init() {
+        // Find the native GHL button
+        var ghlButton = document.querySelector('[id^="button-"][id$="_btn"]');
+
+        // Get our custom buttons
+        var upgradeBtn = document.getElementById('upgrade-btn');
+        var upgradeBtn2 = document.getElementById('upgrade-btn-2');
+        var declineBtn = document.getElementById('decline-btn');
+        var declineBtn2 = document.getElementById('decline-btn-2');
+
+        function handleUpgradeClick(e, btn) {
+            e.preventDefault();
+            btn.classList.add('loading');
+            setTimeout(function() {
+                // Re-query in case it loaded after page init
+                var targetBtn = ghlButton || document.querySelector('[id^="button-"][id$="_btn"]');
+                if (targetBtn) {
+                    targetBtn.click();
+                }
+            }, 300);
+        }
+
+        function handleDeclineClick(e) {
+            e.preventDefault();
+            window.location.href = DECLINE_URL;
+        }
+
+        if (upgradeBtn) {
+            upgradeBtn.addEventListener('click', function(e) {
+                handleUpgradeClick(e, upgradeBtn);
+            });
+        }
+
+        if (upgradeBtn2) {
+            upgradeBtn2.addEventListener('click', function(e) {
+                handleUpgradeClick(e, upgradeBtn2);
+            });
+        }
+
+        if (declineBtn) {
+            declineBtn.addEventListener('click', handleDeclineClick);
+        }
+
+        if (declineBtn2) {
+            declineBtn2.addEventListener('click', handleDeclineClick);
+        }
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 
 </body>
 </html>
