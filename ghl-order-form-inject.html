@@ -1,36 +1,51 @@
 <!-- ============================================================
-     GHL ORDER FORM - Dark Theme + Russian Text
-     MINIMAL VERSION - Only targets exact GHL order form classes
+     GHL ORDER FORM - Premium Dark Theme + Russian Text
+     RESTYLED VERSION - Clean, flowing design with proper typography
 
      Paste this into a Custom Code element in GHL
      ============================================================ -->
 
 <style>
 /* ============================================================
-   GHL ORDER FORM DARK THEME - Minimal & Precise
-   Only targets .container-order-form-two-step and children
+   GHL ORDER FORM - PREMIUM DARK THEME
+   Clean typography, proper spacing, flowing design
    ============================================================ */
+
+/* ---- TYPOGRAPHY FOUNDATION ---- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Main form container */
 .container-order-form-two-step {
     background-color: #0a0a0c !important;
     color: #f5f5f7 !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
-    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    overflow: hidden !important;
 }
 
 /* Form body */
 .container-order-form-two-step .form-body {
     background-color: #0a0a0c !important;
+    padding: 28px 24px !important;
 }
 
-/* Step headings */
+/* Step headings - Clean hierarchy */
 .container-order-form-two-step .form-heading {
     color: #f5f5f7 !important;
+    font-size: 22px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.3px !important;
+    margin-bottom: 6px !important;
+    line-height: 1.3 !important;
 }
 
 .container-order-form-two-step .form-sub-heading {
     color: #86868b !important;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    margin-bottom: 24px !important;
 }
 
 /* Section titles (Payment, Shipping, etc) */
@@ -38,181 +53,341 @@
 .container-order-form-two-step .address-title,
 .container-order-form-two-step .shipping-title {
     color: #f5f5f7 !important;
-    background-color: #0a0a0c !important;
+    background-color: transparent !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.3px !important;
+    text-transform: uppercase !important;
+    margin-bottom: 16px !important;
+    padding-bottom: 12px !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 /* Payment/shipping bar lines */
 .container-order-form-two-step .payment-bar,
 .container-order-form-two-step .shipping-bar {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    height: 2px !important;
+    border-radius: 2px !important;
 }
 
-/* Input fields */
+/* Labels - Consistent styling */
+.container-order-form-two-step label {
+    color: #a1a1a6 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+/* Input fields - Refined design */
 .container-order-form-two-step .form-input,
 .container-order-form-two-step input[type="text"],
 .container-order-form-two-step input[type="email"],
 .container-order-form-two-step input[type="tel"],
 .container-order-form-two-step select {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
     color: #f5f5f7 !important;
+    font-size: 15px !important;
+    font-weight: 400 !important;
+    padding: 14px 16px !important;
+    transition: all 0.2s ease !important;
+    font-family: 'Inter', -apple-system, sans-serif !important;
 }
 
 .container-order-form-two-step .form-input:focus,
-.container-order-form-two-step input:focus {
+.container-order-form-two-step input:focus,
+.container-order-form-two-step select:focus {
     border-color: #0a84ff !important;
-    box-shadow: 0 0 0 2px rgba(10, 132, 255, 0.2) !important;
+    background-color: rgba(10, 132, 255, 0.05) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
     outline: none !important;
 }
 
 .container-order-form-two-step .form-input::placeholder,
 .container-order-form-two-step input::placeholder {
     color: #6e6e73 !important;
+    font-weight: 400 !important;
 }
 
-/* Labels */
-.container-order-form-two-step label {
-    color: #f5f5f7 !important;
-}
-
-/* Product section */
+/* Product section - Clean layout */
 .container-order-form-two-step .product-title .item,
 .container-order-form-two-step .product-description .item {
     color: #86868b !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
 }
 
 .container-order-form-two-step .product-detail {
     color: #f5f5f7 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
 }
 
-/* Dividers */
+/* Dividers - Subtle */
 .container-order-form-two-step .divider-product,
 .container-order-form-two-step .divider-form {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    height: 1px !important;
+    margin: 20px 0 !important;
 }
 
 /* Separator text */
 .container-order-form-two-step .separator {
-    color: #86868b !important;
+    color: #6e6e73 !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
 }
 
 .container-order-form-two-step .separator:before,
 .container-order-form-two-step .separator:after {
-    border-color: rgba(255, 255, 255, 0.1) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
-/* Order total */
+/* Order total - Prominent */
 .container-order-form-two-step .order-total {
     color: #f5f5f7 !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
 }
 
-/* Price styling */
+/* Price styling - Highlight */
 .container-order-form-two-step .item-price {
     color: #28cd41 !important;
+    font-weight: 600 !important;
 }
 
-/* Coupon section */
+/* Coupon section - Refined */
 .container-order-form-two-step .coupon-input {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
     color: #f5f5f7 !important;
+    font-size: 14px !important;
+    padding: 12px 14px !important;
 }
 
-.container-order-form-two-step .apply-coupon-btn {
-    background-color: #0a84ff !important;
-    color: #fff !important;
-    border: none !important;
-}
-
-.container-order-form-two-step .apply-coupon-btn:disabled,
-.container-order-form-two-step .apply-btn {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    color: #86868b !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
-
-/* Submit button */
-.container-order-form-two-step .form-btn {
+.container-order-form-two-step .apply-coupon-btn,
+.container-order-form-two-step .apply-btn:not(:disabled) {
     background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%) !important;
     color: #fff !important;
     border: none !important;
     border-radius: 10px !important;
-    box-shadow: 0 4px 15px rgba(10, 132, 255, 0.3) !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 12px 18px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.container-order-form-two-step .apply-coupon-btn:hover {
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 12px rgba(10, 132, 255, 0.3) !important;
+}
+
+.container-order-form-two-step .apply-coupon-btn:disabled,
+.container-order-form-two-step .apply-btn:disabled {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #6e6e73 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    cursor: not-allowed !important;
+}
+
+/* Submit button - Premium CTA */
+.container-order-form-two-step .form-btn {
+    background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    padding: 18px 24px !important;
+    box-shadow: 0 4px 20px rgba(10, 132, 255, 0.35) !important;
+    transition: all 0.25s ease !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
 }
 
 .container-order-form-two-step .form-btn:hover {
-    transform: translateY(-1px) !important;
-    box-shadow: 0 6px 20px rgba(10, 132, 255, 0.4) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(10, 132, 255, 0.45) !important;
+}
+
+.container-order-form-two-step .form-btn .main-text {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    display: block !important;
+}
+
+.container-order-form-two-step .form-btn .sub-text {
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    opacity: 0.9 !important;
+    margin-top: 4px !important;
+    display: block !important;
 }
 
 /* Footer text */
 .container-order-form-two-step .order-form-footer {
     color: #6e6e73 !important;
+    font-size: 12px !important;
+    text-align: center !important;
+    margin-top: 16px !important;
 }
 
 /* Error messages */
 .container-order-form-two-step .card-el-error-msg,
 .container-order-form-two-step .order-validation-error {
     color: #ff453a !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    margin-top: 8px !important;
 }
 
-/* Stripe/Card elements */
+/* Stripe/Card elements - Consistent with inputs */
 .container-order-form-two-step .StripeElement,
 .container-order-form-two-step .card-details,
 .container-order-form-two-step .card-details-v2 .StripeElement {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-    border-radius: 8px !important;
+    background-color: rgba(255, 255, 255, 0.04) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    padding: 14px 16px !important;
 }
 
 /* Card input label */
 .container-order-form-two-step .card-input-label,
 .container-order-form-two-step .card-element-label {
-    color: #f5f5f7 !important;
+    color: #a1a1a6 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
 }
 
 /* Phone input (intl-tel-input) */
 .container-order-form-two-step .iti__selected-flag {
     background-color: transparent !important;
+    border-radius: 10px 0 0 10px !important;
 }
 
 .container-order-form-two-step .iti__country-list {
     background-color: #1c1c1e !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
 }
 
 .container-order-form-two-step .iti__country {
     color: #f5f5f7 !important;
+    font-size: 14px !important;
+    padding: 10px 12px !important;
 }
 
-.container-order-form-two-step .iti__country:hover {
-    background-color: rgba(255, 255, 255, 0.1) !important;
+.container-order-form-two-step .iti__country:hover,
+.container-order-form-two-step .iti__country.iti__highlight {
+    background-color: rgba(10, 132, 255, 0.15) !important;
 }
 
-/* Product bump */
+/* Product bump - Attention-grabbing */
 .container-order-form-two-step .order-bump-container {
-    background-color: rgba(255, 215, 0, 0.05) !important;
-    border-color: rgba(255, 215, 0, 0.3) !important;
+    background-color: rgba(255, 215, 0, 0.04) !important;
+    border: 2px dashed rgba(255, 215, 0, 0.3) !important;
+    border-radius: 12px !important;
+    margin: 20px 0 !important;
+    overflow: hidden !important;
 }
 
 .container-order-form-two-step .order-bump-container .main-section {
-    background-color: rgba(255, 215, 0, 0.1) !important;
+    background-color: rgba(255, 215, 0, 0.08) !important;
+    padding: 12px 16px !important;
 }
 
 .container-order-form-two-step .order-bump-container .headline {
-    color: #28cd41 !important;
+    color: #ffd700 !important;
+    font-size: 14px !important;
+    font-weight: 700 !important;
 }
 
 /* Coupon success */
 .container-order-form-two-step .coupon-applied-text,
 .container-order-form-two-step .green {
     color: #28cd41 !important;
+    font-weight: 600 !important;
 }
 
 /* Links */
 .container-order-form-two-step a {
     color: #0a84ff !important;
+    text-decoration: none !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.container-order-form-two-step a:hover {
+    opacity: 0.8 !important;
+}
+
+/* Checkbox styling */
+.container-order-form-two-step input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    accent-color: #0a84ff !important;
+}
+
+/* Select dropdown arrow */
+.container-order-form-two-step select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 14px center !important;
+    padding-right: 40px !important;
+}
+
+/* Form row spacing */
+.container-order-form-two-step .form-row {
+    margin-bottom: 16px !important;
+}
+
+/* Step indicator styling */
+.container-order-form-two-step .step-number {
+    background: linear-gradient(135deg, #0a84ff 0%, #0066cc 100%) !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+    border-radius: 50% !important;
+}
+
+/* Summary section */
+.container-order-form-two-step .order-summary-section {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    .container-order-form-two-step .form-body {
+        padding: 20px 16px !important;
+    }
+
+    .container-order-form-two-step .form-heading {
+        font-size: 20px !important;
+    }
+
+    .container-order-form-two-step .form-sub-heading {
+        font-size: 13px !important;
+    }
+
+    .container-order-form-two-step .form-btn {
+        font-size: 15px !important;
+        padding: 16px 20px !important;
+    }
+
+    .container-order-form-two-step .form-btn .sub-text {
+        font-size: 11px !important;
+    }
 }
 </style>
 
@@ -224,40 +399,62 @@
     const translations = {
         // Headers
         'Shipping & Your Info': 'Ваши данные',
-        'Upgrade Your Order & Save!': 'Оформите заказ и сэкономьте!',
+        'Your Info': 'Ваши данные',
+        'Contact Information': 'Контактные данные',
+        'Upgrade Your Order & Save!': 'Оформите заказ',
         'Shipping': 'Доставка',
         'Payment': 'Оплата',
+        'Payment Information': 'Данные для оплаты',
 
         // Labels & placeholders
         'Full Name...': 'Полное имя...',
+        'Full Name': 'Полное имя',
+        'Name': 'Имя',
         'Email Address...': 'Email адрес...',
+        'Email Address': 'Email',
+        'Email': 'Email',
         'Phone Number...': 'Номер телефона...',
+        'Phone Number': 'Телефон',
+        'Phone': 'Телефон',
         'Full Address...': 'Полный адрес...',
+        'Address': 'Адрес',
         'City Name...': 'Город...',
+        'City': 'Город',
         'State / Province...': 'Область/Регион...',
+        'State': 'Область',
         'Zip Code...': 'Почтовый индекс...',
+        'Zip Code': 'Индекс',
+        'Postal Code': 'Индекс',
 
         // Table headers
         'Item': 'Товар',
         'Quantity': 'Кол-во',
         'Price': 'Цена',
         'Amount': 'Сумма',
+        'Subtotal': 'Итого',
+        'Total': 'К оплате',
 
         // Order summary
-        'Order Summary': 'Итого заказа',
+        'Order Summary': 'Ваш заказ',
         'No products available': 'Нет доступных товаров',
         'Please select at least one item to proceed!': 'Выберите хотя бы один товар!',
 
         // Coupon
-        'Enter Coupon Code': 'Введите промокод',
+        'Enter Coupon Code': 'Промокод',
+        'Coupon Code': 'Промокод',
         'Apply': 'Применить',
+        'Coupon Applied': 'Промокод применён',
 
         // Footer
         '* 100% Secure & Safe Payments *': '🔒 100% Безопасная оплата',
+        'Secure Payment': 'Безопасная оплата',
 
         // Button
         'PLACE MY ORDER': 'ОФОРМИТЬ ЗАКАЗ',
-        'AND GET INSTANT ACCESS': 'ПОЛУЧИТЬ МГНОВЕННЫЙ ДОСТУП'
+        'Place Order': 'Оформить заказ',
+        'Submit': 'Оформить',
+        'AND GET INSTANT ACCESS': 'ПОЛУЧИТЬ МГНОВЕННЫЙ ДОСТУП',
+        'Complete Order': 'Завершить заказ'
     };
 
     function translatePage() {
@@ -287,11 +484,18 @@
         if (btn) {
             const mainText = btn.querySelector('.main-text');
             const subText = btn.querySelector('.sub-text');
-            if (mainText && mainText.textContent.includes('PLACE')) {
+            if (mainText && (mainText.textContent.includes('PLACE') || mainText.textContent.includes('Order'))) {
                 mainText.textContent = 'ОФОРМИТЬ ЗАКАЗ';
             }
-            if (subText && subText.textContent.includes('INSTANT')) {
+            if (subText && (subText.textContent.includes('INSTANT') || subText.textContent.includes('ACCESS'))) {
                 subText.textContent = 'ПОЛУЧИТЬ МГНОВЕННЫЙ ДОСТУП';
+            }
+            // If button has no sub-elements, check direct text
+            if (!mainText && !subText) {
+                const btnText = btn.textContent.trim();
+                if (translations[btnText]) {
+                    btn.textContent = translations[btnText];
+                }
             }
         }
     }

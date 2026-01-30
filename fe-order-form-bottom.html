@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Форма заказа — Нейро-Оператор Пакет</title>
+<title>Форма заказа — Комплект ИИ-Оператора</title>
 <style type="text/css">
 /* ============================================================
    AI OPERATOR TOOLKIT - FRONT END ORDER FORM BOTTOM
@@ -431,16 +431,14 @@ body, html {
 <div class="bottom-wrapper">
 
     <!-- ============================================================
-         PERSONAL PROMISE GUARANTEE - Right After GHL Form
+         SIMPLE REFUND MESSAGE - Right After GHL Form
          ============================================================ -->
-    <section class="personal-guarantee-section">
+    <section class="refund-info-section">
         <div class="container">
-            <div class="personal-guarantee">
-                <div class="guarantee-icon">🛡️</div>
-                <div class="guarantee-content">
-                    <h4>Моя Личная Гарантия "Спи Спокойно"</h4>
-                    <p>Если этот пакет не сэкономит тебе минимум 10 часов в первую неделю — мне не нужны твои $9. Напиши мне лично на <strong>nurik@recrutu.com</strong> и я верну деньги в тот же день.</p>
-                    <div class="signature">Нурик Адильханов</div>
+            <div class="refund-info">
+                <div class="refund-icon">✅</div>
+                <div class="refund-content">
+                    <p>Возврат? Без проблем — одно сообщение в Telegram <strong>@incastra31</strong> (Адлет) или Instagram <strong>@nurikadi</strong></p>
                 </div>
             </div>
         </div>
@@ -618,61 +616,51 @@ body, html {
     <div class="fomo-image">👤</div>
     <div class="fomo-text">
         <p><strong>Кто-то из Алматы</strong></p>
-        <p>только что купил Нейро-Оператор</p>
+        <p>только что купил Комплект ИИ-Оператора</p>
         <span class="fomo-time">2 минуты назад</span>
     </div>
 </div>
 
 <style>
 /* ============================================================
-   PERSONAL GUARANTEE - Humanization
+   SIMPLE REFUND INFO
    ============================================================ */
-.personal-guarantee-section {
-    padding: 32px 0;
+.refund-info-section {
+    padding: 24px 0;
     background: var(--bg-dark);
 }
 
-.personal-guarantee-section .container {
+.refund-info-section .container {
     max-width: 680px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-.personal-guarantee {
+.refund-info {
     display: flex;
-    gap: 15px;
-    background: linear-gradient(135deg, rgba(10, 132, 255, 0.1), transparent);
-    border-left: 3px solid #0a84ff;
-    padding: 20px;
-    border-radius: 0 12px 12px 0;
+    align-items: center;
+    gap: 12px;
+    background: rgba(40, 205, 65, 0.08);
+    border: 1px solid rgba(40, 205, 65, 0.2);
+    padding: 16px 20px;
+    border-radius: 10px;
 }
 
-.guarantee-icon {
-    font-size: 30px;
+.refund-icon {
+    font-size: 20px;
     flex-shrink: 0;
 }
 
-.guarantee-content h4 {
-    color: #fff;
-    margin: 0 0 5px 0;
-    font-size: 16px;
-    font-weight: 700;
-}
-
-.guarantee-content p {
-    color: #aaa !important;
-    font-size: 13px;
+.refund-content p {
+    color: var(--apple-grey) !important;
+    font-size: 14px;
     margin: 0;
     line-height: 1.5;
 }
 
-.signature {
-    margin-top: 10px;
-    font-family: 'Brush Script MT', cursive;
-    font-size: 20px;
-    color: #0a84ff;
-    transform: rotate(-2deg);
-    display: inline-block;
+.refund-content strong {
+    color: var(--highlight-green);
+    font-weight: 600;
 }
 
 /* ============================================================
@@ -725,19 +713,15 @@ body, html {
 }
 
 @media (max-width: 480px) {
-    .personal-guarantee {
-        flex-direction: column;
+    .refund-info {
+        padding: 14px 16px;
         gap: 10px;
-        padding: 16px;
     }
-    .guarantee-icon {
-        font-size: 24px;
+    .refund-icon {
+        font-size: 18px;
     }
-    .guarantee-content h4 {
-        font-size: 14px;
-    }
-    .guarantee-content p {
-        font-size: 12px;
+    .refund-content p {
+        font-size: 13px;
     }
     .fomo-popup {
         left: 10px;
