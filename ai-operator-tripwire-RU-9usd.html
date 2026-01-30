@@ -1869,6 +1869,58 @@ img, svg, video {
     margin: 0;
 }
 
+/* Founder Social Media Links */
+.founder-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.social-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--apple-grey);
+    transition: all 0.2s ease;
+}
+
+.social-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.social-item.telegram {
+    border-color: rgba(0, 136, 204, 0.3);
+    background: rgba(0, 136, 204, 0.1);
+}
+
+.social-item.instagram {
+    border-color: rgba(225, 48, 108, 0.3);
+    background: rgba(225, 48, 108, 0.1);
+}
+
+.social-item.facebook {
+    border-color: rgba(24, 119, 242, 0.3);
+    background: rgba(24, 119, 242, 0.1);
+}
+
+@media (max-width: 480px) {
+    .founder-socials {
+        flex-direction: column;
+        gap: 8px;
+    }
+    .social-item {
+        justify-content: center;
+    }
+}
+
 .story-chapter {
     margin-bottom: 48px;
     padding: 32px;
@@ -2779,11 +2831,16 @@ img, svg, video {
             <div class="story-founder-intro">
                 <div class="story-founder-photo">
                     <!-- IMAGE PLACEHOLDER: Founder photo - casual, relatable -->
-                    <img src="avatar-tripwire.png" alt="Нурсултан — фото автора" loading="eager">
+                    <img src="https://storage.googleapis.com/msgsndr/mk59cRoNiTQPsvDY71Gj/media/697d3fa2f7a87702038db646.png" alt="Нурсултан — фото автора" loading="eager">
                 </div>
                 <div class="story-founder-info">
                     <h3>Привет, я Нурсултан</h3>
                     <p>В ковид я жил в Атланте без денег и диплома. Сейчас зарабатываю 3 млн+ тг/мес, работая удалённо.</p>
+                    <div class="founder-socials">
+                        <span class="social-item telegram">📱 @nurikadi7182</span>
+                        <span class="social-item instagram">📸 @nurikadi</span>
+                        <span class="social-item facebook">👤 Nursultan Adilkhanov</span>
+                    </div>
                 </div>
             </div>
 
@@ -2794,7 +2851,7 @@ img, svg, video {
                 <p>Мне было 24. Я жил в Атланте во время ковида — без денег и без высшего образования. Пробовал дропшиппинг, Амазон, крипто — и всё закончилось кредитами.</p>
 
                 <div class="story-image-placeholder">
-                    <img src="story-tripwire-1.png" alt="Нурсултан в период ковида" loading="eager">
+                    <img src="https://storage.googleapis.com/msgsndr/mk59cRoNiTQPsvDY71Gj/media/697d3fa21fd827db38005958.png" alt="Нурсултан в период ковида" loading="eager">
                 </div>
 
                 <p>Мы жили на талонах для еды. Я ходил по кругу — отклики, молчание, непонятно что не так.</p>
@@ -2808,7 +2865,7 @@ img, svg, video {
                 <p>Работодатель из Вирджинии предложил удалённую работу за <strong>$15/час</strong>. Я не мог поверить — но согласился и понял: американским компаниям нужны надёжные люди.</p>
 
                 <div class="story-image-placeholder">
-                    <img src="story-tripwire-2.png" alt="Первые шаги в США" loading="eager">
+                    <img src="https://storage.googleapis.com/msgsndr/mk59cRoNiTQPsvDY71Gj/media/697d3fa2f7a87777388db642.png" alt="Первые шаги в США" loading="eager">
                 </div>
 
                 <p>Старт может быть $7–$12/час, средняя ставка в США — около $22, а с опытом легко выйти на $15–$20+.</p>
@@ -2826,7 +2883,7 @@ img, svg, video {
                 <p>Я закрыл долги, устроил жену к тому же работодателю и начал стабильно зарабатывать удалённо.</p>
 
                 <div class="story-image-placeholder">
-                    <img src="story-tripwire-3.png" alt="Семья после первых результатов" loading="eager">
+                    <img src="https://storage.googleapis.com/msgsndr/mk59cRoNiTQPsvDY71Gj/media/697d3fa21311f688cb033903.png" alt="Семья после первых результатов" loading="eager">
                 </div>
 
                 <p>Система сработала для ребят из Казахстана, России, Италии, Филиппин и Латинской Америки.</p>
