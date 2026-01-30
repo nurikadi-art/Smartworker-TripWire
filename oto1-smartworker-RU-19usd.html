@@ -856,6 +856,45 @@ body, html {
     opacity: 0.9;
 }
 
+.cta-button-yes.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.cta-button-yes .btn-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.cta-button-yes.loading .btn-text {
+    opacity: 0;
+}
+
+.cta-button-yes .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: none;
+}
+
+.cta-button-yes.loading .spinner {
+    opacity: 1;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
 .cta-button-no {
     display: inline-block;
     color: var(--apple-grey);
@@ -1556,11 +1595,14 @@ body, html {
                 </div>
 
                 <div class="cta-section">
-                    <a href="https://www.outsourcingleader.com/checkout-smartworker" class="cta-button-yes">
-                        <p style="margin: 0;"><strong>ДА! Хочу Зарабатывать на Американцах</strong></p>
-                        <span>Получить полную систему трудоустройства</span>
-                    </a>
-                    <a href="https://www.outsourcingleader.com/oto1-ds-smartworker" class="cta-button-no">
+                    <button type="button" id="upgrade-btn" class="cta-button-yes" style="border: none; cursor: pointer; position: relative; width: 100%;">
+                        <div class="btn-text">
+                            <p style="margin: 0;"><strong>ДА! Хочу Зарабатывать на Американцах</strong></p>
+                            <span>Получить полную систему трудоустройства</span>
+                        </div>
+                        <div class="spinner"></div>
+                    </button>
+                    <a href="#" id="decline-btn" class="cta-button-no">
                         Нет, спасибо, я продолжу работать за копейки на местном рынке →
                     </a>
                 </div>
@@ -1621,6 +1663,62 @@ body, html {
     </footer>
 
 </div>
+
+<script>
+(function() {
+    // Wait for DOM to be ready
+    function init() {
+        const upgradeBtn = document.getElementById('upgrade-btn');
+        const declineBtn = document.getElementById('decline-btn');
+
+        // Find the GHL native button (hidden)
+        // Button ID pattern: button-*_btn
+        const ghlButton = document.querySelector('[id^="button-"][id$="_btn"]');
+
+        if (upgradeBtn) {
+            upgradeBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Add loading state
+                upgradeBtn.classList.add('loading');
+
+                // Trigger GHL button click after short delay
+                setTimeout(function() {
+                    if (ghlButton) {
+                        ghlButton.click();
+                    } else {
+                        // Fallback: try to find button again
+                        const btn = document.querySelector('[id^="button-"][id$="_btn"]');
+                        if (btn) btn.click();
+                    }
+                }, 300);
+            });
+        }
+
+        if (declineBtn) {
+            declineBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Find the "no" link in GHL popup or redirect to downsell
+                const noLink = document.querySelector('a[href*="no-link"], a[id*="no-link"], [id*="link-"][href="#no-link"]');
+                if (noLink) {
+                    noLink.click();
+                } else {
+                    // Fallback: redirect to downsell page
+                    window.location.href = '/otods-3028';
+                }
+            });
+        }
+    }
+
+    // Run when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 
 </body>
 </html>
