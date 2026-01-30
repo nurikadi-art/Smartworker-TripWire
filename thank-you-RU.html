@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Спасибо за покупку — Нейро-Оператор Toolkit</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style type="text/css">
+/* ============================================================
+   NEURO-OPERATOR TOOLKIT - THANK YOU PAGE
+   Russian version - Titanium Blue Theme
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --system-blue: #0a84ff;
+    --system-blue-dark: #0066cc;
+    --pure-white: #f5f5f7;
+    --apple-grey: #86868b;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --highlight-green: #28cd41;
+    --highlight-red: #ff453a;
+    --bg-dark: #020204;
+    --bg-card: rgba(255, 255, 255, 0.02);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html {
+    background-color: var(--bg-dark) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--pure-white) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* GHL Override Classes */
+.c-section, .c-row, .c-column, .c-column > .inner, .c-custom-html,
+.hl_page-creator--row, .hl_page-creator--column {
+    background-color: transparent !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.thank-you-wrapper {
+    width: 100%;
+    max-width: 100%;
+    background: var(--bg-dark);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+/* ============================================================
+   CONFETTI ANIMATION
+   ============================================================ */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    opacity: 0;
+    animation: confetti-fall 4s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        opacity: 1;
+        transform: translateY(-100px) rotate(0deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100vh) rotate(720deg);
+    }
+}
+
+/* ============================================================
+   HEADER SECTION
+   ============================================================ */
+.thank-you-header {
+    padding: 60px 0 40px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(40, 205, 65, 0.08) 0%, var(--bg-dark) 100%);
+}
+
+.success-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, rgba(40, 205, 65, 0.2), rgba(40, 205, 65, 0.05));
+    border: 2px solid var(--highlight-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 48px;
+    animation: pulse-success 2s ease-in-out infinite;
+}
+
+@keyframes pulse-success {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(40, 205, 65, 0.4); }
+    50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(40, 205, 65, 0.2); }
+}
+
+.thank-you-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: var(--pure-white);
+    margin-bottom: 16px;
+    line-height: 1.2;
+}
+
+.thank-you-title span {
+    color: var(--highlight-green);
+}
+
+.thank-you-subtitle {
+    font-size: 18px;
+    color: var(--apple-grey);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   ORDER CONFIRMATION CARD
+   ============================================================ */
+.confirmation-section {
+    padding: 0 0 48px;
+}
+
+.confirmation-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.confirmation-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--highlight-green) 0%, var(--system-blue) 100%);
+}
+
+.confirmation-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.confirmation-badge {
+    background: rgba(40, 205, 65, 0.15);
+    color: var(--highlight-green);
+    padding: 6px 14px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.confirmation-date {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+.order-details {
+    margin-bottom: 24px;
+}
+
+.order-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.order-row:last-child {
+    border-bottom: none;
+}
+
+.order-label {
+    font-size: 14px;
+    color: var(--apple-grey);
+}
+
+.order-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pure-white);
+}
+
+.order-total {
+    background: rgba(40, 205, 65, 0.08);
+    margin: 0 -32px;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-total .order-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--pure-white);
+}
+
+.order-total .order-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--highlight-green);
+}
+
+/* ============================================================
+   WHAT'S NEXT SECTION
+   ============================================================ */
+.next-steps-section {
+    padding: 48px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.section-subtitle {
+    font-size: 14px;
+    color: var(--apple-grey);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    border-color: rgba(10, 132, 255, 0.3);
+    transform: translateY(-4px);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--system-blue), var(--system-blue-dark));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin: 0 auto 16px;
+}
+
+.step-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 8px;
+}
+
+.step-description {
+    font-size: 13px;
+    color: var(--apple-grey);
+    line-height: 1.5;
+}
+
+/* ============================================================
+   INCLUDED ITEMS
+   ============================================================ */
+.included-section {
+    padding: 48px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.included-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
+
+.included-item:hover {
+    border-color: rgba(40, 205, 65, 0.3);
+}
+
+.included-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(40, 205, 65, 0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.included-content {
+    flex: 1;
+}
+
+.included-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--pure-white);
+    margin-bottom: 4px;
+}
+
+.included-desc {
+    font-size: 12px;
+    color: var(--apple-grey);
+}
+
+/* ============================================================
+   SUPPORT SECTION
+   ============================================================ */
+.support-section {
+    padding: 48px 0;
+    border-top: 1px solid var(--glass-border);
+}
+
+.support-card {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08), rgba(10, 132, 255, 0.02));
+    border: 1px solid rgba(10, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+}
+
+.support-icon {
+    font-size: 40px;
+    margin-bottom: 16px;
+}
+
+.support-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 8px;
+}
+
+.support-text {
+    font-size: 14px;
+    color: var(--apple-grey);
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.support-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 132, 255, 0.1);
+    padding: 12px 24px;
+    border-radius: 10px;
+    color: var(--system-blue);
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.support-email:hover {
+    background: rgba(10, 132, 255, 0.2);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.thank-you-footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+.footer-text a {
+    color: var(--system-blue);
+    text-decoration: none;
+}
+
+/* ============================================================
+   MOBILE RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .thank-you-header {
+        padding: 48px 0 32px;
+    }
+
+    .success-icon {
+        width: 80px;
+        height: 80px;
+        font-size: 36px;
+    }
+
+    .confirmation-card {
+        padding: 24px 20px;
+    }
+
+    .order-total {
+        margin: 0 -20px;
+        padding: 16px 20px;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .included-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .support-card {
+        padding: 24px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .thank-you-title {
+        font-size: 26px;
+    }
+
+    .thank-you-subtitle {
+        font-size: 15px;
+    }
+
+    .section-title {
+        font-size: 20px;
+    }
+
+    .order-total .order-value {
+        font-size: 20px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="thank-you-wrapper">
+
+    <!-- Confetti Animation Container -->
+    <div class="confetti-container" id="confetti"></div>
+
+    <!-- ============================================================
+         HEADER: Success Message
+         ============================================================ -->
+    <header class="thank-you-header">
+        <div class="container">
+            <div class="success-icon">✓</div>
+            <h1 class="thank-you-title">Оплата <span>прошла успешно!</span></h1>
+            <p class="thank-you-subtitle">Нейро-Оператор Toolkit уже в пути на вашу почту. Проверьте папку "Входящие" (и спам на всякий случай).</p>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         ORDER CONFIRMATION
+         ============================================================ -->
+    <section class="confirmation-section">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="confirmation-header">
+                    <span class="confirmation-badge">Заказ подтверждён</span>
+                    <span class="confirmation-date" id="orderDate"></span>
+                </div>
+
+                <div class="order-details">
+                    <div class="order-row">
+                        <span class="order-label">Продукт</span>
+                        <span class="order-value">Нейро-Оператор Toolkit</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="order-label">Обучающих пакетов</span>
+                        <span class="order-value">6 пакетов</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="order-label">Бонусов</span>
+                        <span class="order-value">3 бонуса</span>
+                    </div>
+                    <div class="order-row">
+                        <span class="order-label">Доступ</span>
+                        <span class="order-value">Пожизненный</span>
+                    </div>
+                </div>
+
+                <div class="order-total">
+                    <span class="order-label">Итого оплачено:</span>
+                    <span class="order-value">$9</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT'S NEXT
+         ============================================================ -->
+    <section class="next-steps-section">
+        <div class="container">
+            <h2 class="section-title">Что дальше?</h2>
+            <p class="section-subtitle">Три простых шага, чтобы начать</p>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Проверьте почту</h3>
+                    <p class="step-description">Письмо с доступом придёт в течение 5 минут. Проверьте спам, если не видите.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Скачайте пакеты</h3>
+                    <p class="step-description">Все 6 пакетов + 3 бонуса доступны для скачивания по ссылке в письме.</p>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Начните с любого</h3>
+                    <p class="step-description">Выберите пакет, который вам нужен прямо сейчас, и начните применять.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT'S INCLUDED
+         ============================================================ -->
+    <section class="included-section">
+        <div class="container">
+            <h2 class="section-title">Что вы получили</h2>
+            <p class="section-subtitle">Всё это уже ваше</p>
+
+            <div class="included-grid">
+                <div class="included-item">
+                    <div class="included-icon">💻</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Вайб Код</div>
+                        <div class="included-desc">Создание приложений без опыта</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🎨</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Картинки</div>
+                        <div class="included-desc">Генерация профессиональных визуалов</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">✏️</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Графика</div>
+                        <div class="included-desc">Дизайн для соцсетей и рекламы</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🔍</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Ресёрч</div>
+                        <div class="included-desc">Глубокие исследования за минуты</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🌐</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Веб</div>
+                        <div class="included-desc">Создание сайтов без кода</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">📚</div>
+                    <div class="included-content">
+                        <div class="included-title">Нейро-Обучение</div>
+                        <div class="included-desc">Ускоренное освоение любых тем</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🎁</div>
+                    <div class="included-content">
+                        <div class="included-title">Промпты для Документации</div>
+                        <div class="included-desc">Бонус: готовые шаблоны</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">🔄</div>
+                    <div class="included-content">
+                        <div class="included-title">Пожизненные Обновления</div>
+                        <div class="included-desc">Бонус: все новые версии</div>
+                    </div>
+                </div>
+
+                <div class="included-item">
+                    <div class="included-icon">👥</div>
+                    <div class="included-content">
+                        <div class="included-title">Skool-Сообщество</div>
+                        <div class="included-desc">Бонус: общение и поддержка</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         SUPPORT
+         ============================================================ -->
+    <section class="support-section">
+        <div class="container">
+            <div class="support-card">
+                <div class="support-icon">💬</div>
+                <h3 class="support-title">Нужна помощь?</h3>
+                <p class="support-text">Если письмо не пришло в течение 15 минут или есть вопросы — напишите нам, поможем!</p>
+                <a href="mailto:support@outsourcingleader.com" class="support-email">
+                    <span>📧</span>
+                    support@outsourcingleader.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="thank-you-footer">
+        <div class="container">
+            <p class="footer-text">© 2025 Outsourcing Leader. Все права защищены.</p>
+        </div>
+    </footer>
+
+</div>
+
+<script>
+// Set current date
+const dateEl = document.getElementById('orderDate');
+const now = new Date();
+const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
+dateEl.textContent = now.toLocaleDateString('ru-RU', options);
+
+// Confetti animation
+function createConfetti() {
+    const container = document.getElementById('confetti');
+    const colors = ['#28cd41', '#0a84ff', '#ff9500', '#ff453a', '#bf5af2', '#ffd60a'];
+
+    for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDelay = Math.random() * 0.5 + 's';
+            confetti.style.animationDuration = (3 + Math.random() * 2) + 's';
+
+            // Random shapes
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '50%';
+            } else {
+                confetti.style.width = '8px';
+                confetti.style.height = '12px';
+            }
+
+            container.appendChild(confetti);
+
+            // Remove after animation
+            setTimeout(() => confetti.remove(), 5000);
+        }, i * 50);
+    }
+}
+
+// Trigger confetti on page load
+window.addEventListener('load', createConfetti);
+</script>
+
+</body>
+</html>
