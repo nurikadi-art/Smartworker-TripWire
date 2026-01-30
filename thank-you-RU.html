@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Спасибо за покупку — Нейро-Оператор Toolkit</title>
+<title>Спасибо за покупку!</title>
 <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
 <style type="text/css">
 /* ============================================================
-   NEURO-OPERATOR TOOLKIT - THANK YOU PAGE
+   THANK YOU PAGE - Universal
    Russian version - Titanium Blue Theme
    ============================================================ */
 
@@ -21,7 +21,7 @@
     --glass-border: rgba(255, 255, 255, 0.12);
     --glass-bg: rgba(255, 255, 255, 0.03);
     --highlight-green: #28cd41;
-    --highlight-red: #ff453a;
+    --telegram-blue: #0088cc;
     --bg-dark: #020204;
     --bg-card: rgba(255, 255, 255, 0.02);
 }
@@ -60,7 +60,7 @@ body, html {
 }
 
 .container {
-    max-width: 720px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 0 20px;
     width: 100%;
@@ -103,32 +103,32 @@ body, html {
    HEADER SECTION
    ============================================================ */
 .thank-you-header {
-    padding: 60px 0 40px;
+    padding: 80px 0 40px;
     text-align: center;
     background: linear-gradient(180deg, rgba(40, 205, 65, 0.08) 0%, var(--bg-dark) 100%);
 }
 
 .success-icon {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     background: linear-gradient(135deg, rgba(40, 205, 65, 0.2), rgba(40, 205, 65, 0.05));
-    border: 2px solid var(--highlight-green);
+    border: 3px solid var(--highlight-green);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 24px;
-    font-size: 48px;
+    margin: 0 auto 32px;
+    font-size: 56px;
     animation: pulse-success 2s ease-in-out infinite;
 }
 
 @keyframes pulse-success {
     0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(40, 205, 65, 0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 0 30px 10px rgba(40, 205, 65, 0.2); }
+    50% { transform: scale(1.05); box-shadow: 0 0 40px 15px rgba(40, 205, 65, 0.2); }
 }
 
 .thank-you-title {
-    font-size: clamp(28px, 5vw, 42px);
+    font-size: clamp(32px, 6vw, 48px);
     font-weight: 800;
     color: var(--pure-white);
     margin-bottom: 16px;
@@ -142,27 +142,29 @@ body, html {
 .thank-you-subtitle {
     font-size: 18px;
     color: var(--apple-grey);
-    max-width: 500px;
+    max-width: 450px;
     margin: 0 auto;
+    line-height: 1.6;
 }
 
 /* ============================================================
-   ORDER CONFIRMATION CARD
+   EMAIL CHECK SECTION
    ============================================================ */
-.confirmation-section {
-    padding: 0 0 48px;
+.email-section {
+    padding: 48px 0;
 }
 
-.confirmation-card {
+.email-card {
     background: var(--bg-card);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
-    padding: 32px;
+    padding: 40px 32px;
+    text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-.confirmation-card::before {
+.email-card::before {
     content: "";
     position: absolute;
     top: 0;
@@ -172,259 +174,128 @@ body, html {
     background: linear-gradient(90deg, var(--highlight-green) 0%, var(--system-blue) 100%);
 }
 
-.confirmation-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 24px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid var(--glass-border);
+.email-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
 }
 
-.confirmation-badge {
-    background: rgba(40, 205, 65, 0.15);
-    color: var(--highlight-green);
-    padding: 6px 14px;
-    border-radius: 100px;
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.confirmation-date {
-    font-size: 13px;
-    color: var(--apple-grey);
-}
-
-.order-details {
-    margin-bottom: 24px;
-}
-
-.order-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.order-row:last-child {
-    border-bottom: none;
-}
-
-.order-label {
-    font-size: 14px;
-    color: var(--apple-grey);
-}
-
-.order-value {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--pure-white);
-}
-
-.order-total {
-    background: rgba(40, 205, 65, 0.08);
-    margin: 0 -32px;
-    padding: 16px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.order-total .order-label {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--pure-white);
-}
-
-.order-total .order-value {
+.email-title {
     font-size: 24px;
-    font-weight: 800;
-    color: var(--highlight-green);
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 16px;
+}
+
+.email-text {
+    font-size: 16px;
+    color: var(--apple-grey);
+    margin-bottom: 24px;
+    line-height: 1.7;
+}
+
+.email-text strong {
+    color: var(--pure-white);
+}
+
+.spam-warning {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 149, 0, 0.1);
+    border: 1px solid rgba(255, 149, 0, 0.3);
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    color: #ff9500;
+}
+
+.spam-warning span {
+    font-size: 20px;
 }
 
 /* ============================================================
-   WHAT'S NEXT SECTION
+   CONTACT SECTION
    ============================================================ */
-.next-steps-section {
-    padding: 48px 0;
-    border-top: 1px solid var(--glass-border);
+.contact-section {
+    padding: 0 0 48px;
 }
 
-.section-title {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--pure-white);
-    margin-bottom: 8px;
-    text-align: center;
-}
-
-.section-subtitle {
-    font-size: 14px;
-    color: var(--apple-grey);
-    text-align: center;
-    margin-bottom: 32px;
-}
-
-.steps-grid {
+.contact-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
-.step-card {
+.contact-card {
     background: var(--bg-card);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
-    padding: 24px 20px;
+    padding: 28px 24px;
     text-align: center;
     transition: all 0.3s ease;
 }
 
-.step-card:hover {
-    border-color: rgba(10, 132, 255, 0.3);
+.contact-card:hover {
     transform: translateY(-4px);
 }
 
-.step-number {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--system-blue), var(--system-blue-dark));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    font-weight: 700;
-    color: white;
-    margin: 0 auto 16px;
+.contact-card.telegram:hover {
+    border-color: rgba(0, 136, 204, 0.4);
+    background: rgba(0, 136, 204, 0.05);
 }
 
-.step-title {
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--pure-white);
-    margin-bottom: 8px;
+.contact-card.reviews:hover {
+    border-color: rgba(40, 205, 65, 0.4);
+    background: rgba(40, 205, 65, 0.05);
 }
 
-.step-description {
-    font-size: 13px;
-    color: var(--apple-grey);
-    line-height: 1.5;
-}
-
-/* ============================================================
-   INCLUDED ITEMS
-   ============================================================ */
-.included-section {
-    padding: 48px 0;
-    border-top: 1px solid var(--glass-border);
-}
-
-.included-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-}
-
-.included-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    background: var(--bg-card);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 16px;
-    transition: all 0.2s ease;
-}
-
-.included-item:hover {
-    border-color: rgba(40, 205, 65, 0.3);
-}
-
-.included-icon {
-    width: 36px;
-    height: 36px;
-    background: rgba(40, 205, 65, 0.1);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    flex-shrink: 0;
-}
-
-.included-content {
-    flex: 1;
-}
-
-.included-title {
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--pure-white);
-    margin-bottom: 4px;
-}
-
-.included-desc {
-    font-size: 12px;
-    color: var(--apple-grey);
-}
-
-/* ============================================================
-   SUPPORT SECTION
-   ============================================================ */
-.support-section {
-    padding: 48px 0;
-    border-top: 1px solid var(--glass-border);
-}
-
-.support-card {
-    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08), rgba(10, 132, 255, 0.02));
-    border: 1px solid rgba(10, 132, 255, 0.2);
-    border-radius: 16px;
-    padding: 32px;
-    text-align: center;
-}
-
-.support-icon {
+.contact-icon {
     font-size: 40px;
     margin-bottom: 16px;
 }
 
-.support-title {
-    font-size: 20px;
+.contact-title {
+    font-size: 16px;
     font-weight: 700;
     color: var(--pure-white);
     margin-bottom: 8px;
 }
 
-.support-text {
-    font-size: 14px;
+.contact-desc {
+    font-size: 13px;
     color: var(--apple-grey);
-    margin-bottom: 20px;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 16px;
+    line-height: 1.5;
 }
 
-.support-email {
+.contact-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: rgba(10, 132, 255, 0.1);
     padding: 12px 24px;
     border-radius: 10px;
-    color: var(--system-blue);
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
     transition: all 0.2s ease;
 }
 
-.support-email:hover {
-    background: rgba(10, 132, 255, 0.2);
+.contact-link.telegram {
+    background: rgba(0, 136, 204, 0.15);
+    color: var(--telegram-blue);
+}
+
+.contact-link.telegram:hover {
+    background: rgba(0, 136, 204, 0.25);
+}
+
+.contact-link.reviews {
+    background: rgba(40, 205, 65, 0.15);
+    color: var(--highlight-green);
+}
+
+.contact-link.reviews:hover {
+    background: rgba(40, 205, 65, 0.25);
 }
 
 /* ============================================================
@@ -441,11 +312,6 @@ body, html {
     color: var(--apple-grey);
 }
 
-.footer-text a {
-    color: var(--system-blue);
-    text-decoration: none;
-}
-
 /* ============================================================
    MOBILE RESPONSIVE
    ============================================================ */
@@ -455,53 +321,45 @@ body, html {
     }
 
     .thank-you-header {
-        padding: 48px 0 32px;
+        padding: 60px 0 32px;
     }
 
     .success-icon {
-        width: 80px;
-        height: 80px;
-        font-size: 36px;
+        width: 100px;
+        height: 100px;
+        font-size: 44px;
     }
 
-    .confirmation-card {
-        padding: 24px 20px;
+    .email-card {
+        padding: 32px 24px;
     }
 
-    .order-total {
-        margin: 0 -20px;
-        padding: 16px 20px;
-    }
-
-    .steps-grid {
+    .contact-grid {
         grid-template-columns: 1fr;
         gap: 16px;
-    }
-
-    .included-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .support-card {
-        padding: 24px 20px;
     }
 }
 
 @media (max-width: 480px) {
     .thank-you-title {
-        font-size: 26px;
+        font-size: 28px;
     }
 
     .thank-you-subtitle {
-        font-size: 15px;
+        font-size: 16px;
     }
 
-    .section-title {
+    .email-title {
         font-size: 20px;
     }
 
-    .order-total .order-value {
-        font-size: 20px;
+    .email-text {
+        font-size: 14px;
+    }
+
+    .spam-warning {
+        padding: 12px 16px;
+        font-size: 13px;
     }
 }
 </style>
@@ -519,176 +377,54 @@ body, html {
     <header class="thank-you-header">
         <div class="container">
             <div class="success-icon">✓</div>
-            <h1 class="thank-you-title">Оплата <span>прошла успешно!</span></h1>
-            <p class="thank-you-subtitle">Нейро-Оператор Toolkit уже в пути на вашу почту. Проверьте папку "Входящие" (и спам на всякий случай).</p>
+            <h1 class="thank-you-title">Спасибо за <span>покупку!</span></h1>
+            <p class="thank-you-subtitle">Ваш заказ успешно оформлен. Доступ уже летит на вашу почту.</p>
         </div>
     </header>
 
     <!-- ============================================================
-         ORDER CONFIRMATION
+         EMAIL CHECK
          ============================================================ -->
-    <section class="confirmation-section">
+    <section class="email-section">
         <div class="container">
-            <div class="confirmation-card">
-                <div class="confirmation-header">
-                    <span class="confirmation-badge">Заказ подтверждён</span>
-                    <span class="confirmation-date" id="orderDate"></span>
-                </div>
-
-                <div class="order-details">
-                    <div class="order-row">
-                        <span class="order-label">Продукт</span>
-                        <span class="order-value">Нейро-Оператор Toolkit</span>
-                    </div>
-                    <div class="order-row">
-                        <span class="order-label">Обучающих пакетов</span>
-                        <span class="order-value">6 пакетов</span>
-                    </div>
-                    <div class="order-row">
-                        <span class="order-label">Бонусов</span>
-                        <span class="order-value">3 бонуса</span>
-                    </div>
-                    <div class="order-row">
-                        <span class="order-label">Доступ</span>
-                        <span class="order-value">Пожизненный</span>
-                    </div>
-                </div>
-
-                <div class="order-total">
-                    <span class="order-label">Итого оплачено:</span>
-                    <span class="order-value">$9</span>
+            <div class="email-card">
+                <div class="email-icon">📧</div>
+                <h2 class="email-title">Проверьте вашу почту</h2>
+                <p class="email-text">
+                    Письмо с доступом к материалам придёт <strong>в течение 5 минут</strong>.<br>
+                    Если не видите письмо — обязательно проверьте папку <strong>«Спам»</strong> или <strong>«Промоакции»</strong>.
+                </p>
+                <div class="spam-warning">
+                    <span>⚠️</span>
+                    Не забудьте проверить Спам!
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ============================================================
-         WHAT'S NEXT
+         CONTACT & REVIEWS
          ============================================================ -->
-    <section class="next-steps-section">
+    <section class="contact-section">
         <div class="container">
-            <h2 class="section-title">Что дальше?</h2>
-            <p class="section-subtitle">Три простых шага, чтобы начать</p>
-
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Проверьте почту</h3>
-                    <p class="step-description">Письмо с доступом придёт в течение 5 минут. Проверьте спам, если не видите.</p>
+            <div class="contact-grid">
+                <div class="contact-card telegram">
+                    <div class="contact-icon">💬</div>
+                    <h3 class="contact-title">Есть вопросы?</h3>
+                    <p class="contact-desc">Напишите мне в Telegram — отвечу лично и помогу разобраться</p>
+                    <a href="https://t.me/incastra31" target="_blank" class="contact-link telegram">
+                        ✈️ @incastra31
+                    </a>
                 </div>
 
-                <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Скачайте пакеты</h3>
-                    <p class="step-description">Все 6 пакетов + 3 бонуса доступны для скачивания по ссылке в письме.</p>
+                <div class="contact-card reviews">
+                    <div class="contact-icon">⭐</div>
+                    <h3 class="contact-title">Отзывы учеников</h3>
+                    <p class="contact-desc">Посмотрите, что говорят те, кто уже прошёл обучение</p>
+                    <a href="https://t.me/smartworker_reviews" target="_blank" class="contact-link reviews">
+                        📖 Читать отзывы
+                    </a>
                 </div>
-
-                <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Начните с любого</h3>
-                    <p class="step-description">Выберите пакет, который вам нужен прямо сейчас, и начните применять.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         WHAT'S INCLUDED
-         ============================================================ -->
-    <section class="included-section">
-        <div class="container">
-            <h2 class="section-title">Что вы получили</h2>
-            <p class="section-subtitle">Всё это уже ваше</p>
-
-            <div class="included-grid">
-                <div class="included-item">
-                    <div class="included-icon">💻</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Вайб Код</div>
-                        <div class="included-desc">Создание приложений без опыта</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">🎨</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Картинки</div>
-                        <div class="included-desc">Генерация профессиональных визуалов</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">✏️</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Графика</div>
-                        <div class="included-desc">Дизайн для соцсетей и рекламы</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">🔍</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Ресёрч</div>
-                        <div class="included-desc">Глубокие исследования за минуты</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">🌐</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Веб</div>
-                        <div class="included-desc">Создание сайтов без кода</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">📚</div>
-                    <div class="included-content">
-                        <div class="included-title">Нейро-Обучение</div>
-                        <div class="included-desc">Ускоренное освоение любых тем</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">🎁</div>
-                    <div class="included-content">
-                        <div class="included-title">Промпты для Документации</div>
-                        <div class="included-desc">Бонус: готовые шаблоны</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">🔄</div>
-                    <div class="included-content">
-                        <div class="included-title">Пожизненные Обновления</div>
-                        <div class="included-desc">Бонус: все новые версии</div>
-                    </div>
-                </div>
-
-                <div class="included-item">
-                    <div class="included-icon">👥</div>
-                    <div class="included-content">
-                        <div class="included-title">Skool-Сообщество</div>
-                        <div class="included-desc">Бонус: общение и поддержка</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ============================================================
-         SUPPORT
-         ============================================================ -->
-    <section class="support-section">
-        <div class="container">
-            <div class="support-card">
-                <div class="support-icon">💬</div>
-                <h3 class="support-title">Нужна помощь?</h3>
-                <p class="support-text">Если письмо не пришло в течение 15 минут или есть вопросы — напишите нам, поможем!</p>
-                <a href="mailto:support@outsourcingleader.com" class="support-email">
-                    <span>📧</span>
-                    support@outsourcingleader.com
-                </a>
             </div>
         </div>
     </section>
@@ -698,19 +434,13 @@ body, html {
          ============================================================ -->
     <footer class="thank-you-footer">
         <div class="container">
-            <p class="footer-text">© 2025 Outsourcing Leader. Все права защищены.</p>
+            <p class="footer-text">© 2025 Smartworker. Все права защищены.</p>
         </div>
     </footer>
 
 </div>
 
 <script>
-// Set current date
-const dateEl = document.getElementById('orderDate');
-const now = new Date();
-const options = { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' };
-dateEl.textContent = now.toLocaleDateString('ru-RU', options);
-
 // Confetti animation
 function createConfetti() {
     const container = document.getElementById('confetti');
