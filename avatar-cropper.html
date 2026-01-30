@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Avatar Cropper — Smartworker</title>
+  <title>Image Cropper — Smartworker Funnel</title>
   <style>
     :root {
       --bg: #0a0a0c;
@@ -12,21 +12,74 @@
       --text: #f5f5f7;
       --muted: #9ca3af;
       --accent: #00b67a;
+      --accent-hover: #00a06a;
+      --danger: #ef4444;
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       background: var(--bg);
       color: var(--text);
       font-family: Inter, -apple-system, BlinkMacSystemFont, sans-serif;
       line-height: 1.6;
-      padding: 32px 16px 60px;
+      padding: 24px 16px 60px;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+
+    h1 { font-size: 28px; margin-bottom: 8px; }
+    h2 { font-size: 18px; margin-bottom: 16px; color: var(--accent); }
+    h3 { font-size: 14px; margin-bottom: 8px; color: var(--muted); }
+    p { color: var(--muted); margin-bottom: 20px; font-size: 14px; }
+
+    .header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .tab {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .tab:hover { background: rgba(255,255,255,0.08); }
+    .tab.active {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .section {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .section.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .card {
@@ -34,74 +87,127 @@
       border: 1px solid var(--border);
       border-radius: 16px;
       padding: 24px;
+      margin-bottom: 24px;
     }
 
-    h1 { font-size: 24px; margin: 0 0 8px; }
-    p { color: var(--muted); margin: 0 0 16px; }
-
-    .layout {
+    .slot-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-      margin-top: 20px;
     }
 
-    @media (max-width: 800px) {
-      .layout { grid-template-columns: 1fr; }
+    .slot {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .slot-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .slot-title {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .slot-page {
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.05);
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .preview-container {
+      position: relative;
+      margin-bottom: 16px;
     }
 
     .preview-wrap {
       position: relative;
-      width: 100%;
-      max-width: 420px;
-      margin: 0 auto;
+      overflow: hidden;
+      background: #111318;
+      border-radius: 8px;
     }
 
-    canvas {
+    .preview-wrap.circle {
+      border-radius: 50%;
+    }
+
+    .preview-wrap canvas {
+      display: block;
       width: 100%;
       height: auto;
-      border-radius: 12px;
-      background: #111318;
-      display: block;
     }
 
     .circle-guide {
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.35);
+      border: 2px dashed var(--accent);
       pointer-events: none;
     }
 
-    .controls label {
-      display: block;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 6px;
-    }
-
-    .controls input[type="range"] {
-      width: 100%;
-      margin-bottom: 14px;
-    }
-
-    .row {
+    .controls {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
       gap: 12px;
+    }
+
+    .control-row {
+      display: flex;
+      gap: 8px;
       align-items: center;
+    }
+
+    .control-row label {
+      font-size: 11px;
+      color: var(--muted);
+      min-width: 70px;
+    }
+
+    .control-row input[type="range"] {
+      flex: 1;
+      height: 6px;
+      -webkit-appearance: none;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      outline: none;
+    }
+
+    .control-row input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--accent);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .btn {
       background: var(--accent);
       color: #000;
       border: none;
-      padding: 10px 16px;
-      border-radius: 10px;
-      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-weight: 600;
       cursor: pointer;
+      font-size: 12px;
+      transition: all 0.2s;
     }
+
+    .btn:hover { background: var(--accent-hover); }
 
     .btn.secondary {
       background: transparent;
@@ -109,155 +215,495 @@
       border: 1px solid var(--border);
     }
 
-    .file-input {
+    .btn.secondary:hover { background: rgba(255,255,255,0.05); }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .file-label {
       display: inline-flex;
-      gap: 8px;
       align-items: center;
-      font-size: 14px;
-      color: var(--muted);
-    }
-
-    .note {
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
       font-size: 12px;
-      color: var(--muted);
-      margin-top: 12px;
+      color: var(--text);
+      border: 1px dashed var(--border);
+      transition: all 0.2s;
     }
 
-    .output {
-      margin-top: 16px;
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid var(--border);
+    .file-label:hover {
+      background: rgba(255,255,255,0.12);
+      border-color: var(--accent);
+    }
+
+    .file-label input { display: none; }
+
+    .status {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    .status.ready { background: rgba(0,182,122,0.2); color: var(--accent); }
+    .status.empty { background: rgba(255,255,255,0.05); color: var(--muted); }
+
+    .download-all-section {
+      background: linear-gradient(135deg, rgba(0,182,122,0.1), rgba(0,182,122,0.05));
+      border: 1px solid rgba(0,182,122,0.3);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    .download-all-section h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .download-all-section p {
+      margin-bottom: 16px;
+    }
+
+    .download-all-btn {
+      background: var(--accent);
+      color: #000;
+      border: none;
+      padding: 14px 32px;
       border-radius: 10px;
-      padding: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .download-all-btn:hover {
+      background: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .instructions {
+      background: rgba(255,255,255,0.03);
+      border-left: 3px solid var(--accent);
+      padding: 16px;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+
+    .instructions ol {
+      margin-left: 20px;
+      color: var(--muted);
+    }
+
+    .instructions li {
+      margin-bottom: 6px;
+    }
+
+    .output-urls {
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 24px;
+      font-family: monospace;
       font-size: 12px;
       color: var(--muted);
+      white-space: pre-wrap;
+      word-break: break-all;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .copy-btn {
+      margin-top: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .slot-grid { grid-template-columns: 1fr; }
+      .tabs { flex-direction: column; }
+      .tab { text-align: center; }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Avatar Cropper (круглый аватар)</h1>
-    <p>Загрузите фото, выровняйте лицо по кругу, затем скачайте квадратный PNG. Его можно вставить в блоки с круглыми аватарами.</p>
+    <div class="header">
+      <h1>🖼️ Funnel Image Cropper</h1>
+      <p>Загрузите фотографии, настройте кадрирование для каждого плейсхолдера, затем скачайте все изображения.</p>
+    </div>
 
-    <div class="card layout">
-      <div class="preview-wrap">
-        <canvas id="preview" width="400" height="400"></canvas>
-        <div class="circle-guide"></div>
-      </div>
+    <div class="instructions">
+      <h3>Как использовать:</h3>
+      <ol>
+        <li>Выберите тип изображений (Аватары или Story-фото)</li>
+        <li>Загрузите фото в каждый слот</li>
+        <li>Используйте слайдеры для настройки масштаба и позиции</li>
+        <li>Нажмите "Скачать" для каждого слота или "Скачать все" внизу страницы</li>
+        <li>Загрузите скачанные PNG на Google Drive и обновите ссылки в HTML</li>
+      </ol>
+    </div>
 
-      <div class="controls">
-        <div class="row">
-          <label class="file-input">
-            <input type="file" id="fileInput" accept="image/*">
-            <span>Выбрать фото</span>
-          </label>
-          <button id="resetBtn" class="btn secondary" type="button">Сброс</button>
-        </div>
+    <div class="tabs">
+      <button class="tab active" data-tab="avatars">👤 Круглые аватары (5)</button>
+      <button class="tab" data-tab="story-images">🖼️ Story-фото (6)</button>
+    </div>
 
-        <label for="zoomRange">Масштаб</label>
-        <input type="range" id="zoomRange" min="0.6" max="2.2" step="0.01" value="1">
+    <!-- AVATARS SECTION -->
+    <div class="section active" id="avatars">
+      <div class="card">
+        <h2>Круглые аватары — «Привет, я Нурсултан»</h2>
+        <p>Эти круглые аватары используются в секциях с историей основателя. Один и тот же аватар нужен для всех 5 страниц.</p>
 
-        <label for="xRange">Смещение по X</label>
-        <input type="range" id="xRange" min="-120" max="120" step="1" value="0">
-
-        <label for="yRange">Смещение по Y</label>
-        <input type="range" id="yRange" min="-120" max="120" step="1" value="0">
-
-        <div class="row">
-          <button id="downloadBtn" class="btn" type="button">Скачать PNG</button>
-        </div>
-
-        <div class="note">Совет: сначала увеличьте масштаб, затем подвиньте лицо в центр круга.</div>
-        <div class="output">
-          После скачивания загрузите PNG в ваше хранилище (Drive/Cloud) и замените src в HTML.
+        <div class="slot-grid" id="avatar-slots">
+          <!-- Slots will be generated by JS -->
         </div>
       </div>
+    </div>
+
+    <!-- STORY IMAGES SECTION -->
+    <div class="section" id="story-images">
+      <div class="card">
+        <h2>Прямоугольные Story-фото</h2>
+        <p>Эти фотографии используются в историях для иллюстрации событий (ковид, переезд, семья и т.д.)</p>
+
+        <div class="slot-grid" id="story-slots">
+          <!-- Slots will be generated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <div class="download-all-section">
+      <h3>📦 Скачать все изображения</h3>
+      <p>После настройки всех слотов нажмите кнопку ниже для скачивания всех изображений одним кликом.</p>
+      <button class="download-all-btn" id="downloadAllBtn">Скачать все готовые изображения</button>
+    </div>
+
+    <div class="card" style="margin-top: 24px;">
+      <h3>📋 Сгенерированные имена файлов</h3>
+      <p>После скачивания вы получите файлы с этими именами. Загрузите их на Google Drive.</p>
+      <div class="output-urls" id="outputUrls">Здесь появятся имена скачанных файлов...</div>
+      <button class="btn secondary copy-btn" id="copyNamesBtn">Копировать имена</button>
     </div>
   </div>
 
   <script>
-    const canvas = document.getElementById('preview');
-    const ctx = canvas.getContext('2d');
-    const fileInput = document.getElementById('fileInput');
-    const zoomRange = document.getElementById('zoomRange');
-    const xRange = document.getElementById('xRange');
-    const yRange = document.getElementById('yRange');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const resetBtn = document.getElementById('resetBtn');
+    // Slot configurations
+    const avatarSlots = [
+      { id: 'avatar-tripwire', name: 'Tripwire', page: 'ai-operator-tripwire-RU-9usd.html', line: 2651 },
+      { id: 'avatar-oto1', name: 'OTO1 Upsell', page: 'oto1-smartworker-RU-19usd.html', line: 1333 },
+      { id: 'avatar-oto1-ds', name: 'OTO1 Downsell', page: 'oto1-ds-smartworker-RU-9usd.html', line: 1341 },
+      { id: 'avatar-oto2', name: 'OTO2 Upsell', page: 'oto2-telegram-jobs-RU-29usd.html', line: 1440 },
+      { id: 'avatar-oto2-ds', name: 'OTO2 Downsell', page: 'oto2-ds-telegram-jobs-RU-19usd.html', line: 1084 }
+    ];
 
-    const state = {
-      img: null,
-      zoom: 1,
-      offsetX: 0,
-      offsetY: 0
-    };
+    const storySlots = [
+      { id: 'story-tripwire-1', name: 'Ковид период', page: 'Tripwire', line: 2666, desc: 'Нурсултан в период ковида' },
+      { id: 'story-tripwire-2', name: 'Первые шаги', page: 'Tripwire', line: 2680, desc: 'Первые шаги в США' },
+      { id: 'story-tripwire-3', name: 'Семья', page: 'Tripwire', line: 2698, desc: 'Семья после первых результатов' },
+      { id: 'story-oto1-1', name: 'Период поиска', page: 'OTO1 Upsell', line: 1345, desc: 'Период поиска и сомнений' },
+      { id: 'story-oto1-2', name: 'Семья и возможности', page: 'OTO1 Upsell', line: 1356, desc: 'Семья и новые возможности' },
+      { id: 'story-oto2-1', name: 'Клиенты', page: 'OTO2 Upsell', line: 1453, desc: 'Реальные клиенты и вакансии' }
+    ];
 
-    function draw() {
+    // State management
+    const slotStates = {};
+
+    function createSlotHTML(slot, isCircle = false) {
+      const size = isCircle ? 160 : 200;
+      const height = isCircle ? 160 : 120;
+
+      return `
+        <div class="slot" id="slot-${slot.id}">
+          <div class="slot-header">
+            <span class="slot-title">${slot.name}</span>
+            <span class="slot-page">${slot.page}${slot.line ? `:${slot.line}` : ''}</span>
+          </div>
+          ${slot.desc ? `<p style="font-size:11px;margin-bottom:12px;">${slot.desc}</p>` : ''}
+          <div class="preview-container">
+            <div class="preview-wrap ${isCircle ? 'circle' : ''}" style="width:${size}px;height:${height}px;margin:0 auto;">
+              <canvas id="canvas-${slot.id}" width="${size}" height="${height}"></canvas>
+              ${isCircle ? '<div class="circle-guide"></div>' : ''}
+            </div>
+          </div>
+          <div class="controls">
+            <div class="btn-row" style="margin-bottom:8px;">
+              <label class="file-label">
+                <input type="file" accept="image/*" data-slot="${slot.id}">
+                📂 Выбрать фото
+              </label>
+              <span class="status empty" id="status-${slot.id}">Пусто</span>
+            </div>
+            <div class="control-row">
+              <label>Масштаб</label>
+              <input type="range" id="zoom-${slot.id}" min="0.5" max="3" step="0.01" value="1" data-slot="${slot.id}" data-control="zoom">
+            </div>
+            <div class="control-row">
+              <label>Позиция X</label>
+              <input type="range" id="x-${slot.id}" min="-150" max="150" step="1" value="0" data-slot="${slot.id}" data-control="x">
+            </div>
+            <div class="control-row">
+              <label>Позиция Y</label>
+              <input type="range" id="y-${slot.id}" min="-150" max="150" step="1" value="0" data-slot="${slot.id}" data-control="y">
+            </div>
+            <div class="btn-row">
+              <button class="btn secondary" data-slot="${slot.id}" data-action="reset">Сброс</button>
+              <button class="btn" data-slot="${slot.id}" data-action="download" disabled>Скачать PNG</button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function initSlots() {
+      // Init avatar slots
+      const avatarContainer = document.getElementById('avatar-slots');
+      avatarContainer.innerHTML = avatarSlots.map(s => createSlotHTML(s, true)).join('');
+
+      // Init story slots
+      const storyContainer = document.getElementById('story-slots');
+      storyContainer.innerHTML = storySlots.map(s => createSlotHTML(s, false)).join('');
+
+      // Initialize state for all slots
+      [...avatarSlots, ...storySlots].forEach(slot => {
+        const canvas = document.getElementById(`canvas-${slot.id}`);
+        slotStates[slot.id] = {
+          img: null,
+          zoom: 1,
+          x: 0,
+          y: 0,
+          canvas: canvas,
+          ctx: canvas.getContext('2d'),
+          isCircle: avatarSlots.includes(slot)
+        };
+        drawSlot(slot.id);
+      });
+
+      // Attach event listeners
+      document.querySelectorAll('input[type="file"]').forEach(input => {
+        input.addEventListener('change', handleFileSelect);
+      });
+
+      document.querySelectorAll('input[type="range"]').forEach(input => {
+        input.addEventListener('input', handleRangeChange);
+      });
+
+      document.querySelectorAll('button[data-action]').forEach(btn => {
+        btn.addEventListener('click', handleButtonClick);
+      });
+    }
+
+    function drawSlot(slotId) {
+      const state = slotStates[slotId];
+      const { canvas, ctx, img, zoom, x, y } = state;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      if (!state.img) {
-        ctx.fillStyle = '#111318';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Fill background
+      ctx.fillStyle = '#111318';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (!img) {
         ctx.fillStyle = '#6b7280';
-        ctx.font = '14px Inter, sans-serif';
+        ctx.font = '12px Inter, sans-serif';
         ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
         ctx.fillText('Загрузите фото', canvas.width / 2, canvas.height / 2);
         return;
       }
 
+      // Calculate scale to cover canvas
       const baseScale = Math.max(
-        canvas.width / state.img.width,
-        canvas.height / state.img.height
+        canvas.width / img.width,
+        canvas.height / img.height
       );
-      const scale = baseScale * state.zoom;
-      const drawWidth = state.img.width * scale;
-      const drawHeight = state.img.height * scale;
-      const x = (canvas.width - drawWidth) / 2 + state.offsetX;
-      const y = (canvas.height - drawHeight) / 2 + state.offsetY;
-      ctx.drawImage(state.img, x, y, drawWidth, drawHeight);
+      const scale = baseScale * zoom;
+
+      const drawWidth = img.width * scale;
+      const drawHeight = img.height * scale;
+      const drawX = (canvas.width - drawWidth) / 2 + x;
+      const drawY = (canvas.height - drawHeight) / 2 + y;
+
+      ctx.drawImage(img, drawX, drawY, drawWidth, drawHeight);
     }
 
-    function updateState() {
-      state.zoom = parseFloat(zoomRange.value);
-      state.offsetX = parseFloat(xRange.value);
-      state.offsetY = parseFloat(yRange.value);
-      draw();
-    }
-
-    fileInput.addEventListener('change', (event) => {
-      const file = event.target.files[0];
+    function handleFileSelect(e) {
+      const slotId = e.target.dataset.slot;
+      const file = e.target.files[0];
       if (!file) return;
+
       const reader = new FileReader();
-      reader.onload = () => {
+      reader.onload = (event) => {
         const img = new Image();
         img.onload = () => {
-          state.img = img;
-          updateState();
+          slotStates[slotId].img = img;
+          // Reset position when new image loaded
+          slotStates[slotId].zoom = 1;
+          slotStates[slotId].x = 0;
+          slotStates[slotId].y = 0;
+
+          // Reset sliders
+          document.getElementById(`zoom-${slotId}`).value = 1;
+          document.getElementById(`x-${slotId}`).value = 0;
+          document.getElementById(`y-${slotId}`).value = 0;
+
+          drawSlot(slotId);
+          updateStatus(slotId, true);
         };
-        img.src = reader.result;
+        img.src = event.target.result;
       };
       reader.readAsDataURL(file);
-    });
+    }
 
-    zoomRange.addEventListener('input', updateState);
-    xRange.addEventListener('input', updateState);
-    yRange.addEventListener('input', updateState);
+    function handleRangeChange(e) {
+      const slotId = e.target.dataset.slot;
+      const control = e.target.dataset.control;
+      const value = parseFloat(e.target.value);
 
-    resetBtn.addEventListener('click', () => {
-      zoomRange.value = 1;
-      xRange.value = 0;
-      yRange.value = 0;
-      updateState();
-    });
+      if (control === 'zoom') slotStates[slotId].zoom = value;
+      if (control === 'x') slotStates[slotId].x = value;
+      if (control === 'y') slotStates[slotId].y = value;
 
-    downloadBtn.addEventListener('click', () => {
+      drawSlot(slotId);
+    }
+
+    function handleButtonClick(e) {
+      const slotId = e.target.dataset.slot;
+      const action = e.target.dataset.action;
+
+      if (action === 'reset') {
+        slotStates[slotId].zoom = 1;
+        slotStates[slotId].x = 0;
+        slotStates[slotId].y = 0;
+        document.getElementById(`zoom-${slotId}`).value = 1;
+        document.getElementById(`x-${slotId}`).value = 0;
+        document.getElementById(`y-${slotId}`).value = 0;
+        drawSlot(slotId);
+      }
+
+      if (action === 'download') {
+        downloadSlot(slotId);
+      }
+    }
+
+    function updateStatus(slotId, hasImage) {
+      const statusEl = document.getElementById(`status-${slotId}`);
+      const downloadBtn = document.querySelector(`button[data-slot="${slotId}"][data-action="download"]`);
+
+      if (hasImage) {
+        statusEl.className = 'status ready';
+        statusEl.textContent = 'Готово';
+        downloadBtn.disabled = false;
+      } else {
+        statusEl.className = 'status empty';
+        statusEl.textContent = 'Пусто';
+        downloadBtn.disabled = true;
+      }
+    }
+
+    function downloadSlot(slotId) {
+      const state = slotStates[slotId];
       if (!state.img) return;
+
+      // Create a temporary canvas for high-quality export
+      const exportCanvas = document.createElement('canvas');
+      const exportSize = state.isCircle ? 400 : 600;
+      const exportHeight = state.isCircle ? 400 : 360;
+      exportCanvas.width = exportSize;
+      exportCanvas.height = exportHeight;
+      const exportCtx = exportCanvas.getContext('2d');
+
+      // Fill background
+      exportCtx.fillStyle = '#111318';
+      exportCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
+
+      // Calculate scale
+      const baseScale = Math.max(
+        exportCanvas.width / state.img.width,
+        exportCanvas.height / state.img.height
+      );
+      const scale = baseScale * state.zoom;
+
+      // Scale offsets proportionally
+      const scaleRatio = exportSize / state.canvas.width;
+      const drawWidth = state.img.width * scale;
+      const drawHeight = state.img.height * scale;
+      const drawX = (exportCanvas.width - drawWidth) / 2 + (state.x * scaleRatio);
+      const drawY = (exportCanvas.height - drawHeight) / 2 + (state.y * scaleRatio);
+
+      exportCtx.drawImage(state.img, drawX, drawY, drawWidth, drawHeight);
+
+      // Download
       const link = document.createElement('a');
-      link.download = 'avatar-400.png';
-      link.href = canvas.toDataURL('image/png');
+      link.download = `${slotId}.png`;
+      link.href = exportCanvas.toDataURL('image/png', 1.0);
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
+
+      updateOutputList();
+    }
+
+    function downloadAll() {
+      const readySlots = Object.keys(slotStates).filter(id => slotStates[id].img);
+
+      if (readySlots.length === 0) {
+        alert('Нет готовых изображений для скачивания. Загрузите хотя бы одно фото.');
+        return;
+      }
+
+      // Download each with a small delay to avoid browser blocking
+      readySlots.forEach((slotId, index) => {
+        setTimeout(() => {
+          downloadSlot(slotId);
+        }, index * 300);
+      });
+    }
+
+    function updateOutputList() {
+      const readySlots = Object.keys(slotStates).filter(id => slotStates[id].img);
+      const names = readySlots.map(id => `${id}.png`);
+
+      const outputEl = document.getElementById('outputUrls');
+      if (names.length > 0) {
+        outputEl.textContent = 'Скачанные файлы:\n\n' + names.join('\n');
+      } else {
+        outputEl.textContent = 'Здесь появятся имена скачанных файлов...';
+      }
+    }
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+
+        tab.classList.add('active');
+        const sectionId = tab.dataset.tab;
+        document.getElementById(sectionId).classList.add('active');
+      });
     });
 
-    draw();
+    // Download all button
+    document.getElementById('downloadAllBtn').addEventListener('click', downloadAll);
+
+    // Copy names button
+    document.getElementById('copyNamesBtn').addEventListener('click', () => {
+      const text = document.getElementById('outputUrls').textContent;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyNamesBtn');
+        btn.textContent = 'Скопировано!';
+        setTimeout(() => btn.textContent = 'Копировать имена', 2000);
+      });
+    });
+
+    // Initialize on load
+    initSlots();
   </script>
 </body>
 </html>
