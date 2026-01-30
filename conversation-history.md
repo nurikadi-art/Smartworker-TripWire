@@ -285,3 +285,40 @@ JS translation features:
 
 ## Assistant response 19
 Committed and pushed GHL dark theme CSS and Russian text injection files.
+
+## User message 20
+https://app.leadershipmasteryint.com/v2/preview/WAasrUUFjADrkW503PRp?notrack=true see this - the custom css bloated everything else and made it look strange/weird
+
+## Assistant actions 20
+- Attempted to access the GHL page URL (403 error - access denied).
+- Identified the issue: CSS selectors were too broad (using generic `p`, `span`, `label`, `[class*="item"]`, etc.).
+- First fix attempt: Rewrote CSS to scope styles with parent selectors like `.order-form`, `.hl-order-form`, `[id*="order-form"]`.
+
+## Assistant response 20
+Confirmed CSS was scoped to order form containers and committed the fix.
+
+## User message 21
+it looks all messed up. Take a look at this-> [pasted full GHL HTML source showing actual page structure]
+
+## Assistant actions 21
+- Analyzed the actual GHL HTML structure from user-provided source.
+- Discovered critical issues:
+  - Actual GHL order form uses `.container-order-form-two-step` as main class
+  - GHL IDs are like `one-step-order-z168tWRqno` (NOT containing "order-form")
+  - My `[id*="order-form"]` selector was matching nothing useful
+  - Broad selectors were still affecting other page elements
+- Created minimal, precise CSS that ONLY targets `.container-order-form-two-step` and its children.
+
+Key GHL classes identified:
+- `.container-order-form-two-step` - main form container
+- `.form-body` - form body
+- `.form-input` - input fields
+- `.form-btn` - submit button
+- `.form-heading`, `.form-sub-heading` - step headings
+- `.payment-title`, `.shipping-title` - section titles
+- `.separator` - divider with "Order Summary" text
+- `.coupon-input`, `.apply-coupon-btn` - coupon section
+- `.order-form-footer` - footer text
+
+## Assistant response 21
+Rewrote ghl-order-form-inject.html with minimal CSS using ONLY `.container-order-form-two-step` as parent selector. Committed and pushed the fix.
