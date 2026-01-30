@@ -1,6 +1,6 @@
 /* ============================================================
    GHL ORDER FORM - Dark Titanium Blue Theme Override
-   Copy this CSS into GHL Custom CSS section or <style> tag
+   SCOPED VERSION - Only affects order form elements
    ============================================================ */
 
 /* Theme Variables */
@@ -17,96 +17,143 @@
     --ghl-system-blue-hover: #0077ed;
     --ghl-highlight-green: #28cd41;
     --ghl-error-red: #ff453a;
-    --ghl-warning-orange: #ff9500;
 }
 
 /* ============================================================
-   MAIN CONTAINER & BODY
+   MAIN ORDER FORM CONTAINER
+   All styles scoped to .order-form or [id*="order-form"]
    ============================================================ */
-.container-order-form-two-step,
-.order-form-container,
+
+/* Main container backgrounds */
+.order-form,
 .hl-order-form,
-[class*="order-form"] {
+[id*="order-form"],
+[class*="order-form-container"],
+.order-form-two-step-container,
+.container-order-form-two-step {
     background-color: var(--ghl-bg-dark) !important;
     color: var(--ghl-text-primary) !important;
 }
 
-.form-body,
-.order-form-body,
-.hl_page-creator--content,
-.c-order-form {
+/* Form body inside order form */
+.order-form .form-body,
+.hl-order-form .form-body,
+[id*="order-form"] .form-body,
+.container-order-form-two-step .form-body {
     background-color: var(--ghl-bg-dark) !important;
-    color: var(--ghl-text-primary) !important;
-}
-
-/* Card/Panel backgrounds */
-.form-panel,
-.order-panel,
-.payment-panel,
-.summary-panel,
-[class*="panel"],
-[class*="card"] {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 16px !important;
 }
 
 /* ============================================================
-   TYPOGRAPHY
+   TYPOGRAPHY - SCOPED TO ORDER FORM
    ============================================================ */
-/* Headers */
-.form-title,
-.order-title,
-.payment-title,
-.address-title,
-.summary-title,
-.product-title,
-h1, h2, h3, h4, h5, h6,
-[class*="title"],
-[class*="header"] {
+
+/* Headers inside order form */
+.order-form h1,
+.order-form h2,
+.order-form h3,
+.order-form h4,
+.order-form h5,
+.order-form h6,
+.hl-order-form h1,
+.hl-order-form h2,
+.hl-order-form h3,
+.hl-order-form h4,
+.hl-order-form h5,
+.hl-order-form h6,
+[id*="order-form"] h1,
+[id*="order-form"] h2,
+[id*="order-form"] h3,
+[id*="order-form"] h4,
+[id*="order-form"] h5,
+[id*="order-form"] h6,
+.container-order-form-two-step h1,
+.container-order-form-two-step h2,
+.container-order-form-two-step h3,
+.container-order-form-two-step h4,
+.container-order-form-two-step h5,
+.container-order-form-two-step h6 {
     color: var(--ghl-text-primary) !important;
 }
 
-/* Body text */
-p, span, label,
-.form-text,
-.helper-text,
-.product-description,
-[class*="description"],
-[class*="text"] {
-    color: var(--ghl-text-secondary) !important;
+/* Section titles */
+.order-form .payment-title,
+.order-form .address-title,
+.order-form .contact-title,
+.order-form .summary-title,
+.hl-order-form .payment-title,
+.hl-order-form .address-title,
+[id*="order-form"] .payment-title,
+[id*="order-form"] .address-title,
+.container-order-form-two-step .payment-title,
+.container-order-form-two-step .address-title {
+    color: var(--ghl-text-primary) !important;
 }
 
-/* Labels */
-.form-label,
-.input-label,
-label {
+/* Labels inside order form */
+.order-form label,
+.order-form .form-label,
+.hl-order-form label,
+.hl-order-form .form-label,
+[id*="order-form"] label,
+[id*="order-form"] .form-label,
+.container-order-form-two-step label,
+.container-order-form-two-step .form-label {
     color: var(--ghl-text-primary) !important;
     font-weight: 500 !important;
 }
 
-/* Muted/small text */
-.form-hint,
-.form-note,
-small,
-[class*="hint"],
-[class*="note"],
-[class*="muted"] {
-    color: var(--ghl-text-muted) !important;
+/* Body text inside order form */
+.order-form p,
+.order-form span,
+.hl-order-form p,
+.hl-order-form span,
+[id*="order-form"] p,
+[id*="order-form"] span,
+.container-order-form-two-step p,
+.container-order-form-two-step span {
+    color: var(--ghl-text-secondary) !important;
 }
 
 /* ============================================================
-   INPUT FIELDS
+   INPUT FIELDS - SCOPED TO ORDER FORM
    ============================================================ */
-.form-input,
-.form-control,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input[type="password"],
-select,
-textarea {
+
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="number"],
+.order-form input[type="password"],
+.order-form select,
+.order-form textarea,
+.order-form .form-input,
+.order-form .form-control,
+.hl-order-form input[type="text"],
+.hl-order-form input[type="email"],
+.hl-order-form input[type="tel"],
+.hl-order-form input[type="number"],
+.hl-order-form input[type="password"],
+.hl-order-form select,
+.hl-order-form textarea,
+.hl-order-form .form-input,
+.hl-order-form .form-control,
+[id*="order-form"] input[type="text"],
+[id*="order-form"] input[type="email"],
+[id*="order-form"] input[type="tel"],
+[id*="order-form"] input[type="number"],
+[id*="order-form"] input[type="password"],
+[id*="order-form"] select,
+[id*="order-form"] textarea,
+[id*="order-form"] .form-input,
+[id*="order-form"] .form-control,
+.container-order-form-two-step input[type="text"],
+.container-order-form-two-step input[type="email"],
+.container-order-form-two-step input[type="tel"],
+.container-order-form-two-step input[type="number"],
+.container-order-form-two-step input[type="password"],
+.container-order-form-two-step select,
+.container-order-form-two-step textarea,
+.container-order-form-two-step .form-input,
+.container-order-form-two-step .form-control {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
@@ -116,70 +163,88 @@ textarea {
     transition: all 0.2s ease !important;
 }
 
-.form-input:focus,
-.form-control:focus,
-input:focus,
-select:focus,
-textarea:focus {
+.order-form input:focus,
+.order-form select:focus,
+.order-form textarea:focus,
+.hl-order-form input:focus,
+.hl-order-form select:focus,
+.hl-order-form textarea:focus,
+[id*="order-form"] input:focus,
+[id*="order-form"] select:focus,
+[id*="order-form"] textarea:focus,
+.container-order-form-two-step input:focus,
+.container-order-form-two-step select:focus,
+.container-order-form-two-step textarea:focus {
     border-color: var(--ghl-border-focus) !important;
     box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
     outline: none !important;
 }
 
-.form-input::placeholder,
-input::placeholder,
-textarea::placeholder {
+.order-form input::placeholder,
+.order-form textarea::placeholder,
+.hl-order-form input::placeholder,
+.hl-order-form textarea::placeholder,
+[id*="order-form"] input::placeholder,
+[id*="order-form"] textarea::placeholder,
+.container-order-form-two-step input::placeholder,
+.container-order-form-two-step textarea::placeholder {
     color: var(--ghl-text-muted) !important;
     opacity: 1 !important;
 }
 
 /* Select dropdowns */
-select {
+.order-form select,
+.hl-order-form select,
+[id*="order-form"] select,
+.container-order-form-two-step select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
     background-repeat: no-repeat !important;
     background-position: right 16px center !important;
     padding-right: 40px !important;
     -webkit-appearance: none !important;
-    -moz-appearance: none !important;
     appearance: none !important;
 }
 
-select option {
+.order-form select option,
+.hl-order-form select option,
+[id*="order-form"] select option,
+.container-order-form-two-step select option {
     background-color: #1c1c1e !important;
     color: var(--ghl-text-primary) !important;
 }
 
 /* ============================================================
-   CHECKBOXES & RADIO BUTTONS
+   CHECKBOXES - SCOPED TO ORDER FORM
    ============================================================ */
-input[type="checkbox"],
-input[type="radio"] {
+
+.order-form input[type="checkbox"],
+.order-form input[type="radio"],
+.hl-order-form input[type="checkbox"],
+.hl-order-form input[type="radio"],
+[id*="order-form"] input[type="checkbox"],
+[id*="order-form"] input[type="radio"],
+.container-order-form-two-step input[type="checkbox"],
+.container-order-form-two-step input[type="radio"] {
     accent-color: var(--ghl-system-blue) !important;
 }
 
-.checkbox-label,
-.radio-label {
-    color: var(--ghl-text-secondary) !important;
-}
-
-/* Custom checkbox styling */
-.custom-checkbox,
-.form-check {
-    background-color: var(--ghl-bg-input) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 8px !important;
-}
-
 /* ============================================================
-   BUTTONS
+   SUBMIT BUTTON - SCOPED TO ORDER FORM
    ============================================================ */
-.form-btn,
-.submit-btn,
-.order-btn,
-.btn-primary,
-button[type="submit"],
-[class*="submit"],
-[class*="checkout"] {
+
+.order-form button[type="submit"],
+.order-form .form-btn,
+.order-form .submit-btn,
+.order-form .order-btn,
+.hl-order-form button[type="submit"],
+.hl-order-form .form-btn,
+.hl-order-form .submit-btn,
+[id*="order-form"] button[type="submit"],
+[id*="order-form"] .form-btn,
+[id*="order-form"] .submit-btn,
+.container-order-form-two-step button[type="submit"],
+.container-order-form-two-step .form-btn,
+.container-order-form-two-step .submit-btn {
     background: linear-gradient(135deg, var(--ghl-system-blue) 0%, var(--ghl-system-blue-hover) 100%) !important;
     color: #ffffff !important;
     border: none !important;
@@ -189,368 +254,247 @@ button[type="submit"],
     font-weight: 700 !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    text-transform: none !important;
-    letter-spacing: 0 !important;
     box-shadow: 0 4px 20px rgba(10, 132, 255, 0.3) !important;
 }
 
-.form-btn:hover,
-.submit-btn:hover,
-.order-btn:hover,
-.btn-primary:hover,
-button[type="submit"]:hover {
+.order-form button[type="submit"]:hover,
+.order-form .form-btn:hover,
+.hl-order-form button[type="submit"]:hover,
+.hl-order-form .form-btn:hover,
+[id*="order-form"] button[type="submit"]:hover,
+[id*="order-form"] .form-btn:hover,
+.container-order-form-two-step button[type="submit"]:hover,
+.container-order-form-two-step .form-btn:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 30px rgba(10, 132, 255, 0.4) !important;
 }
 
-.form-btn:active,
-button[type="submit"]:active {
-    transform: translateY(0) !important;
-}
-
-/* Secondary buttons */
-.btn-secondary,
-.btn-outline {
-    background: transparent !important;
-    border: 1px solid var(--ghl-border) !important;
-    color: var(--ghl-text-primary) !important;
-}
-
-.btn-secondary:hover,
-.btn-outline:hover {
-    background: var(--ghl-bg-input) !important;
-    border-color: var(--ghl-text-secondary) !important;
-}
-
 /* ============================================================
-   PRODUCT/ORDER SUMMARY
+   PRODUCT/ORDER SUMMARY - SCOPED TO ORDER FORM
    ============================================================ */
-.product-item,
-.order-item,
-.cart-item,
-[class*="product"],
-[class*="item"] {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 12px !important;
-    padding: 16px !important;
-    margin-bottom: 12px !important;
-}
 
-.product-name,
-.item-name {
+.order-form .product-title,
+.order-form .product-name,
+.hl-order-form .product-title,
+.hl-order-form .product-name,
+[id*="order-form"] .product-title,
+[id*="order-form"] .product-name,
+.container-order-form-two-step .product-title,
+.container-order-form-two-step .product-name {
     color: var(--ghl-text-primary) !important;
     font-weight: 600 !important;
 }
 
-.product-price,
-.item-price,
-.price {
+.order-form .product-price,
+.order-form .price,
+.hl-order-form .product-price,
+.hl-order-form .price,
+[id*="order-form"] .product-price,
+[id*="order-form"] .price,
+.container-order-form-two-step .product-price,
+.container-order-form-two-step .price {
     color: var(--ghl-highlight-green) !important;
     font-weight: 700 !important;
 }
 
-.original-price,
-.old-price,
-.strikethrough {
+.order-form .original-price,
+.order-form .old-price,
+.hl-order-form .original-price,
+.hl-order-form .old-price,
+[id*="order-form"] .original-price,
+[id*="order-form"] .old-price,
+.container-order-form-two-step .original-price,
+.container-order-form-two-step .old-price {
     color: var(--ghl-text-muted) !important;
     text-decoration: line-through !important;
 }
 
-/* Separator/divider */
-.separator,
-.divider,
-hr,
-[class*="separator"],
-[class*="divider"] {
+/* Separator */
+.order-form .separator,
+.order-form hr,
+.hl-order-form .separator,
+.hl-order-form hr,
+[id*="order-form"] .separator,
+[id*="order-form"] hr,
+.container-order-form-two-step .separator,
+.container-order-form-two-step hr {
     border-color: var(--ghl-border) !important;
     background-color: var(--ghl-border) !important;
-    opacity: 1 !important;
 }
 
-/* Total section */
-.total-row,
-.order-total,
-[class*="total"] {
-    border-top: 1px solid var(--ghl-border) !important;
-    padding-top: 16px !important;
-    margin-top: 16px !important;
-}
-
-.total-amount,
-.grand-total {
+/* Total */
+.order-form .total-amount,
+.order-form .grand-total,
+.hl-order-form .total-amount,
+.hl-order-form .grand-total,
+[id*="order-form"] .total-amount,
+[id*="order-form"] .grand-total,
+.container-order-form-two-step .total-amount,
+.container-order-form-two-step .grand-total {
     color: var(--ghl-text-primary) !important;
     font-size: 24px !important;
     font-weight: 800 !important;
 }
 
 /* ============================================================
-   PAYMENT METHODS
+   PAYMENT METHODS - SCOPED TO ORDER FORM
    ============================================================ */
-.payment-method,
-.payment-option,
-[class*="payment-method"] {
+
+.order-form .payment-method,
+.order-form .payment-option,
+.hl-order-form .payment-method,
+.hl-order-form .payment-option,
+[id*="order-form"] .payment-method,
+[id*="order-form"] .payment-option,
+.container-order-form-two-step .payment-method,
+.container-order-form-two-step .payment-option {
     background-color: var(--ghl-bg-card) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
-    padding: 16px !important;
-    transition: all 0.2s ease !important;
 }
 
-.payment-method:hover,
-.payment-option:hover {
-    border-color: var(--ghl-system-blue) !important;
-}
-
-.payment-method.selected,
-.payment-method.active,
-.payment-option.selected {
+.order-form .payment-method.selected,
+.order-form .payment-method.active,
+.hl-order-form .payment-method.selected,
+.hl-order-form .payment-method.active,
+[id*="order-form"] .payment-method.selected,
+[id*="order-form"] .payment-method.active,
+.container-order-form-two-step .payment-method.selected,
+.container-order-form-two-step .payment-method.active {
     border-color: var(--ghl-system-blue) !important;
     background-color: rgba(10, 132, 255, 0.08) !important;
 }
 
-/* Card icons */
-.card-icons,
-.payment-icons {
-    filter: brightness(0.9) !important;
-}
-
 /* ============================================================
-   STRIPE/PAYMENT ELEMENTS
+   STRIPE ELEMENTS - SCOPED TO ORDER FORM
    ============================================================ */
-.StripeElement,
-[class*="stripe"],
-.card-element {
+
+.order-form .StripeElement,
+.order-form .card-element,
+.hl-order-form .StripeElement,
+.hl-order-form .card-element,
+[id*="order-form"] .StripeElement,
+[id*="order-form"] .card-element,
+.container-order-form-two-step .StripeElement,
+.container-order-form-two-step .card-element {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
     padding: 14px 16px !important;
 }
 
-.StripeElement--focus {
+.order-form .StripeElement--focus,
+.hl-order-form .StripeElement--focus,
+[id*="order-form"] .StripeElement--focus,
+.container-order-form-two-step .StripeElement--focus {
     border-color: var(--ghl-border-focus) !important;
     box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
 }
 
 /* ============================================================
-   COUPONS/PROMO
+   COUPON - SCOPED TO ORDER FORM
    ============================================================ */
-.coupon-section,
-.promo-section,
-[class*="coupon"],
-[class*="promo"] {
+
+.order-form .coupon-section,
+.order-form .promo-section,
+.hl-order-form .coupon-section,
+.hl-order-form .promo-section,
+[id*="order-form"] .coupon-section,
+[id*="order-form"] .promo-section,
+.container-order-form-two-step .coupon-section,
+.container-order-form-two-step .promo-section {
     background-color: var(--ghl-bg-card) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
-    padding: 16px !important;
 }
 
-.coupon-input,
-.promo-input {
-    background-color: var(--ghl-bg-input) !important;
-    border: 1px solid var(--ghl-border) !important;
-    color: var(--ghl-text-primary) !important;
-}
-
-.coupon-btn,
-.apply-btn {
-    background-color: var(--ghl-bg-input) !important;
-    border: 1px solid var(--ghl-border) !important;
-    color: var(--ghl-text-primary) !important;
-}
-
-.coupon-success,
-.discount-applied {
+.order-form .coupon-success,
+.order-form .discount-applied,
+.hl-order-form .coupon-success,
+.hl-order-form .discount-applied,
+[id*="order-form"] .coupon-success,
+[id*="order-form"] .discount-applied,
+.container-order-form-two-step .coupon-success,
+.container-order-form-two-step .discount-applied {
     color: var(--ghl-highlight-green) !important;
 }
 
 /* ============================================================
-   ERROR & VALIDATION STATES
+   ERROR STATES - SCOPED TO ORDER FORM
    ============================================================ */
-.error,
-.invalid,
-.form-error,
-[class*="error"],
-.has-error input,
-.is-invalid {
+
+.order-form .error,
+.order-form .invalid,
+.order-form .is-invalid,
+.hl-order-form .error,
+.hl-order-form .invalid,
+.hl-order-form .is-invalid,
+[id*="order-form"] .error,
+[id*="order-form"] .invalid,
+[id*="order-form"] .is-invalid,
+.container-order-form-two-step .error,
+.container-order-form-two-step .invalid,
+.container-order-form-two-step .is-invalid {
     border-color: var(--ghl-error-red) !important;
 }
 
-.error-message,
-.validation-error,
-.form-error-text {
+.order-form .error-message,
+.order-form .validation-error,
+.hl-order-form .error-message,
+.hl-order-form .validation-error,
+[id*="order-form"] .error-message,
+[id*="order-form"] .validation-error,
+.container-order-form-two-step .error-message,
+.container-order-form-two-step .validation-error {
     color: var(--ghl-error-red) !important;
     font-size: 13px !important;
-    margin-top: 6px !important;
-}
-
-.success,
-.valid,
-[class*="success"] {
-    border-color: var(--ghl-highlight-green) !important;
 }
 
 /* ============================================================
-   TRUST BADGES & SECURITY
+   LINKS - SCOPED TO ORDER FORM
    ============================================================ */
-.trust-badges,
-.security-badges,
-[class*="trust"],
-[class*="secure"] {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 12px !important;
-    padding: 16px !important;
-}
 
-.secure-icon,
-.lock-icon {
-    color: var(--ghl-highlight-green) !important;
-}
-
-/* ============================================================
-   STEPS/PROGRESS INDICATOR
-   ============================================================ */
-.step-indicator,
-.progress-steps,
-[class*="step"] {
-    color: var(--ghl-text-secondary) !important;
-}
-
-.step.active,
-.step.current {
+.order-form a,
+.hl-order-form a,
+[id*="order-form"] a,
+.container-order-form-two-step a {
     color: var(--ghl-system-blue) !important;
 }
 
-.step.completed {
-    color: var(--ghl-highlight-green) !important;
-}
-
-.step-number {
-    background-color: var(--ghl-bg-input) !important;
-    border: 1px solid var(--ghl-border) !important;
-    color: var(--ghl-text-secondary) !important;
-}
-
-.step.active .step-number {
-    background-color: var(--ghl-system-blue) !important;
-    border-color: var(--ghl-system-blue) !important;
-    color: #ffffff !important;
-}
-
-/* ============================================================
-   LINKS
-   ============================================================ */
-a,
-.link,
-[class*="link"] {
-    color: var(--ghl-system-blue) !important;
-    text-decoration: none !important;
-    transition: color 0.2s ease !important;
-}
-
-a:hover,
-.link:hover {
+.order-form a:hover,
+.hl-order-form a:hover,
+[id*="order-form"] a:hover,
+.container-order-form-two-step a:hover {
     color: var(--ghl-system-blue-hover) !important;
-    text-decoration: underline !important;
 }
 
 /* ============================================================
-   LOADING STATES
+   INPUT GROUPS - SCOPED TO ORDER FORM
    ============================================================ */
-.loading,
-.spinner,
-[class*="loading"],
-[class*="spinner"] {
-    border-color: var(--ghl-border) !important;
-    border-top-color: var(--ghl-system-blue) !important;
-}
 
-/* ============================================================
-   SCROLLBAR (WebKit)
-   ============================================================ */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--ghl-bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--ghl-border);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--ghl-text-muted);
-}
-
-/* ============================================================
-   ADDITIONAL GHL-SPECIFIC OVERRIDES
-   ============================================================ */
-/* GHL wrapper classes */
-.c-section,
-.c-row,
-.c-column,
-.c-column > .inner,
-.c-custom-html,
-.hl_page-creator--row,
-.hl_page-creator--column {
-    background-color: transparent !important;
-}
-
-/* Order form specific GHL classes */
-.hl-order-form-container,
-.order-form-two-step,
-.order-form-one-step {
-    background-color: var(--ghl-bg-dark) !important;
-}
-
-/* Form sections */
-.form-section,
-.order-section {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 16px !important;
-    padding: 24px !important;
-    margin-bottom: 20px !important;
-}
-
-/* Input groups */
-.input-group {
-    background-color: transparent !important;
-}
-
-.input-group-addon,
-.input-group-text {
+.order-form .input-group-addon,
+.order-form .input-group-text,
+.hl-order-form .input-group-addon,
+.hl-order-form .input-group-text,
+[id*="order-form"] .input-group-addon,
+[id*="order-form"] .input-group-text,
+.container-order-form-two-step .input-group-addon,
+.container-order-form-two-step .input-group-text {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     color: var(--ghl-text-secondary) !important;
 }
 
-/* Country/phone selectors */
-.country-selector,
-.phone-prefix,
-[class*="country"],
-[class*="prefix"] {
+/* Country/Phone selectors */
+.order-form .country-selector,
+.order-form .phone-prefix,
+.hl-order-form .country-selector,
+.hl-order-form .phone-prefix,
+[id*="order-form"] .country-selector,
+[id*="order-form"] .phone-prefix,
+.container-order-form-two-step .country-selector,
+.container-order-form-two-step .phone-prefix {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     color: var(--ghl-text-primary) !important;
-}
-
-/* ============================================================
-   RUSSIAN TEXT OVERRIDES (via CSS content)
-   Note: For text changes, you may need to use JavaScript
-   or edit the GHL form directly. These are placeholder styles.
-   ============================================================ */
-
-/* If you need to hide/show elements based on language */
-.english-only {
-    display: none !important;
-}
-
-.russian-only {
-    display: block !important;
 }

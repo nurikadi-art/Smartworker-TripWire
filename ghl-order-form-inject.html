@@ -1,5 +1,6 @@
 <!-- ============================================================
      GHL ORDER FORM - Dark Theme + Russian Text Injection
+     SCOPED VERSION - Only affects order form elements
 
      HOW TO USE:
      1. In GHL Page Builder, add a "Custom Code" element
@@ -10,6 +11,7 @@
 <style>
 /* ============================================================
    GHL ORDER FORM - Dark Titanium Blue Theme
+   SCOPED - Only affects elements inside order form containers
    ============================================================ */
 
 :root {
@@ -27,95 +29,113 @@
     --ghl-error-red: #ff453a;
 }
 
-/* Main Container */
-.container-order-form-two-step,
-.order-form-container,
+/* Main order form containers */
+.order-form,
 .hl-order-form,
-[class*="order-form"],
-.form-body,
-.order-form-body {
+[id*="order-form"],
+[class*="order-form-container"],
+.order-form-two-step-container,
+.container-order-form-two-step {
     background-color: var(--ghl-bg-dark) !important;
     color: var(--ghl-text-primary) !important;
 }
 
-/* Cards & Panels */
-.form-panel,
-.order-panel,
-.payment-panel,
-.summary-panel,
-[class*="panel"],
-.form-section,
-.order-section {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 16px !important;
+/* Form body */
+.order-form .form-body,
+.hl-order-form .form-body,
+[id*="order-form"] .form-body,
+.container-order-form-two-step .form-body {
+    background-color: var(--ghl-bg-dark) !important;
 }
 
-/* Typography */
-.form-title,
-.order-title,
-.payment-title,
-.address-title,
-.summary-title,
-.product-title,
-h1, h2, h3, h4, h5, h6,
-[class*="title"],
-[class*="header"] {
+/* Headers inside order form */
+.order-form h1, .order-form h2, .order-form h3, .order-form h4, .order-form h5, .order-form h6,
+.hl-order-form h1, .hl-order-form h2, .hl-order-form h3, .hl-order-form h4, .hl-order-form h5, .hl-order-form h6,
+[id*="order-form"] h1, [id*="order-form"] h2, [id*="order-form"] h3, [id*="order-form"] h4, [id*="order-form"] h5, [id*="order-form"] h6,
+.container-order-form-two-step h1, .container-order-form-two-step h2, .container-order-form-two-step h3, .container-order-form-two-step h4, .container-order-form-two-step h5, .container-order-form-two-step h6 {
     color: var(--ghl-text-primary) !important;
 }
 
-p, span, label,
-.form-text,
-.helper-text,
-.product-description,
-[class*="description"],
-[class*="text"] {
-    color: var(--ghl-text-secondary) !important;
-}
-
-.form-label,
-.input-label,
-label {
+/* Labels */
+.order-form label, .order-form .form-label,
+.hl-order-form label, .hl-order-form .form-label,
+[id*="order-form"] label, [id*="order-form"] .form-label,
+.container-order-form-two-step label, .container-order-form-two-step .form-label {
     color: var(--ghl-text-primary) !important;
     font-weight: 500 !important;
 }
 
+/* Body text */
+.order-form p, .order-form span,
+.hl-order-form p, .hl-order-form span,
+[id*="order-form"] p, [id*="order-form"] span,
+.container-order-form-two-step p, .container-order-form-two-step span {
+    color: var(--ghl-text-secondary) !important;
+}
+
 /* Input Fields */
-.form-input,
-.form-control,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input[type="password"],
-select,
-textarea {
+.order-form input[type="text"],
+.order-form input[type="email"],
+.order-form input[type="tel"],
+.order-form input[type="number"],
+.order-form input[type="password"],
+.order-form select,
+.order-form textarea,
+.order-form .form-input,
+.order-form .form-control,
+.hl-order-form input[type="text"],
+.hl-order-form input[type="email"],
+.hl-order-form input[type="tel"],
+.hl-order-form input[type="number"],
+.hl-order-form input[type="password"],
+.hl-order-form select,
+.hl-order-form textarea,
+.hl-order-form .form-input,
+.hl-order-form .form-control,
+[id*="order-form"] input[type="text"],
+[id*="order-form"] input[type="email"],
+[id*="order-form"] input[type="tel"],
+[id*="order-form"] input[type="number"],
+[id*="order-form"] input[type="password"],
+[id*="order-form"] select,
+[id*="order-form"] textarea,
+[id*="order-form"] .form-input,
+[id*="order-form"] .form-control,
+.container-order-form-two-step input[type="text"],
+.container-order-form-two-step input[type="email"],
+.container-order-form-two-step input[type="tel"],
+.container-order-form-two-step input[type="number"],
+.container-order-form-two-step input[type="password"],
+.container-order-form-two-step select,
+.container-order-form-two-step textarea,
+.container-order-form-two-step .form-input,
+.container-order-form-two-step .form-control {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
     color: var(--ghl-text-primary) !important;
     padding: 14px 16px !important;
     font-size: 16px !important;
-    transition: all 0.2s ease !important;
 }
 
-.form-input:focus,
-.form-control:focus,
-input:focus,
-select:focus,
-textarea:focus {
+.order-form input:focus, .order-form select:focus, .order-form textarea:focus,
+.hl-order-form input:focus, .hl-order-form select:focus, .hl-order-form textarea:focus,
+[id*="order-form"] input:focus, [id*="order-form"] select:focus, [id*="order-form"] textarea:focus,
+.container-order-form-two-step input:focus, .container-order-form-two-step select:focus, .container-order-form-two-step textarea:focus {
     border-color: var(--ghl-border-focus) !important;
     box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
     outline: none !important;
 }
 
-.form-input::placeholder,
-input::placeholder,
-textarea::placeholder {
+.order-form input::placeholder, .order-form textarea::placeholder,
+.hl-order-form input::placeholder, .hl-order-form textarea::placeholder,
+[id*="order-form"] input::placeholder, [id*="order-form"] textarea::placeholder,
+.container-order-form-two-step input::placeholder, .container-order-form-two-step textarea::placeholder {
     color: var(--ghl-text-muted) !important;
 }
 
-select {
+/* Select dropdowns */
+.order-form select, .hl-order-form select, [id*="order-form"] select, .container-order-form-two-step select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
     background-repeat: no-repeat !important;
     background-position: right 16px center !important;
@@ -123,25 +143,24 @@ select {
     appearance: none !important;
 }
 
-select option {
+.order-form select option, .hl-order-form select option, [id*="order-form"] select option, .container-order-form-two-step select option {
     background-color: #1c1c1e !important;
     color: var(--ghl-text-primary) !important;
 }
 
 /* Checkboxes */
-input[type="checkbox"],
-input[type="radio"] {
+.order-form input[type="checkbox"], .order-form input[type="radio"],
+.hl-order-form input[type="checkbox"], .hl-order-form input[type="radio"],
+[id*="order-form"] input[type="checkbox"], [id*="order-form"] input[type="radio"],
+.container-order-form-two-step input[type="checkbox"], .container-order-form-two-step input[type="radio"] {
     accent-color: var(--ghl-system-blue) !important;
 }
 
 /* Submit Button */
-.form-btn,
-.submit-btn,
-.order-btn,
-.btn-primary,
-button[type="submit"],
-[class*="submit"],
-[class*="checkout"] {
+.order-form button[type="submit"], .order-form .form-btn, .order-form .submit-btn, .order-form .order-btn,
+.hl-order-form button[type="submit"], .hl-order-form .form-btn, .hl-order-form .submit-btn,
+[id*="order-form"] button[type="submit"], [id*="order-form"] .form-btn, [id*="order-form"] .submit-btn,
+.container-order-form-two-step button[type="submit"], .container-order-form-two-step .form-btn, .container-order-form-two-step .submit-btn {
     background: linear-gradient(135deg, var(--ghl-system-blue) 0%, var(--ghl-system-blue-hover) 100%) !important;
     color: #ffffff !important;
     border: none !important;
@@ -150,187 +169,155 @@ button[type="submit"],
     font-size: 18px !important;
     font-weight: 700 !important;
     cursor: pointer !important;
-    transition: all 0.3s ease !important;
     box-shadow: 0 4px 20px rgba(10, 132, 255, 0.3) !important;
 }
 
-.form-btn:hover,
-.submit-btn:hover,
-button[type="submit"]:hover {
+.order-form button[type="submit"]:hover, .order-form .form-btn:hover,
+.hl-order-form button[type="submit"]:hover, .hl-order-form .form-btn:hover,
+[id*="order-form"] button[type="submit"]:hover, [id*="order-form"] .form-btn:hover,
+.container-order-form-two-step button[type="submit"]:hover, .container-order-form-two-step .form-btn:hover {
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 30px rgba(10, 132, 255, 0.4) !important;
 }
 
-/* Product Items */
-.product-item,
-.order-item,
-.cart-item,
-[class*="product"],
-[class*="item"] {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 12px !important;
+/* Product info */
+.order-form .product-title, .order-form .product-name,
+.hl-order-form .product-title, .hl-order-form .product-name,
+[id*="order-form"] .product-title, [id*="order-form"] .product-name,
+.container-order-form-two-step .product-title, .container-order-form-two-step .product-name {
+    color: var(--ghl-text-primary) !important;
+    font-weight: 600 !important;
 }
 
-.product-price,
-.item-price,
-.price {
+.order-form .product-price, .order-form .price,
+.hl-order-form .product-price, .hl-order-form .price,
+[id*="order-form"] .product-price, [id*="order-form"] .price,
+.container-order-form-two-step .product-price, .container-order-form-two-step .price {
     color: var(--ghl-highlight-green) !important;
     font-weight: 700 !important;
 }
 
-.original-price,
-.old-price,
-.strikethrough {
-    color: var(--ghl-text-muted) !important;
-    text-decoration: line-through !important;
-}
-
 /* Separator */
-.separator,
-.divider,
-hr {
+.order-form .separator, .order-form hr,
+.hl-order-form .separator, .hl-order-form hr,
+[id*="order-form"] .separator, [id*="order-form"] hr,
+.container-order-form-two-step .separator, .container-order-form-two-step hr {
     border-color: var(--ghl-border) !important;
     background-color: var(--ghl-border) !important;
 }
 
 /* Total */
-.total-amount,
-.grand-total {
+.order-form .total-amount, .order-form .grand-total,
+.hl-order-form .total-amount, .hl-order-form .grand-total,
+[id*="order-form"] .total-amount, [id*="order-form"] .grand-total,
+.container-order-form-two-step .total-amount, .container-order-form-two-step .grand-total {
     color: var(--ghl-text-primary) !important;
     font-size: 24px !important;
     font-weight: 800 !important;
 }
 
 /* Payment Methods */
-.payment-method,
-.payment-option {
+.order-form .payment-method, .order-form .payment-option,
+.hl-order-form .payment-method, .hl-order-form .payment-option,
+[id*="order-form"] .payment-method, [id*="order-form"] .payment-option,
+.container-order-form-two-step .payment-method, .container-order-form-two-step .payment-option {
     background-color: var(--ghl-bg-card) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
 }
 
-.payment-method.selected,
-.payment-method.active {
+.order-form .payment-method.selected, .order-form .payment-method.active,
+.hl-order-form .payment-method.selected, .hl-order-form .payment-method.active,
+[id*="order-form"] .payment-method.selected, [id*="order-form"] .payment-method.active,
+.container-order-form-two-step .payment-method.selected, .container-order-form-two-step .payment-method.active {
     border-color: var(--ghl-system-blue) !important;
     background-color: rgba(10, 132, 255, 0.08) !important;
 }
 
 /* Stripe Elements */
-.StripeElement,
-[class*="stripe"],
-.card-element {
+.order-form .StripeElement, .order-form .card-element,
+.hl-order-form .StripeElement, .hl-order-form .card-element,
+[id*="order-form"] .StripeElement, [id*="order-form"] .card-element,
+.container-order-form-two-step .StripeElement, .container-order-form-two-step .card-element {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     border-radius: 12px !important;
     padding: 14px 16px !important;
 }
 
-.StripeElement--focus {
+.order-form .StripeElement--focus, .hl-order-form .StripeElement--focus,
+[id*="order-form"] .StripeElement--focus, .container-order-form-two-step .StripeElement--focus {
     border-color: var(--ghl-border-focus) !important;
     box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
 }
 
-/* Coupons */
-.coupon-section,
-.promo-section {
-    background-color: var(--ghl-bg-card) !important;
-    border: 1px solid var(--ghl-border) !important;
-    border-radius: 12px !important;
-}
-
-.coupon-success,
-.discount-applied {
-    color: var(--ghl-highlight-green) !important;
-}
-
 /* Errors */
-.error,
-.invalid,
-.form-error,
-.has-error input,
-.is-invalid {
+.order-form .error, .order-form .invalid, .order-form .is-invalid,
+.hl-order-form .error, .hl-order-form .invalid, .hl-order-form .is-invalid,
+[id*="order-form"] .error, [id*="order-form"] .invalid, [id*="order-form"] .is-invalid,
+.container-order-form-two-step .error, .container-order-form-two-step .invalid, .container-order-form-two-step .is-invalid {
     border-color: var(--ghl-error-red) !important;
 }
 
-.error-message,
-.validation-error {
+.order-form .error-message, .order-form .validation-error,
+.hl-order-form .error-message, .hl-order-form .validation-error,
+[id*="order-form"] .error-message, [id*="order-form"] .validation-error,
+.container-order-form-two-step .error-message, .container-order-form-two-step .validation-error {
     color: var(--ghl-error-red) !important;
 }
 
 /* Links */
-a {
+.order-form a, .hl-order-form a, [id*="order-form"] a, .container-order-form-two-step a {
     color: var(--ghl-system-blue) !important;
 }
 
-a:hover {
+.order-form a:hover, .hl-order-form a:hover, [id*="order-form"] a:hover, .container-order-form-two-step a:hover {
     color: var(--ghl-system-blue-hover) !important;
 }
 
-/* GHL Overrides */
-.c-section,
-.c-row,
-.c-column,
-.c-column > .inner,
-.c-custom-html,
-.hl_page-creator--row,
-.hl_page-creator--column {
-    background-color: transparent !important;
-}
-
-/* Input Groups */
-.input-group-addon,
-.input-group-text {
+/* Input groups */
+.order-form .input-group-addon, .order-form .input-group-text,
+.hl-order-form .input-group-addon, .hl-order-form .input-group-text,
+[id*="order-form"] .input-group-addon, [id*="order-form"] .input-group-text,
+.container-order-form-two-step .input-group-addon, .container-order-form-two-step .input-group-text {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     color: var(--ghl-text-secondary) !important;
 }
 
 /* Country/Phone */
-.country-selector,
-.phone-prefix,
-[class*="country"],
-[class*="prefix"] {
+.order-form .country-selector, .order-form .phone-prefix,
+.hl-order-form .country-selector, .hl-order-form .phone-prefix,
+[id*="order-form"] .country-selector, [id*="order-form"] .phone-prefix,
+.container-order-form-two-step .country-selector, .container-order-form-two-step .phone-prefix {
     background-color: var(--ghl-bg-input) !important;
     border: 1px solid var(--ghl-border) !important;
     color: var(--ghl-text-primary) !important;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--ghl-bg-dark);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--ghl-border);
-    border-radius: 4px;
 }
 </style>
 
 <script>
 // ============================================================
 // GHL ORDER FORM - Russian Text Replacement
+// Only targets elements inside order form containers
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Wait for GHL form to load
     setTimeout(translateForm, 500);
     setTimeout(translateForm, 1500);
     setTimeout(translateForm, 3000);
 
-    // Also observe for dynamic changes
     const observer = new MutationObserver(translateForm);
     observer.observe(document.body, { childList: true, subtree: true });
 });
 
 function translateForm() {
-    // Text replacements map (English -> Russian)
+    // Find order form containers
+    const formContainers = document.querySelectorAll('.order-form, .hl-order-form, [id*="order-form"], .container-order-form-two-step, [class*="order-form-container"]');
+
+    if (formContainers.length === 0) return;
+
     const translations = {
-        // Headers
         'Contact Information': 'Контактные данные',
         'Contact': 'Контакт',
         'Payment Information': 'Информация об оплате',
@@ -341,8 +328,6 @@ function translateForm() {
         'Order Summary': 'Ваш заказ',
         'Your Order': 'Ваш заказ',
         'Summary': 'Итого',
-
-        // Labels
         'First Name': 'Имя',
         'Last Name': 'Фамилия',
         'Full Name': 'Полное имя',
@@ -362,8 +347,6 @@ function translateForm() {
         'Postal Code': 'Почтовый индекс',
         'Zip Code': 'Почтовый индекс',
         'ZIP': 'Индекс',
-
-        // Payment
         'Card Number': 'Номер карты',
         'Card number': 'Номер карты',
         'Expiration': 'Срок действия',
@@ -373,8 +356,6 @@ function translateForm() {
         'CVC': 'CVC',
         'CVV': 'CVV',
         'Security Code': 'Код безопасности',
-
-        // Buttons
         'Submit': 'Отправить',
         'Submit Order': 'Оформить заказ',
         'Place Order': 'Оформить заказ',
@@ -386,8 +367,6 @@ function translateForm() {
         'Continue': 'Продолжить',
         'Next': 'Далее',
         'Back': 'Назад',
-
-        // Coupon
         'Coupon': 'Промокод',
         'Coupon Code': 'Промокод',
         'Promo Code': 'Промокод',
@@ -395,16 +374,12 @@ function translateForm() {
         'Apply': 'Применить',
         'Apply Coupon': 'Применить промокод',
         'Remove': 'Удалить',
-
-        // Totals
         'Subtotal': 'Подытог',
         'Total': 'Итого',
         'Tax': 'Налог',
         'Discount': 'Скидка',
         'Shipping': 'Доставка',
         'Free': 'Бесплатно',
-
-        // Messages
         'Required': 'Обязательно',
         'Required field': 'Обязательное поле',
         'This field is required': 'Это поле обязательно',
@@ -418,8 +393,6 @@ function translateForm() {
         'Payment successful': 'Оплата прошла успешно',
         'Payment failed': 'Ошибка оплаты',
         'Try again': 'Попробуйте снова',
-
-        // Misc
         'or': 'или',
         'and': 'и',
         'Yes': 'Да',
@@ -433,8 +406,6 @@ function translateForm() {
         'Your information is secure': 'Ваши данные защищены',
         '100% Secure': '100% Безопасно',
         'Money-back guarantee': 'Гарантия возврата денег',
-
-        // Placeholders
         'Enter your email': 'Введите ваш email',
         'Enter your name': 'Введите ваше имя',
         'Enter your phone': 'Введите ваш телефон',
@@ -442,31 +413,27 @@ function translateForm() {
         'Your email address': 'Ваш email адрес'
     };
 
-    // Replace text in elements
-    function replaceText(element) {
-        if (element.nodeType === Node.TEXT_NODE) {
-            let text = element.textContent.trim();
+    formContainers.forEach(container => {
+        // Replace text nodes
+        const walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null, false);
+        let node;
+        while (node = walker.nextNode()) {
+            let text = node.textContent.trim();
             if (translations[text]) {
-                element.textContent = element.textContent.replace(text, translations[text]);
+                node.textContent = node.textContent.replace(text, translations[text]);
             }
-        } else {
-            element.childNodes.forEach(replaceText);
         }
-    }
 
-    // Replace placeholders
-    function replacePlaceholders() {
-        document.querySelectorAll('input, textarea').forEach(input => {
+        // Replace placeholders
+        container.querySelectorAll('input, textarea').forEach(input => {
             const placeholder = input.getAttribute('placeholder');
             if (placeholder && translations[placeholder]) {
                 input.setAttribute('placeholder', translations[placeholder]);
             }
         });
-    }
 
-    // Replace button text
-    function replaceButtonText() {
-        document.querySelectorAll('button, input[type="submit"], .form-btn, .submit-btn').forEach(btn => {
+        // Replace button text
+        container.querySelectorAll('button, input[type="submit"], .form-btn, .submit-btn').forEach(btn => {
             const text = btn.textContent.trim();
             if (translations[text]) {
                 btn.textContent = translations[text];
@@ -476,24 +443,15 @@ function translateForm() {
                 btn.setAttribute('value', translations[value]);
             }
         });
-    }
 
-    // Replace labels
-    function replaceLabels() {
-        document.querySelectorAll('label, .form-label, .input-label').forEach(label => {
+        // Replace labels
+        container.querySelectorAll('label, .form-label, .input-label').forEach(label => {
             const text = label.textContent.trim();
-            // Handle labels with asterisks (required fields)
             const cleanText = text.replace(/\s*\*\s*$/, '');
             if (translations[cleanText]) {
                 label.innerHTML = label.innerHTML.replace(cleanText, translations[cleanText]);
             }
         });
-    }
-
-    // Run all replacements
-    replaceText(document.body);
-    replacePlaceholders();
-    replaceButtonText();
-    replaceLabels();
+    });
 }
 </script>
