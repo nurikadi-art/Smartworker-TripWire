@@ -946,6 +946,13 @@ body, html {
     justify-content: center;
 }
 
+.story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .story-photo .placeholder {
     font-size: 10px;
     color: var(--apple-grey);
@@ -1006,6 +1013,15 @@ body, html {
     margin: 20px 0;
     flex-direction: column;
     gap: 8px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.story-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .story-image-placeholder span {
@@ -1312,7 +1328,7 @@ body, html {
                 <div class="story-header">
                     <div class="story-photo">
                         <!-- IMAGE PLACEHOLDER: Founder photo -->
-                        <div class="placeholder">📷 Фото</div>
+                        <img src="https://drive.google.com/uc?export=view&id=11xRiAxigM3xMg1qrmKHsXGOYjB7OPmZA" alt="Нурсултан — фото автора" loading="lazy">
                     </div>
                     <div class="story-intro">
                         <h3>Почему Я Создал Эту Систему</h3>
@@ -1324,8 +1340,7 @@ body, html {
                     <p>Мне было 24, я жил в Атланте во время ковида — без денег и без высшего образования. Пробовал дропшиппинг, Амазон, крипто — и всё закончилось долгами.</p>
 
                     <div class="story-image-placeholder">
-                        <span class="icon">😔</span>
-                        <span>IMAGE PLACEHOLDER: Фото "до" — рабочее место фрилансера, ночная работа</span>
+                        <img src="https://drive.google.com/uc?export=view&id=11xRiAxigM3xMg1qrmKHsXGOYjB7OPmZA" alt="Период поиска и сомнений" loading="lazy">
                     </div>
 
                     <p>Я ходил по кругу — отклики, молчание, непонятно что не так. Перелом случился, когда работодатель из Вирджинии предложил удалённую работу за <strong>$15/час</strong>.</p>
@@ -1336,8 +1351,7 @@ body, html {
                     </div>
 
                     <div class="story-image-placeholder">
-                        <span class="icon">🏆</span>
-                        <span>IMAGE PLACEHOLDER: Скриншот выплат / первый оффер / с семьёй</span>
+                        <img src="https://drive.google.com/uc?export=view&id=1jSg8R2wKuJLrhvq3ie61eiDar_uidnpC" alt="Семья и новые возможности" loading="lazy">
                     </div>
 
                     <p>Я закрыл долги, устроил жену к тому же работодателю и продолжил выстраивать систему. Сейчас я зарабатываю <strong>3 млн+ тенге в месяц</strong>, а ребята из Казахстана, России, Италии, Филиппин и Латинской Америки выходят на удалённую работу в долларах.</p>

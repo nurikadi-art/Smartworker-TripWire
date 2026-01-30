@@ -1007,6 +1007,13 @@ body, html {
     justify-content: center;
 }
 
+.story-snippet-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .story-snippet-photo .placeholder {
     font-size: 9px;
     color: var(--apple-grey);
@@ -1041,6 +1048,15 @@ body, html {
     margin: 16px 0 0;
     flex-direction: column;
     gap: 6px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.story-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .story-image-placeholder span {
@@ -1320,14 +1336,13 @@ body, html {
             <div class="story-snippet-box">
                 <div class="story-snippet-photo">
                     <!-- IMAGE PLACEHOLDER: Founder photo -->
-                    <div class="placeholder">📷 Фото</div>
+                    <img src="https://drive.google.com/uc?export=view&id=11xRiAxigM3xMg1qrmKHsXGOYjB7OPmZA" alt="Нурсултан — фото автора" loading="lazy">
                 </div>
                 <div class="story-snippet-content">
                     <p>Мне было 24, я жил в Атланте во время ковида — без денег и диплома. Пробовал дропшиппинг, Амазон, крипто — и только копил долги.</p>
                     <p>Перелом случился, когда работодатель из Вирджинии предложил удалённую работу за $15/час. Я устроил себя, потом жену и друзей — и систематизировал шаги поиска, резюме и интервью.</p>
                     <div class="story-image-placeholder">
-                        <span class="icon">🏆</span>
-                        <span>IMAGE PLACEHOLDER: Скриншот выплат / фото с семьёй</span>
+                        <img src="https://drive.google.com/uc?export=view&id=1mwNThgpT3TqvpoMe9hqSOG6tx0wr8bPe" alt="Семья и первые результаты" loading="lazy">
                     </div>
                 </div>
             </div>

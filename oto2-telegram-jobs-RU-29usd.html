@@ -1095,6 +1095,13 @@ section.alt-bg {
     justify-content: center;
 }
 
+.story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
 .story-photo .placeholder {
     font-size: 10px;
     color: var(--text-grey);
@@ -1149,6 +1156,15 @@ section.alt-bg {
     margin: 16px 0 0;
     flex-direction: column;
     gap: 6px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.story-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .story-image-placeholder span {
@@ -1419,7 +1435,7 @@ section.alt-bg {
             <div class="story-snippet-card">
                 <div class="story-photo">
                     <!-- IMAGE PLACEHOLDER: Founder photo -->
-                    <div class="placeholder">📷 Фото</div>
+                    <img src="https://drive.google.com/uc?export=view&id=11xRiAxigM3xMg1qrmKHsXGOYjB7OPmZA" alt="Нурсултан — фото автора" loading="lazy">
                 </div>
                 <div class="story-snippet-content">
                     <h3>Почему у Меня Есть Эти Вакансии?</h3>
@@ -1432,8 +1448,7 @@ section.alt-bg {
                     </div>
 
                     <div class="story-image-placeholder">
-                        <span class="icon">📱</span>
-                        <span>IMAGE PLACEHOLDER: Скриншот переписки с клиентом / реальная вакансия</span>
+                        <img src="https://drive.google.com/uc?export=view&id=1g2ZbzwNpO99Ye0HdsEptzlkl1zfo08QE" alt="Реальные клиенты и вакансии" loading="lazy">
                     </div>
                 </div>
             </div>
