@@ -741,11 +741,77 @@ body, html {
     transition: all 0.3s ease;
     text-align: center;
     box-shadow: 0 6px 24px rgba(40, 205, 65, 0.35);
+    position: relative;
 }
 
 .cta-button-yes:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 32px rgba(40, 205, 65, 0.45);
+}
+
+/* Loading state for CTA buttons */
+.cta-button-yes.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.cta-button-yes .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    border: 3px solid rgba(0, 0, 0, 0.2);
+    border-top-color: #000;
+    border-radius: 50%;
+    opacity: 0;
+    animation: none;
+}
+
+.cta-button-yes.loading .spinner {
+    opacity: 1;
+    animation: spin 0.8s linear infinite;
+}
+
+.cta-button-yes.loading .btn-text {
+    opacity: 0;
+}
+
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.final-cta-button {
+    position: relative;
+}
+
+.final-cta-button.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.final-cta-button .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    opacity: 0;
+    animation: none;
+}
+
+.final-cta-button.loading .spinner {
+    opacity: 1;
+    animation: spin 0.8s linear infinite;
+}
+
+.final-cta-button.loading .btn-text {
+    opacity: 0;
 }
 
 .cta-micro-text {
@@ -1388,17 +1454,18 @@ body, html {
                 <div class="cta-savings">Ты экономишь: $10</div>
 
                 <!-- Custom button that triggers hidden GHL button -->
-                <a href="YOUR_CHECKOUT_LINK_HERE" class="cta-button-yes" style="width: 100%; display: block; text-decoration: none; text-align: center;">
-                    ДА — ХОЧУ SMARTWORKER ЗА $9
-                </a>
+                <button type="button" id="upgrade-btn" class="cta-button-yes">
+                    <span class="btn-text">ДА — ХОЧУ SMARTWORKER ЗА $9</span>
+                    <span class="spinner"></span>
+                </button>
 
                 <p class="cta-micro-text">
                     Мгновенный доступ. 30-дневная гарантия. Это финальное предложение.
                 </p>
 
-                <a href="YOUR_NEXT_FUNNEL_STEP" class="cta-button-no">
+                <button type="button" id="decline-btn" class="cta-button-no" style="background: none; border: none; cursor: pointer; width: 100%;">
                     ↓ Нет, я сам разберусь с заработком ↓
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -1416,11 +1483,12 @@ body, html {
             <p class="last-chance-highlight">$9 прямо сейчас. Полная система выхода на рынок США. Финальное предложение.</p>
 
             <!-- Final CTA Button -->
-            <a href="YOUR_CHECKOUT_LINK_HERE" class="final-cta-button" style="border: none; cursor: pointer;">
-                ПОЛУЧИТЬ SMARTWORKER — $9
-            </a>
+            <button type="button" id="upgrade-btn-2" class="final-cta-button" style="border: none; cursor: pointer;">
+                <span class="btn-text">ПОЛУЧИТЬ SMARTWORKER — $9</span>
+                <span class="spinner"></span>
+            </button>
 
-            <a href="YOUR_NEXT_FUNNEL_STEP" class="final-no-link">Нет, я буду искать клиентов сам →</a>
+            <button type="button" id="decline-btn-2" class="final-no-link" style="background: none; border: none; cursor: pointer; display: block; margin-top: 24px;">Нет, я буду искать клиентов сам →</button>
         </div>
     </section>
 
@@ -1470,6 +1538,75 @@ body, html {
     </footer>
 
 </div>
+
+<!-- JavaScript: GHL Button Trigger & Decline Redirect -->
+<script>
+(function() {
+    var DECLINE_URL = 'https://smartworkers.kz/fe---oto-2-downsell-page-5244-1237-5527';
+
+    function init() {
+        // Find the GHL native button (pattern: button-XXX_btn)
+        var ghlButton = document.querySelector('[id^="button-"][id$="_btn"]');
+
+        // Get all upgrade buttons
+        var upgradeBtn = document.getElementById('upgrade-btn');
+        var upgradeBtn2 = document.getElementById('upgrade-btn-2');
+
+        // Get all decline buttons
+        var declineBtn = document.getElementById('decline-btn');
+        var declineBtn2 = document.getElementById('decline-btn-2');
+
+        // Handle upgrade button clicks
+        function handleUpgradeClick(e, btn) {
+            e.preventDefault();
+            btn.classList.add('loading');
+
+            setTimeout(function() {
+                // Try to find and click the GHL button
+                var targetBtn = ghlButton || document.querySelector('[id^="button-"][id$="_btn"]');
+                if (targetBtn) {
+                    targetBtn.click();
+                }
+            }, 300);
+        }
+
+        // Handle decline button clicks
+        function handleDeclineClick(e) {
+            e.preventDefault();
+            window.location.href = DECLINE_URL;
+        }
+
+        // Attach event listeners to upgrade buttons
+        if (upgradeBtn) {
+            upgradeBtn.addEventListener('click', function(e) {
+                handleUpgradeClick(e, upgradeBtn);
+            });
+        }
+
+        if (upgradeBtn2) {
+            upgradeBtn2.addEventListener('click', function(e) {
+                handleUpgradeClick(e, upgradeBtn2);
+            });
+        }
+
+        // Attach event listeners to decline buttons
+        if (declineBtn) {
+            declineBtn.addEventListener('click', handleDeclineClick);
+        }
+
+        if (declineBtn2) {
+            declineBtn2.addEventListener('click', handleDeclineClick);
+        }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
 
 </body>
 </html>
