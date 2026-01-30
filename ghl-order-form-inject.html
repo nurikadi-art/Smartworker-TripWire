@@ -1,0 +1,499 @@
+<!-- ============================================================
+     GHL ORDER FORM - Dark Theme + Russian Text Injection
+
+     HOW TO USE:
+     1. In GHL Page Builder, add a "Custom Code" element
+     2. Place it BEFORE or AFTER your order form element
+     3. Paste this entire code block
+     ============================================================ -->
+
+<style>
+/* ============================================================
+   GHL ORDER FORM - Dark Titanium Blue Theme
+   ============================================================ */
+
+:root {
+    --ghl-bg-dark: #020204;
+    --ghl-bg-card: rgba(255, 255, 255, 0.02);
+    --ghl-bg-input: rgba(255, 255, 255, 0.05);
+    --ghl-text-primary: #f5f5f7;
+    --ghl-text-secondary: #86868b;
+    --ghl-text-muted: #6e6e73;
+    --ghl-border: rgba(255, 255, 255, 0.12);
+    --ghl-border-focus: rgba(10, 132, 255, 0.5);
+    --ghl-system-blue: #0a84ff;
+    --ghl-system-blue-hover: #0077ed;
+    --ghl-highlight-green: #28cd41;
+    --ghl-error-red: #ff453a;
+}
+
+/* Main Container */
+.container-order-form-two-step,
+.order-form-container,
+.hl-order-form,
+[class*="order-form"],
+.form-body,
+.order-form-body {
+    background-color: var(--ghl-bg-dark) !important;
+    color: var(--ghl-text-primary) !important;
+}
+
+/* Cards & Panels */
+.form-panel,
+.order-panel,
+.payment-panel,
+.summary-panel,
+[class*="panel"],
+.form-section,
+.order-section {
+    background-color: var(--ghl-bg-card) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 16px !important;
+}
+
+/* Typography */
+.form-title,
+.order-title,
+.payment-title,
+.address-title,
+.summary-title,
+.product-title,
+h1, h2, h3, h4, h5, h6,
+[class*="title"],
+[class*="header"] {
+    color: var(--ghl-text-primary) !important;
+}
+
+p, span, label,
+.form-text,
+.helper-text,
+.product-description,
+[class*="description"],
+[class*="text"] {
+    color: var(--ghl-text-secondary) !important;
+}
+
+.form-label,
+.input-label,
+label {
+    color: var(--ghl-text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* Input Fields */
+.form-input,
+.form-control,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="password"],
+select,
+textarea {
+    background-color: var(--ghl-bg-input) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 12px !important;
+    color: var(--ghl-text-primary) !important;
+    padding: 14px 16px !important;
+    font-size: 16px !important;
+    transition: all 0.2s ease !important;
+}
+
+.form-input:focus,
+.form-control:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--ghl-border-focus) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
+    outline: none !important;
+}
+
+.form-input::placeholder,
+input::placeholder,
+textarea::placeholder {
+    color: var(--ghl-text-muted) !important;
+}
+
+select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2386868b' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 16px center !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+}
+
+select option {
+    background-color: #1c1c1e !important;
+    color: var(--ghl-text-primary) !important;
+}
+
+/* Checkboxes */
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--ghl-system-blue) !important;
+}
+
+/* Submit Button */
+.form-btn,
+.submit-btn,
+.order-btn,
+.btn-primary,
+button[type="submit"],
+[class*="submit"],
+[class*="checkout"] {
+    background: linear-gradient(135deg, var(--ghl-system-blue) 0%, var(--ghl-system-blue-hover) 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 14px !important;
+    padding: 18px 32px !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 4px 20px rgba(10, 132, 255, 0.3) !important;
+}
+
+.form-btn:hover,
+.submit-btn:hover,
+button[type="submit"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 30px rgba(10, 132, 255, 0.4) !important;
+}
+
+/* Product Items */
+.product-item,
+.order-item,
+.cart-item,
+[class*="product"],
+[class*="item"] {
+    background-color: var(--ghl-bg-card) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 12px !important;
+}
+
+.product-price,
+.item-price,
+.price {
+    color: var(--ghl-highlight-green) !important;
+    font-weight: 700 !important;
+}
+
+.original-price,
+.old-price,
+.strikethrough {
+    color: var(--ghl-text-muted) !important;
+    text-decoration: line-through !important;
+}
+
+/* Separator */
+.separator,
+.divider,
+hr {
+    border-color: var(--ghl-border) !important;
+    background-color: var(--ghl-border) !important;
+}
+
+/* Total */
+.total-amount,
+.grand-total {
+    color: var(--ghl-text-primary) !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+}
+
+/* Payment Methods */
+.payment-method,
+.payment-option {
+    background-color: var(--ghl-bg-card) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 12px !important;
+}
+
+.payment-method.selected,
+.payment-method.active {
+    border-color: var(--ghl-system-blue) !important;
+    background-color: rgba(10, 132, 255, 0.08) !important;
+}
+
+/* Stripe Elements */
+.StripeElement,
+[class*="stripe"],
+.card-element {
+    background-color: var(--ghl-bg-input) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 12px !important;
+    padding: 14px 16px !important;
+}
+
+.StripeElement--focus {
+    border-color: var(--ghl-border-focus) !important;
+    box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.15) !important;
+}
+
+/* Coupons */
+.coupon-section,
+.promo-section {
+    background-color: var(--ghl-bg-card) !important;
+    border: 1px solid var(--ghl-border) !important;
+    border-radius: 12px !important;
+}
+
+.coupon-success,
+.discount-applied {
+    color: var(--ghl-highlight-green) !important;
+}
+
+/* Errors */
+.error,
+.invalid,
+.form-error,
+.has-error input,
+.is-invalid {
+    border-color: var(--ghl-error-red) !important;
+}
+
+.error-message,
+.validation-error {
+    color: var(--ghl-error-red) !important;
+}
+
+/* Links */
+a {
+    color: var(--ghl-system-blue) !important;
+}
+
+a:hover {
+    color: var(--ghl-system-blue-hover) !important;
+}
+
+/* GHL Overrides */
+.c-section,
+.c-row,
+.c-column,
+.c-column > .inner,
+.c-custom-html,
+.hl_page-creator--row,
+.hl_page-creator--column {
+    background-color: transparent !important;
+}
+
+/* Input Groups */
+.input-group-addon,
+.input-group-text {
+    background-color: var(--ghl-bg-input) !important;
+    border: 1px solid var(--ghl-border) !important;
+    color: var(--ghl-text-secondary) !important;
+}
+
+/* Country/Phone */
+.country-selector,
+.phone-prefix,
+[class*="country"],
+[class*="prefix"] {
+    background-color: var(--ghl-bg-input) !important;
+    border: 1px solid var(--ghl-border) !important;
+    color: var(--ghl-text-primary) !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--ghl-bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--ghl-border);
+    border-radius: 4px;
+}
+</style>
+
+<script>
+// ============================================================
+// GHL ORDER FORM - Russian Text Replacement
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Wait for GHL form to load
+    setTimeout(translateForm, 500);
+    setTimeout(translateForm, 1500);
+    setTimeout(translateForm, 3000);
+
+    // Also observe for dynamic changes
+    const observer = new MutationObserver(translateForm);
+    observer.observe(document.body, { childList: true, subtree: true });
+});
+
+function translateForm() {
+    // Text replacements map (English -> Russian)
+    const translations = {
+        // Headers
+        'Contact Information': 'Контактные данные',
+        'Contact': 'Контакт',
+        'Payment Information': 'Информация об оплате',
+        'Payment Details': 'Данные оплаты',
+        'Payment': 'Оплата',
+        'Billing Address': 'Адрес для выставления счета',
+        'Billing': 'Адрес',
+        'Order Summary': 'Ваш заказ',
+        'Your Order': 'Ваш заказ',
+        'Summary': 'Итого',
+
+        // Labels
+        'First Name': 'Имя',
+        'Last Name': 'Фамилия',
+        'Full Name': 'Полное имя',
+        'Name': 'Имя',
+        'Email': 'Email',
+        'Email Address': 'Email адрес',
+        'Phone': 'Телефон',
+        'Phone Number': 'Номер телефона',
+        'Address': 'Адрес',
+        'Address Line 1': 'Адрес (строка 1)',
+        'Address Line 2': 'Адрес (строка 2)',
+        'City': 'Город',
+        'State': 'Область/Регион',
+        'State/Province': 'Область/Регион',
+        'Province': 'Область',
+        'Country': 'Страна',
+        'Postal Code': 'Почтовый индекс',
+        'Zip Code': 'Почтовый индекс',
+        'ZIP': 'Индекс',
+
+        // Payment
+        'Card Number': 'Номер карты',
+        'Card number': 'Номер карты',
+        'Expiration': 'Срок действия',
+        'Expiration Date': 'Срок действия',
+        'Expiry': 'Срок',
+        'MM/YY': 'ММ/ГГ',
+        'CVC': 'CVC',
+        'CVV': 'CVV',
+        'Security Code': 'Код безопасности',
+
+        // Buttons
+        'Submit': 'Отправить',
+        'Submit Order': 'Оформить заказ',
+        'Place Order': 'Оформить заказ',
+        'Complete Order': 'Завершить заказ',
+        'Complete Purchase': 'Завершить покупку',
+        'Pay Now': 'Оплатить',
+        'Buy Now': 'Купить сейчас',
+        'Checkout': 'Оформить',
+        'Continue': 'Продолжить',
+        'Next': 'Далее',
+        'Back': 'Назад',
+
+        // Coupon
+        'Coupon': 'Промокод',
+        'Coupon Code': 'Промокод',
+        'Promo Code': 'Промокод',
+        'Discount Code': 'Код скидки',
+        'Apply': 'Применить',
+        'Apply Coupon': 'Применить промокод',
+        'Remove': 'Удалить',
+
+        // Totals
+        'Subtotal': 'Подытог',
+        'Total': 'Итого',
+        'Tax': 'Налог',
+        'Discount': 'Скидка',
+        'Shipping': 'Доставка',
+        'Free': 'Бесплатно',
+
+        // Messages
+        'Required': 'Обязательно',
+        'Required field': 'Обязательное поле',
+        'This field is required': 'Это поле обязательно',
+        'Invalid email': 'Неверный email',
+        'Invalid email address': 'Неверный email адрес',
+        'Invalid card number': 'Неверный номер карты',
+        'Invalid expiration date': 'Неверный срок действия',
+        'Invalid CVC': 'Неверный CVC',
+        'Processing...': 'Обработка...',
+        'Please wait...': 'Подождите...',
+        'Payment successful': 'Оплата прошла успешно',
+        'Payment failed': 'Ошибка оплаты',
+        'Try again': 'Попробуйте снова',
+
+        // Misc
+        'or': 'или',
+        'and': 'и',
+        'Yes': 'Да',
+        'No': 'Нет',
+        'Select': 'Выбрать',
+        'Select...': 'Выберите...',
+        'Choose': 'Выбрать',
+        'Optional': 'Необязательно',
+        '(optional)': '(необязательно)',
+        'Secure checkout': 'Безопасная оплата',
+        'Your information is secure': 'Ваши данные защищены',
+        '100% Secure': '100% Безопасно',
+        'Money-back guarantee': 'Гарантия возврата денег',
+
+        // Placeholders
+        'Enter your email': 'Введите ваш email',
+        'Enter your name': 'Введите ваше имя',
+        'Enter your phone': 'Введите ваш телефон',
+        'Enter coupon code': 'Введите промокод',
+        'Your email address': 'Ваш email адрес'
+    };
+
+    // Replace text in elements
+    function replaceText(element) {
+        if (element.nodeType === Node.TEXT_NODE) {
+            let text = element.textContent.trim();
+            if (translations[text]) {
+                element.textContent = element.textContent.replace(text, translations[text]);
+            }
+        } else {
+            element.childNodes.forEach(replaceText);
+        }
+    }
+
+    // Replace placeholders
+    function replacePlaceholders() {
+        document.querySelectorAll('input, textarea').forEach(input => {
+            const placeholder = input.getAttribute('placeholder');
+            if (placeholder && translations[placeholder]) {
+                input.setAttribute('placeholder', translations[placeholder]);
+            }
+        });
+    }
+
+    // Replace button text
+    function replaceButtonText() {
+        document.querySelectorAll('button, input[type="submit"], .form-btn, .submit-btn').forEach(btn => {
+            const text = btn.textContent.trim();
+            if (translations[text]) {
+                btn.textContent = translations[text];
+            }
+            const value = btn.getAttribute('value');
+            if (value && translations[value]) {
+                btn.setAttribute('value', translations[value]);
+            }
+        });
+    }
+
+    // Replace labels
+    function replaceLabels() {
+        document.querySelectorAll('label, .form-label, .input-label').forEach(label => {
+            const text = label.textContent.trim();
+            // Handle labels with asterisks (required fields)
+            const cleanText = text.replace(/\s*\*\s*$/, '');
+            if (translations[cleanText]) {
+                label.innerHTML = label.innerHTML.replace(cleanText, translations[cleanText]);
+            }
+        });
+    }
+
+    // Run all replacements
+    replaceText(document.body);
+    replacePlaceholders();
+    replaceButtonText();
+    replaceLabels();
+}
+</script>
