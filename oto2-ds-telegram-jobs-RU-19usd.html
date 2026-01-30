@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telegram-Канал с Вакансиями — Базовый Доступ</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style type="text/css">
+/* ============================================================
+   OTO2 DOWNSELL: TELEGRAM КАНАЛ - БАЗОВЫЙ ДОСТУП
+   Premium Blue/Cyan Theme - Basic Job Channel Access
+   $19 one-time access for CIS market
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+:root {
+    --bg-dark: #080808;
+    --bg-card: #121212;
+    --bg-card-alt: #0d0d0d;
+    --text-white: #ffffff;
+    --text-grey: #a1a1aa;
+    --text-light-grey: #d4d4d8;
+    --accent-cyan: #22d3ee;
+    --accent-cyan-dim: rgba(34, 211, 238, 0.1);
+    --accent-cyan-border: rgba(34, 211, 238, 0.3);
+    --accent-blue: #3b82f6;
+    --accent-gradient: linear-gradient(135deg, #28cd41 0%, #5ac8fa 100%);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --highlight-green: #10b981;
+    --highlight-green-dim: rgba(16, 185, 129, 0.1);
+    --highlight-red: #ef4444;
+    --highlight-red-dim: rgba(239, 68, 68, 0.1);
+    --telegram-blue: #0088cc;
+    --telegram-blue-dim: rgba(0, 136, 204, 0.1);
+}
+
+/* ---- GLOBAL RESET ---- */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body, html, .hl_page-preview--content {
+    background-color: var(--bg-dark) !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    color: var(--text-white) !important;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* GHL Override Classes */
+.c-section, .c-row, .c-column, .c-column > .inner, .c-custom-html,
+.hl_page-creator--row, .hl_page-creator--column {
+    background-color: transparent !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.pool-wrapper {
+    width: 100%;
+    max-width: 100%;
+    background: var(--bg-dark);
+    min-height: 100vh;
+    container-type: inline-size;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+.container-narrow {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+    width: 100%;
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes float-delayed {
+    0%, 100% { transform: translateY(0px) rotate(-2deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(200%) rotate(25deg); }
+}
+
+@keyframes notification-pop {
+    0% { transform: scale(0.8); opacity: 0; }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* ============================================================
+   STOP BANNER
+   ============================================================ */
+.stop-banner {
+    background: linear-gradient(90deg, #ef4444 0%, #dc2626 100%);
+    color: #fff;
+    text-align: center;
+    padding: 16px 20px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-section {
+    padding: 70px 0 50px;
+    text-align: center;
+}
+
+.hero-lead {
+    font-size: clamp(16px, 2.5vw, 20px);
+    font-weight: 500;
+    color: var(--text-grey);
+    margin-bottom: 16px;
+    display: block;
+}
+
+.hero-headline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 700;
+    color: var(--text-white);
+    line-height: 1.2;
+    margin-bottom: 24px;
+}
+
+.hero-headline .highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subheadline {
+    font-size: clamp(17px, 2.5vw, 20px);
+    color: var(--text-light-grey);
+    max-width: 650px;
+    margin: 0 auto 20px;
+    line-height: 1.7;
+}
+
+/* ============================================================
+   HERO VISUAL - TELEGRAM MOCKUP
+   ============================================================ */
+.hero-visual-section {
+    padding: 40px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.visual-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+    position: relative;
+}
+
+/* Background glows */
+.pool-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.pool-glow.g1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 136, 204, 0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse-glow 6s ease-in-out infinite;
+}
+
+.pool-glow.g2 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(40, 205, 65, 0.1) 0%, transparent 70%);
+    top: 20%;
+    right: 5%;
+    animation: pulse-glow 8s ease-in-out infinite 2s;
+}
+
+/* Main Display Layout */
+.pool-display {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Telegram Window - Main Element */
+.telegram-window {
+    width: 380px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(0, 136, 204, 0.3);
+    overflow: visible;
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.6),
+        0 0 60px rgba(0, 136, 204, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    animation: float 6s ease-in-out infinite;
+    position: relative;
+    flex-shrink: 0;
+}
+
+/* Telegram shimmer effect */
+.telegram-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        115deg,
+        transparent 30%,
+        rgba(0, 136, 204, 0.05) 45%,
+        rgba(0, 136, 204, 0.08) 50%,
+        rgba(0, 136, 204, 0.05) 55%,
+        transparent 70%
+    );
+    animation: shimmer 10s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 20;
+    border-radius: 20px;
+}
+
+/* Window Header */
+.window-header {
+    background: linear-gradient(90deg, #0088cc 0%, #00a6ed 100%);
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 18px 18px 0 0;
+}
+
+.window-dots {
+    display: flex;
+    gap: 8px;
+}
+
+.window-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.window-dot.red { background: #ff5f57; }
+.window-dot.yellow { background: #febc2e; }
+.window-dot.green { background: #28c840; }
+
+.window-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.telegram-icon {
+    font-size: 20px;
+}
+
+.channel-badge {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* Telegram Content */
+.telegram-content {
+    padding: 16px;
+}
+
+/* Channel Header */
+.channel-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 16px;
+}
+
+.channel-avatar {
+    width: 50px;
+    height: 50px;
+    background: var(--accent-gradient);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.channel-info h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.channel-info p {
+    font-size: 12px;
+    color: var(--text-grey);
+}
+
+/* Job Messages */
+.job-message {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 12px;
+    border-left: 3px solid var(--highlight-green);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.job-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text-white);
+}
+
+.job-badge {
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: var(--highlight-green-dim);
+    color: var(--highlight-green);
+}
+
+.job-details {
+    font-size: 12px;
+    color: var(--text-grey);
+    line-height: 1.6;
+}
+
+.job-details strong {
+    color: var(--accent-cyan);
+}
+
+.job-time {
+    font-size: 10px;
+    color: var(--text-grey);
+    text-align: right;
+    margin-top: 8px;
+}
+
+/* Floating Stats Cards */
+.stats-cards-column {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.stat-card {
+    background: linear-gradient(145deg, #1a1a1a 0%, #0d0d0d 100%);
+    border: 1px solid rgba(34, 211, 238, 0.2);
+    border-radius: 14px;
+    padding: 16px 20px;
+    animation: float-delayed 6s ease-in-out infinite;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    min-width: 160px;
+    text-align: center;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0s; }
+.stat-card:nth-child(2) { animation-delay: 0.5s; }
+.stat-card:nth-child(3) { animation-delay: 1s; }
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 800;
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--text-grey);
+    margin-top: 4px;
+}
+
+/* Hero Visual Responsive */
+@media (max-width: 900px) {
+    .pool-display {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .telegram-window {
+        width: 100%;
+        max-width: 360px;
+    }
+
+    .stats-cards-column {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .stat-card {
+        min-width: 130px;
+        padding: 14px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .stats-cards-column {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .stat-card {
+        width: 100%;
+    }
+}
+
+/* ============================================================
+   GENERAL SECTIONS
+   ============================================================ */
+section {
+    padding: 60px 0;
+}
+
+section.alt-bg {
+    background: var(--bg-card-alt);
+}
+
+.section-headline {
+    font-size: clamp(24px, 4vw, 34px);
+    font-weight: 700;
+    color: var(--text-white);
+    text-align: center;
+    margin-bottom: 28px;
+    line-height: 1.25;
+}
+
+.section-headline .highlight {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.body-text {
+    font-size: 16px;
+    color: var(--text-grey);
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.body-text strong {
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+/* ============================================================
+   WHAT'S INCLUDED (SIMPLIFIED)
+   ============================================================ */
+.included-grid {
+    display: grid;
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.included-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px;
+}
+
+.included-card-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.included-card-title .check {
+    color: var(--highlight-green);
+}
+
+.included-card p {
+    font-size: 14px;
+    color: var(--text-grey);
+    margin: 0;
+    line-height: 1.7;
+}
+
+.included-card .value-tag {
+    display: inline-block;
+    background: var(--highlight-green-dim);
+    color: var(--highlight-green);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+/* ============================================================
+   CATEGORY GRID
+   ============================================================ */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    margin: 24px 0;
+}
+
+.category-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+}
+
+.category-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+.category-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 4px;
+}
+
+.category-count {
+    font-size: 11px;
+    color: var(--accent-cyan);
+}
+
+/* ============================================================
+   OFFER STACK
+   ============================================================ */
+.offer-card {
+    background: linear-gradient(135deg, var(--telegram-blue-dim) 0%, rgba(0,0,0,0.5) 100%);
+    border: 2px solid var(--telegram-blue);
+    border-radius: 20px;
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.offer-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: var(--accent-gradient);
+}
+
+.stack-list {
+    text-align: left;
+    max-width: 480px;
+    margin: 28px auto;
+}
+
+.stack-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-size: 15px;
+}
+
+.stack-row .item {
+    color: var(--text-white);
+}
+
+.stack-row .value {
+    color: var(--text-grey);
+}
+
+.stack-row.total {
+    border-top: 2px solid var(--text-white);
+    border-bottom: none;
+    margin-top: 14px;
+    padding-top: 18px;
+}
+
+.stack-row.total .item {
+    font-weight: 700;
+}
+
+.stack-row.total .value {
+    text-decoration: line-through;
+    color: var(--text-grey);
+}
+
+.offer-label {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--telegram-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 28px;
+}
+
+.offer-price {
+    font-size: clamp(52px, 12vw, 72px);
+    font-weight: 800;
+    color: var(--text-white);
+    line-height: 1;
+    margin: 14px 0 20px;
+}
+
+.offer-price span {
+    font-size: 22px;
+    color: var(--text-grey);
+}
+
+.cta-button {
+    display: block;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 22px 28px;
+    background: var(--accent-gradient);
+    color: #000;
+    font-size: 17px;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 12px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 32px rgba(40, 205, 65, 0.3);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(40, 205, 65, 0.4);
+}
+
+.cta-micro {
+    font-size: 13px;
+    color: var(--text-grey);
+    margin-top: 14px;
+}
+
+.no-thanks-link {
+    display: block;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--text-grey);
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.no-thanks-link:hover {
+    color: var(--text-white);
+}
+
+/* ============================================================
+   GUARANTEE
+   ============================================================ */
+.guarantee-box {
+    background: var(--highlight-green-dim);
+    border: 2px solid rgba(16, 185, 129, 0.3);
+    border-radius: 14px;
+    padding: 28px;
+    text-align: center;
+    margin: 32px 0;
+}
+
+.guarantee-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--highlight-green);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.guarantee-box p {
+    font-size: 15px;
+    color: var(--text-grey);
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta-section {
+    padding: 70px 0;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+}
+
+.final-headline {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 20px;
+    line-height: 1.25;
+}
+
+.urgency-text {
+    display: inline-block;
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-top: 18px;
+}
+
+/* ============================================================
+   FOUNDER STORY SNIPPET
+   ============================================================ */
+.story-snippet-section {
+    padding: 50px 0;
+    background: linear-gradient(180deg, #0a0a0a 0%, var(--bg-dark) 100%);
+}
+
+.story-snippet-box {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+.story-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--telegram-blue);
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-photo .placeholder {
+    font-size: 9px;
+    color: var(--text-grey);
+    text-align: center;
+    padding: 6px;
+}
+
+.story-snippet-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-grey);
+    margin: 0;
+}
+
+.story-snippet-content strong {
+    color: var(--text-white);
+}
+
+@media (max-width: 768px) {
+    .story-snippet-box {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+    .container, .container-narrow {
+        padding: 0 20px;
+    }
+
+    section {
+        padding: 45px 0;
+    }
+
+    .offer-card {
+        padding: 28px 20px;
+    }
+
+    .stack-row {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .stop-banner {
+        font-size: 13px;
+        padding: 14px 16px;
+    }
+
+    .hero-headline {
+        font-size: 26px;
+    }
+
+    .section-headline {
+        font-size: 22px;
+    }
+
+    .cta-button {
+        font-size: 15px;
+        padding: 18px 22px;
+    }
+
+    .offer-price {
+        font-size: 52px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="pool-wrapper">
+
+    <!-- ============================================================
+         STOP BANNER
+         ============================================================ -->
+    <div class="stop-banner">
+        ⏸️ ПОДОЖДИТЕ — ЕСТЬ БОЛЕЕ ДОСТУПНЫЙ ВАРИАНТ
+    </div>
+
+    <!-- ============================================================
+         HERO SECTION
+         ============================================================ -->
+    <section class="hero-section">
+        <div class="container">
+            <p class="hero-lead">$29 слишком много? Понимаю.</p>
+            <h1 class="hero-headline">
+                Получите <span class="highlight">Базовый Доступ</span><br>
+                к Каналу с Вакансиями
+            </h1>
+            <p class="hero-subheadline">
+                Только канал с вакансиями — без дополнительных материалов. Вакансии те же самые, просто без бонусов.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         HERO VISUAL - TELEGRAM MOCKUP
+         ============================================================ -->
+    <section class="hero-visual-section">
+        <div class="visual-container">
+            <!-- Background glows -->
+            <div class="pool-glow g1"></div>
+            <div class="pool-glow g2"></div>
+
+            <div class="pool-display">
+                <!-- Main Telegram Window -->
+                <div class="telegram-window">
+                    <!-- Window Header -->
+                    <div class="window-header">
+                        <div class="window-dots">
+                            <span class="window-dot red"></span>
+                            <span class="window-dot yellow"></span>
+                            <span class="window-dot green"></span>
+                        </div>
+                        <div class="window-title">
+                            <span class="telegram-icon">✈️</span>
+                            <span>US Jobs Channel</span>
+                            <span class="channel-badge">BASIC</span>
+                        </div>
+                    </div>
+
+                    <!-- Telegram Content -->
+                    <div class="telegram-content">
+                        <!-- Channel Header -->
+                        <div class="channel-header">
+                            <div class="channel-avatar">🇺🇸</div>
+                            <div class="channel-info">
+                                <h3>Вакансии от US Клиентов</h3>
+                                <p>Базовый доступ</p>
+                            </div>
+                        </div>
+
+                        <!-- Job Messages -->
+                        <div class="job-message">
+                            <div class="job-header">
+                                <div class="job-title">🔍 AI Researcher</div>
+                                <span class="job-badge">Новая</span>
+                            </div>
+                            <div class="job-details">
+                                <strong>$15/час</strong> • Perplexity Pro<br>
+                                Ресёрч для маркетингового агентства
+                            </div>
+                            <div class="job-time">2 часа назад</div>
+                        </div>
+
+                        <div class="job-message">
+                            <div class="job-header">
+                                <div class="job-title">🎨 AI Дизайнер</div>
+                                <span class="job-badge">Новая</span>
+                            </div>
+                            <div class="job-details">
+                                <strong>$12/час</strong> • Midjourney<br>
+                                Графика для e-commerce
+                            </div>
+                            <div class="job-time">вчера</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Floating Stats Cards -->
+                <div class="stats-cards-column">
+                    <div class="stat-card">
+                        <div class="stat-number">15-20</div>
+                        <div class="stat-label">вакансий в неделю</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$7-30</div>
+                        <div class="stat-label">ставка в час</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">160+</div>
+                        <div class="stat-label">трудоустроено</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         WHAT'S INCLUDED (SIMPLIFIED)
+         ============================================================ -->
+    <section class="alt-bg">
+        <div class="container-narrow">
+            <h2 class="section-headline">Что Вы Получаете:</h2>
+
+            <div class="included-grid">
+                <div class="included-card" style="border-color: rgba(0, 136, 204, 0.3); background: linear-gradient(135deg, var(--telegram-blue-dim) 0%, var(--bg-card) 100%);">
+                    <div class="included-card-title"><span class="check">✅</span> Доступ к Telegram-Каналу с Вакансиями</div>
+                    <p>15-20 новых вакансий каждую неделю от реальных американских клиентов. Прямой контакт без посредников.</p>
+                    <span class="value-tag" style="background: var(--telegram-blue-dim); color: var(--telegram-blue);">Ценность: $497/год</span>
+                </div>
+
+                <div class="included-card">
+                    <div class="included-card-title"><span class="check">✅</span> Пожизненный Доступ</div>
+                    <p>Один платёж — доступ навсегда. Вакансии будут приходить, пока я работаю с клиентами.</p>
+                    <span class="value-tag">Ценность: Бесценно</span>
+                </div>
+            </div>
+
+            <p class="body-text centered-text" style="margin-top: 32px; color: var(--text-grey);">
+                <strong style="color: var(--highlight-red);">Что НЕ включено:</strong> Шаблоны отклика, гайд по собеседованиям, приоритетные уведомления.<br>
+                Это базовый доступ — только канал с вакансиями.
+            </p>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         BROWSE BY PROFESSION
+         ============================================================ -->
+    <section>
+        <div class="container-narrow">
+            <h2 class="section-headline">Типы Вакансий</h2>
+
+            <div class="category-grid">
+                <div class="category-card">
+                    <div class="category-icon">🔍</div>
+                    <div class="category-name">Researchers</div>
+                    <div class="category-count">~5/неделю</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🎨</div>
+                    <div class="category-name">Дизайнеры</div>
+                    <div class="category-count">~4/неделю</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">💻</div>
+                    <div class="category-name">Coders</div>
+                    <div class="category-count">~3/неделю</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">🤖</div>
+                    <div class="category-name">Prompt Eng.</div>
+                    <div class="category-count">~2/неделю</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">✍️</div>
+                    <div class="category-name">Контент</div>
+                    <div class="category-count">~4/неделю</div>
+                </div>
+                <div class="category-card">
+                    <div class="category-icon">📊</div>
+                    <div class="category-name">Sales</div>
+                    <div class="category-count">~3/неделю</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOUNDER STORY SNIPPET
+         ============================================================ -->
+    <section class="story-snippet-section">
+        <div class="container-narrow">
+            <div class="story-snippet-box">
+                <div class="story-photo">
+                    <!-- IMAGE PLACEHOLDER: Founder photo -->
+                    <div class="placeholder">📷 Фото</div>
+                </div>
+                <div class="story-snippet-content">
+                    <p>Эти вакансии — от моих клиентов в США. <strong>160+ человек уже устроены</strong> по нашей системе. Я просто хочу, чтобы ты тоже начал зарабатывать.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         THE OFFER
+         ============================================================ -->
+    <section class="alt-bg">
+        <div class="container-narrow">
+            <div class="offer-card">
+                <h2 class="section-headline" style="margin-top: 0;">Базовый Доступ:</h2>
+
+                <div class="stack-list">
+                    <div class="stack-row" style="background: var(--telegram-blue-dim); margin: -4px -8px 8px; padding: 12px 8px; border-radius: 8px;">
+                        <span class="item">✅ Telegram-Канал с Вакансиями</span>
+                        <span class="value" style="color: var(--telegram-blue);">$497/год</span>
+                    </div>
+                    <div class="stack-row">
+                        <span class="item">✅ Пожизненный Доступ</span>
+                        <span class="value">Бесценно</span>
+                    </div>
+                    <div class="stack-row total">
+                        <span class="item">Общая Ценность</span>
+                        <span class="value">$497+</span>
+                    </div>
+                </div>
+
+                <div class="offer-label">Один Платёж</div>
+                <div class="offer-price">$19</div>
+
+                <!-- Custom button that triggers hidden GHL button -->
+                <a href="#" onclick="document.querySelector('#button-oto2ds-tg_btn').click(); return false;" class="cta-button" style="width: 100%; max-width: 480px; display: block; text-decoration: none; text-align: center;">
+                    ДА — ДАЙТЕ БАЗОВЫЙ ДОСТУП ЗА $19
+                </a>
+
+                <p class="cta-micro">$19 один раз. Пожизненный доступ к каналу.</p>
+
+                <a href="https://www.outsourcingleader.com/ty-ru" class="no-thanks-link">↓ Нет, спасибо, я сам найду клиентов ↓</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         GUARANTEE
+         ============================================================ -->
+    <section>
+        <div class="container-narrow">
+            <div class="guarantee-box">
+                <div class="guarantee-title">🛡️ 30-Дневная Гарантия</div>
+                <p>Если за первые 30 дней в канале будет меньше 15 вакансий — верну деньги без вопросов.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FINAL CTA
+         ============================================================ -->
+    <section class="final-cta-section">
+        <div class="container-narrow">
+            <h2 class="final-headline">Готовые Вакансии.<br>$19. Навсегда.</h2>
+
+            <p class="body-text centered-text">
+                15-20 вакансий в неделю. $7-30/час.<br>
+                Без Upwork. Напрямую от клиентов.
+            </p>
+
+            <!-- GHL Upsell Button (Final CTA) -->
+            <div id="button-oto2ds-final" class="c-button c-wrapper" data-v0="true" data-options='{"cloneable":false,"draggable":true,"deletable":true,"textOrIcon":true,"action":{"type":"options","value":"sell-product"},"extra":{"productId":"OTO2DS_TELEGRAM_PRODUCT_ID"},"saleAction":{"type":"options","value":"redirect-url","url":"https://www.outsourcingleader.com/ty-ru"},"borderStyle":"none","width":"auto","fullWidth":false}'>
+                <button class="cta-button" style="margin-top: 28px; border: none; cursor: pointer;">
+                    ПОЛУЧИТЬ ДОСТУП — $19
+                </button>
+            </div>
+
+            <div class="urgency-text">⚠️ Последний шанс. Это предложение исчезнет.</div>
+
+            <a href="https://www.outsourcingleader.com/ty-ru" class="no-thanks-link" style="margin-top: 20px;">Нет, спасибо →</a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer style="background: #0a0a0c; border-top: 1px solid rgba(255,255,255,0.08); padding: 50px 0 35px;">
+        <div class="container">
+            <!-- Company Info -->
+            <div style="text-align: center; margin-bottom: 35px;">
+                <p style="font-size: 17px; font-weight: 600; color: #f5f5f7; margin-bottom: 8px;">Recrutu Virtual Assistants LLC</p>
+                <p style="font-size: 13px; color: #86868b; margin-bottom: 4px;">2416 Marian Bay Circle</p>
+                <p style="font-size: 13px; color: #86868b; margin-bottom: 4px;">Anchorage, AK 99515, USA</p>
+                <p style="font-size: 13px; color: #86868b; margin-top: 10px;">
+                    <a href="mailto:nurikadi@recrutugo.com" style="color: #0a84ff; text-decoration: none;">nurikadi@recrutugo.com</a>
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div style="text-align: center; margin-bottom: 35px;">
+                <a href="https://www.outsourcingleader.com/privacypolicy-page" target="_blank" style="color: #86868b; text-decoration: none; font-size: 13px; margin: 0 14px;">Политика конфиденциальности</a>
+                <a href="https://www.outsourcingleader.com/termsandconditions-page" target="_blank" style="color: #86868b; text-decoration: none; font-size: 13px; margin: 0 14px;">Условия использования</a>
+                <a href="mailto:nurikadi@recrutugo.com" style="color: #86868b; text-decoration: none; font-size: 13px; margin: 0 14px;">Контакты</a>
+            </div>
+
+            <!-- Earnings Disclaimer -->
+            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 10px; padding: 20px; margin-bottom: 28px;">
+                <p style="font-size: 10px; color: #86868b; line-height: 1.7; text-align: center; opacity: 0.7;">
+                    <strong>Отказ от ответственности:</strong> Указанные результаты не являются типичными. Ваши результаты будут зависеть от многих факторов, включая ваш опыт, навыки и трудолюбие.
+                </p>
+            </div>
+
+            <!-- Copyright -->
+            <div style="text-align: center; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06);">
+                <p style="font-size: 12px; color: #86868b; margin: 0;">
+                    © 2025 Recrutu Virtual Assistants LLC. Все права защищены.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>
