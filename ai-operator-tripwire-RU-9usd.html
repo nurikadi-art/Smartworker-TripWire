@@ -2241,110 +2241,34 @@ img, svg, video {
     position: relative;
 }
 
-.best-value-badge {
-    position: absolute;
-    top: -15px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    z-index: 10;
-}
-
-.best-value-badge span {
-    background: #28cd41;
-    color: white;
-    font-weight: 800;
-    padding: 6px 18px;
-    border-radius: 20px;
-    font-size: 12px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-}
 
 @media (max-width: 768px) {
     .pricing-grid {
         grid-template-columns: 1fr;
     }
     .ghost-card {
-        display: none;
+        padding: 20px;
+        order: 2;
+    }
+    .ghost-card::after {
+        font-size: 18px;
+        padding: 8px 14px;
     }
     .pricing-grid .offer-stack {
         transform: scale(1);
+        order: 1;
     }
 }
 
-/* 2. HEARTBEAT ANIMATION - 60 BPM Subliminal Entrainment */
-@keyframes heartbeat {
-    0% { transform: scale(1); box-shadow: 0 4px 24px rgba(40, 205, 65, 0.25); }
-    15% { transform: scale(1.02); box-shadow: 0 4px 30px rgba(40, 205, 65, 0.45); }
-    30% { transform: scale(1); box-shadow: 0 4px 24px rgba(40, 205, 65, 0.25); }
-    100% { transform: scale(1); }
+/* 2. SUBTLE BUTTON ANIMATION */
+@keyframes subtle-pulse {
+    0%, 100% { box-shadow: 0 4px 24px rgba(40, 205, 65, 0.25); }
+    50% { box-shadow: 0 4px 32px rgba(40, 205, 65, 0.4); }
 }
 
 .offer-stack .cta-button,
 .final-cta .cta-button {
-    animation: heartbeat 2s infinite ease-in-out !important;
-}
-
-/* 3. OWNERSHIP TOGGLE - Endowment Effect */
-.ownership-toggle {
-    max-width: 600px;
-    margin: 0 auto 40px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 24px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.ownership-toggle .toggle-title {
-    text-align: center;
-    font-weight: 600;
-    margin-bottom: 18px;
-    color: var(--pure-white);
-    font-size: 16px;
-}
-
-.ownership-toggle .toggle-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-}
-
-.ownership-toggle label {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--apple-grey);
-    cursor: pointer;
-    font-size: 14px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    transition: background 0.2s;
-}
-
-.ownership-toggle label:hover {
-    background: rgba(255, 255, 255, 0.08);
-}
-
-.ownership-toggle input[type="checkbox"] {
-    accent-color: var(--highlight-green);
-    width: 18px;
-    height: 18px;
-}
-
-.ownership-toggle .toggle-note {
-    text-align: center;
-    font-size: 12px;
-    margin-top: 16px;
-    color: var(--highlight-green);
-    opacity: 0.8;
-}
-
-@media (max-width: 480px) {
-    .ownership-toggle .toggle-grid {
-        grid-template-columns: 1fr;
-    }
+    animation: subtle-pulse 3s infinite ease-in-out;
 }
 
 /* 4. ANTI-MARKETING WARNING - Reactance Theory */
@@ -3386,38 +3310,6 @@ img, svg, video {
     <div class="container">
         <h2 class="section-headline" style="text-align: center;">Всё, Что Ты Получаешь Сегодня</h2>
 
-        <!-- OWNERSHIP TOGGLE - Endowment Effect -->
-        <div class="ownership-toggle">
-            <p class="toggle-title">Выбери навыки, которые хочешь освоить:</p>
-            <div class="toggle-grid">
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Нейро-Кодинг
-                </label>
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Генерация Картинок
-                </label>
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Графический Дизайн
-                </label>
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Исследования
-                </label>
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Веб-Дизайн
-                </label>
-                <label>
-                    <input type="checkbox" checked onclick="return false;">
-                    Нейро-Обучение
-                </label>
-            </div>
-            <p class="toggle-note">✓ Все модули выбраны. Скидка применена.</p>
-        </div>
-
         <!-- PRICING GRID with Ghost Decoy -->
         <div class="pricing-grid">
             <!-- GHOST DECOY - Sold Out High-Ticket Option -->
@@ -3436,7 +3328,6 @@ img, svg, video {
 
             <!-- MAIN OFFER -->
             <div class="offer-stack">
-                <div class="best-value-badge"><span>ЛУЧШАЯ ЦЕНА</span></div>
                 <span class="offer-stack-badge">⚡ Специальное Предложение — 99% Скидка</span>
 
                 <h3 class="offer-title">Полный Нейро-Оператор Toolkit</h3>
