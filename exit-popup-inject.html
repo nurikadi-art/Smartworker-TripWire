@@ -1,0 +1,422 @@
+<!-- ============================================================
+     EXIT INTENT POPUP - Titanium Box Design
+     Russian Market - $9 Tripwire
+
+     Add this to GHL Custom Code or before </body>
+     ============================================================ -->
+
+<!-- POPUP OVERLAY -->
+<div id="exitPopupOverlay" class="exit-overlay">
+    <div class="titanium-box">
+        <button class="close-popup" onclick="closeExitPopup()">&times;</button>
+
+        <div class="tp-content-grid">
+            <div class="tp-left">
+                <div class="tp-header">ПОДОЖДИ! НЕ УХОДИ...</div>
+                <div class="tp-headline">Пока ты думаешь — другие уже зарабатывают с ИИ</div>
+                <div class="tp-subtext">
+                    Всего за <span class="tp-highlight">$9</span> ты получаешь 6 полных обучающих пакетов + 3 бонуса, которые превратят тебя в ИИ-оператора.
+                    <br><br>
+                    Стоит ли экономить $9, пока другие увеличивают свою продуктивность в 10 раз?
+                </div>
+                <div class="tp-guarantee">
+                    <span class="tp-guarantee-icon">🛡️</span>
+                    <span>30-дневная гарантия возврата — без вопросов</span>
+                </div>
+            </div>
+            <div class="tp-right">
+                <div class="tp-widget">
+                    <div class="tp-row">
+                        <div class="tp-stars">
+                            <div class="tp-star"></div><div class="tp-star"></div><div class="tp-star"></div><div class="tp-star"></div><div class="tp-star"></div>
+                        </div>
+                        <div class="tp-logo">Trust<span>pilot</span></div>
+                    </div>
+                    <div class="tp-review">
+                        "Чуть не закрыл страницу думая 'очередной курс'. Хорошо что не закрыл. <strong>За 2 часа создал своего первого телеграм-бота</strong> — раньше думал это займёт недели."
+                    </div>
+                    <div class="tp-author">— Михаил К., Начинающий фрилансер</div>
+                </div>
+                <a href="https://smartworkers.kz/fe---order-form-page-6628-3000-5628" class="tp-btn">
+                    Да, хочу Комплект ИИ-Оператора за $9
+                </a>
+
+                <div class="tp-no" onclick="closeExitPopup()">
+                    Нет, я продолжу делать всё вручную
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ============================================================
+   EXIT POPUP STYLES - Titanium Box Design
+   ============================================================ */
+
+/* OVERLAY */
+.exit-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.exit-overlay.show {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CLOSE BUTTON */
+.close-popup {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: #86868b;
+    font-size: 24px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.close-popup:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+}
+
+/* 1. LAYOUT & BOX STYLES */
+.titanium-box {
+    background: linear-gradient(145deg, #0f0f12 0%, #050505 100%);
+    border: 1px solid rgba(10, 132, 255, 0.3);
+    box-shadow: 0 0 80px rgba(10, 132, 255, 0.15);
+    border-radius: 24px;
+    padding: 48px;
+    text-align: left;
+    font-family: 'Inter', -apple-system, sans-serif;
+    color: #f5f5f7;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    position: relative;
+    animation: scaleIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9) translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.tp-content-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+/* 2. TEXT STYLES */
+.tp-header {
+    color: #0a84ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.tp-headline {
+    font-size: 30px;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 18px;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+.tp-subtext {
+    font-size: 15px;
+    color: #a1a1aa;
+    line-height: 1.7;
+}
+
+.tp-highlight {
+    color: #28cd41;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.tp-guarantee {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 12px 18px;
+    background: rgba(40, 205, 65, 0.08);
+    border: 1px solid rgba(40, 205, 65, 0.2);
+    border-radius: 10px;
+    font-size: 13px;
+    color: #28cd41;
+    font-weight: 500;
+}
+
+.tp-guarantee-icon {
+    font-size: 16px;
+}
+
+/* 3. RIGHT PANEL & WIDGET */
+.tp-right {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 28px;
+}
+
+.tp-widget {
+    margin-bottom: 24px;
+}
+
+.tp-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.tp-logo {
+    font-weight: 700;
+    font-size: 15px;
+    color: #fff;
+}
+
+.tp-logo span {
+    color: #00b67a;
+}
+
+.tp-stars {
+    display: flex;
+    gap: 3px;
+}
+
+.tp-star {
+    width: 18px;
+    height: 18px;
+    background: #00b67a;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.tp-review {
+    font-size: 14px;
+    color: #d4d4d8;
+    font-style: italic;
+    line-height: 1.6;
+    border-left: 3px solid #00b67a;
+    padding-left: 14px;
+    margin-bottom: 10px;
+}
+
+.tp-review strong {
+    color: #fff;
+    font-style: normal;
+}
+
+.tp-author {
+    font-size: 12px;
+    color: #86868b;
+    padding-left: 14px;
+}
+
+/* 4. BUTTONS */
+.tp-btn {
+    display: block;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #28cd41 0%, #1fa82e 100%);
+    color: white !important;
+    font-weight: 700;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(40, 205, 65, 0.35);
+    transition: all 0.25s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.tp-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(40, 205, 65, 0.5);
+}
+
+.tp-no {
+    display: block;
+    margin-top: 16px;
+    font-size: 12px;
+    color: #52525b;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.2s;
+}
+
+.tp-no:hover {
+    color: #a1a1aa;
+}
+
+/* 5. MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+    .titanium-box {
+        padding: 32px 24px;
+    }
+
+    .tp-content-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .tp-left {
+        text-align: center;
+    }
+
+    .tp-headline {
+        font-size: 24px;
+    }
+
+    .tp-subtext {
+        font-size: 14px;
+    }
+
+    .tp-guarantee {
+        justify-content: center;
+    }
+
+    .tp-right {
+        text-align: left;
+    }
+
+    .tp-btn {
+        font-size: 15px;
+        padding: 16px 20px;
+    }
+
+    .close-popup {
+        top: 12px;
+        right: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .titanium-box {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .tp-headline {
+        font-size: 22px;
+    }
+
+    .tp-right {
+        padding: 20px;
+    }
+
+    .tp-review {
+        font-size: 13px;
+    }
+}
+</style>
+
+<script>
+// ============================================================
+// EXIT INTENT DETECTION + POPUP LOGIC
+// ============================================================
+(function() {
+    const POPUP_KEY = 'exitPopupShown';
+    const POPUP_DELAY = 3000; // Don't show within first 3 seconds
+    let canShowPopup = false;
+    let popupShown = false;
+
+    // Wait before enabling popup
+    setTimeout(() => {
+        canShowPopup = true;
+    }, POPUP_DELAY);
+
+    // Exit Intent: Mouse leaves viewport (desktop)
+    document.addEventListener('mouseout', function(e) {
+        if (e.clientY < 5 && canShowPopup && !popupShown && !sessionStorage.getItem(POPUP_KEY)) {
+            showExitPopup();
+        }
+    });
+
+    // Fallback: Back button / history navigation
+    window.addEventListener('popstate', function() {
+        if (canShowPopup && !popupShown && !sessionStorage.getItem(POPUP_KEY)) {
+            showExitPopup();
+            history.pushState(null, '', window.location.href);
+        }
+    });
+
+    // Push initial state for back button detection
+    history.pushState(null, '', window.location.href);
+
+    function showExitPopup() {
+        const overlay = document.getElementById('exitPopupOverlay');
+        if (overlay) {
+            overlay.classList.add('show');
+            popupShown = true;
+            sessionStorage.setItem(POPUP_KEY, 'true');
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    // Close popup function (global)
+    window.closeExitPopup = function() {
+        const overlay = document.getElementById('exitPopupOverlay');
+        if (overlay) {
+            overlay.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+    };
+
+    // Close on overlay click (outside box)
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('exit-overlay')) {
+            closeExitPopup();
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeExitPopup();
+        }
+    });
+})();
+</script>
