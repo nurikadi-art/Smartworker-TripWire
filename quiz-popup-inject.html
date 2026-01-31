@@ -1,0 +1,678 @@
+<!-- ============================================================
+     QUIZ POPUP - "Which AI Skill First?"
+     Interactive 3-question quiz with personalized result
+
+     Add to GHL Custom Code or before </body> on tripwire
+     ============================================================ -->
+
+<div id="quizPopupOverlay" class="quiz-overlay">
+    <div class="quiz-box">
+        <button class="quiz-close" onclick="closeQuizPopup()">&times;</button>
+
+        <!-- QUIZ HEADER -->
+        <div class="quiz-header">
+            <div class="quiz-icon">🎯</div>
+            <h2 class="quiz-title">Какой AI-навык тебе нужен?</h2>
+            <p class="quiz-subtitle">3 вопроса — 30 секунд — персональная рекомендация</p>
+        </div>
+
+        <!-- PROGRESS BAR -->
+        <div class="quiz-progress">
+            <div class="quiz-progress-bar" id="quizProgressBar"></div>
+        </div>
+        <div class="quiz-progress-text">Вопрос <span id="currentQ">1</span> из 3</div>
+
+        <!-- QUESTION 1 -->
+        <div class="quiz-question active" data-question="1">
+            <h3 class="question-text">Что ты хочешь создавать?</h3>
+            <div class="quiz-options">
+                <button class="quiz-option" data-value="code" onclick="selectOption(this, 1)">
+                    <span class="option-icon">💻</span>
+                    <span class="option-text">Сайты, боты, автоматизации</span>
+                </button>
+                <button class="quiz-option" data-value="design" onclick="selectOption(this, 1)">
+                    <span class="option-icon">🎨</span>
+                    <span class="option-text">Графику, картинки, визуалы</span>
+                </button>
+                <button class="quiz-option" data-value="content" onclick="selectOption(this, 1)">
+                    <span class="option-icon">📝</span>
+                    <span class="option-text">Тексты, контент, посты</span>
+                </button>
+                <button class="quiz-option" data-value="research" onclick="selectOption(this, 1)">
+                    <span class="option-icon">🔍</span>
+                    <span class="option-text">Исследования, анализ, отчёты</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- QUESTION 2 -->
+        <div class="quiz-question" data-question="2">
+            <h3 class="question-text">Какой у тебя опыт с нейросетями?</h3>
+            <div class="quiz-options">
+                <button class="quiz-option" data-value="beginner" onclick="selectOption(this, 2)">
+                    <span class="option-icon">🌱</span>
+                    <span class="option-text">Новичок — только начинаю</span>
+                </button>
+                <button class="quiz-option" data-value="basic" onclick="selectOption(this, 2)">
+                    <span class="option-icon">📱</span>
+                    <span class="option-text">Пользуюсь ChatGPT для базовых задач</span>
+                </button>
+                <button class="quiz-option" data-value="intermediate" onclick="selectOption(this, 2)">
+                    <span class="option-icon">⚡</span>
+                    <span class="option-text">Уже зарабатываю, хочу больше</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- QUESTION 3 -->
+        <div class="quiz-question" data-question="3">
+            <h3 class="question-text">Какая твоя главная цель?</h3>
+            <div class="quiz-options">
+                <button class="quiz-option" data-value="freelance" onclick="selectOption(this, 3)">
+                    <span class="option-icon">💰</span>
+                    <span class="option-text">Зарабатывать на фрилансе</span>
+                </button>
+                <button class="quiz-option" data-value="business" onclick="selectOption(this, 3)">
+                    <span class="option-icon">🚀</span>
+                    <span class="option-text">Развивать свой бизнес/проект</span>
+                </button>
+                <button class="quiz-option" data-value="job" onclick="selectOption(this, 3)">
+                    <span class="option-icon">💼</span>
+                    <span class="option-text">Быть ценнее на работе</span>
+                </button>
+                <button class="quiz-option" data-value="learn" onclick="selectOption(this, 3)">
+                    <span class="option-icon">🧠</span>
+                    <span class="option-text">Просто освоить новые навыки</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- LOADING STATE -->
+        <div class="quiz-loading" id="quizLoading">
+            <div class="loading-spinner"></div>
+            <p>Анализируем твои ответы...</p>
+        </div>
+
+        <!-- RESULT -->
+        <div class="quiz-result" id="quizResult">
+            <div class="result-badge">✅ ТВОЙ РЕЗУЛЬТАТ</div>
+            <h3 class="result-title" id="resultTitle">Нейро-Веб Дизайн</h3>
+            <p class="result-desc" id="resultDesc">Этот модуль идеально подходит для твоих целей</p>
+
+            <div class="result-match">
+                <div class="match-bar">
+                    <div class="match-fill" id="matchFill"></div>
+                </div>
+                <span class="match-text"><span id="matchPercent">94</span>% совпадение</span>
+            </div>
+
+            <div class="result-includes">
+                <p class="includes-label">Этот модуль входит в Комплект ИИ-Оператора:</p>
+                <div class="includes-grid">
+                    <div class="include-item">✓ <span id="resultModule">Нейро-Веб</span></div>
+                    <div class="include-item">✓ + 5 других модулей</div>
+                    <div class="include-item">✓ 3 бонуса</div>
+                    <div class="include-item">✓ Доступ в сообщество</div>
+                </div>
+            </div>
+
+            <div class="result-price">
+                <span class="price-label">Всё вместе:</span>
+                <span class="price-old">$1,073</span>
+                <span class="price-new">$9</span>
+            </div>
+
+            <a href="https://smartworkers.kz/orderform-6709" class="result-cta">
+                Получить Комплект ИИ-Оператора → $9
+            </a>
+
+            <p class="result-guarantee">🛡️ 30-дневная гарантия возврата</p>
+        </div>
+    </div>
+</div>
+
+<style>
+/* ============================================================
+   QUIZ POPUP STYLES
+   ============================================================ */
+
+.quiz-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.quiz-overlay.show {
+    display: flex;
+}
+
+.quiz-box {
+    background: linear-gradient(145deg, #0f0f12 0%, #050505 100%);
+    border: 1px solid rgba(10, 132, 255, 0.25);
+    box-shadow: 0 0 60px rgba(10, 132, 255, 0.12);
+    border-radius: 24px;
+    padding: 40px;
+    width: 100%;
+    max-width: 520px;
+    position: relative;
+    animation: quizSlideIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+@keyframes quizSlideIn {
+    from { transform: scale(0.9) translateY(30px); opacity: 0; }
+    to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.quiz-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #86868b;
+    font-size: 22px;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quiz-close:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+/* HEADER */
+.quiz-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.quiz-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.quiz-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+}
+
+.quiz-subtitle {
+    font-size: 14px;
+    color: #86868b;
+    margin: 0;
+}
+
+/* PROGRESS */
+.quiz-progress {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #0a84ff, #28cd41);
+    width: 33%;
+    transition: width 0.4s ease;
+    border-radius: 3px;
+}
+
+.quiz-progress-text {
+    font-size: 12px;
+    color: #86868b;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+/* QUESTIONS */
+.quiz-question {
+    display: none;
+}
+
+.quiz-question.active {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.question-text {
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    margin: 0 0 24px;
+}
+
+/* OPTIONS */
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: left;
+    width: 100%;
+}
+
+.quiz-option:hover {
+    background: rgba(10, 132, 255, 0.08);
+    border-color: rgba(10, 132, 255, 0.3);
+    transform: translateX(4px);
+}
+
+.quiz-option.selected {
+    background: rgba(10, 132, 255, 0.15);
+    border-color: #0a84ff;
+}
+
+.option-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.option-text {
+    font-size: 15px;
+    color: #f5f5f7;
+    font-weight: 500;
+}
+
+/* LOADING */
+.quiz-loading {
+    display: none;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.quiz-loading.show {
+    display: block;
+    animation: fadeInUp 0.3s ease;
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid rgba(10, 132, 255, 0.2);
+    border-top-color: #0a84ff;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.quiz-loading p {
+    color: #86868b;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* RESULT */
+.quiz-result {
+    display: none;
+    text-align: center;
+}
+
+.quiz-result.show {
+    display: block;
+    animation: fadeInUp 0.4s ease;
+}
+
+.result-badge {
+    display: inline-block;
+    background: rgba(40, 205, 65, 0.15);
+    color: #28cd41;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+}
+
+.result-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.result-desc {
+    font-size: 15px;
+    color: #86868b;
+    margin: 0 0 20px;
+}
+
+.result-match {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.match-bar {
+    width: 120px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.match-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #0a84ff, #28cd41);
+    width: 0%;
+    transition: width 1s ease;
+    border-radius: 4px;
+}
+
+.match-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: #28cd41;
+}
+
+.result-includes {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.includes-label {
+    font-size: 13px;
+    color: #86868b;
+    margin: 0 0 12px;
+}
+
+.includes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.include-item {
+    font-size: 14px;
+    color: #d4d4d8;
+}
+
+.include-item span {
+    color: #0a84ff;
+    font-weight: 600;
+}
+
+.result-price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.price-label {
+    font-size: 14px;
+    color: #86868b;
+}
+
+.price-old {
+    font-size: 18px;
+    color: #52525b;
+    text-decoration: line-through;
+}
+
+.price-new {
+    font-size: 32px;
+    font-weight: 800;
+    color: #28cd41;
+}
+
+.result-cta {
+    display: block;
+    width: 100%;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, #28cd41 0%, #1fa82e 100%);
+    color: #fff !important;
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(40, 205, 65, 0.35);
+    transition: all 0.25s ease;
+    margin-bottom: 16px;
+}
+
+.result-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(40, 205, 65, 0.5);
+}
+
+.result-guarantee {
+    font-size: 13px;
+    color: #86868b;
+    margin: 0;
+}
+
+/* MOBILE */
+@media (max-width: 540px) {
+    .quiz-box {
+        padding: 28px 20px;
+        border-radius: 20px;
+    }
+
+    .quiz-title {
+        font-size: 22px;
+    }
+
+    .question-text {
+        font-size: 18px;
+    }
+
+    .quiz-option {
+        padding: 14px 16px;
+    }
+
+    .option-text {
+        font-size: 14px;
+    }
+
+    .result-title {
+        font-size: 24px;
+    }
+
+    .includes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-cta {
+        font-size: 15px;
+        padding: 16px 20px;
+    }
+}
+</style>
+
+<script>
+// ============================================================
+// QUIZ LOGIC
+// ============================================================
+(function() {
+    const answers = {};
+    let currentQuestion = 1;
+    const totalQuestions = 3;
+
+    // Module recommendations based on answers
+    const recommendations = {
+        code: {
+            title: 'Нейро-Кодинг',
+            module: 'Нейро-Код',
+            desc: 'Создавай сайты, ботов и автоматизации без знания программирования'
+        },
+        design: {
+            title: 'Нейро-Графика',
+            module: 'Нейро-Дизайн',
+            desc: 'Генерируй профессиональную графику и визуалы по запросу'
+        },
+        content: {
+            title: 'Нейро-Контент',
+            module: 'Нейро-Тексты',
+            desc: 'Пиши продающие тексты и контент в 10 раз быстрее'
+        },
+        research: {
+            title: 'Нейро-Ресёрч',
+            module: 'Нейро-Исследования',
+            desc: 'Проводи глубокие исследования за минуты вместо часов'
+        }
+    };
+
+    // Show popup after delay or scroll
+    function initQuizTrigger() {
+        // Option 1: Show after 45 seconds
+        setTimeout(() => {
+            if (!sessionStorage.getItem('quizShown')) {
+                showQuizPopup();
+            }
+        }, 45000);
+
+        // Option 2: Show at 50% scroll
+        let scrollTriggered = false;
+        window.addEventListener('scroll', () => {
+            if (scrollTriggered || sessionStorage.getItem('quizShown')) return;
+            const scrollPercent = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+            if (scrollPercent > 50) {
+                scrollTriggered = true;
+                showQuizPopup();
+            }
+        });
+    }
+
+    window.showQuizPopup = function() {
+        document.getElementById('quizPopupOverlay').classList.add('show');
+        sessionStorage.setItem('quizShown', 'true');
+        document.body.style.overflow = 'hidden';
+    };
+
+    window.closeQuizPopup = function() {
+        document.getElementById('quizPopupOverlay').classList.remove('show');
+        document.body.style.overflow = '';
+    };
+
+    window.selectOption = function(button, questionNum) {
+        // Mark selected
+        const options = button.parentElement.querySelectorAll('.quiz-option');
+        options.forEach(opt => opt.classList.remove('selected'));
+        button.classList.add('selected');
+
+        // Store answer
+        answers[questionNum] = button.dataset.value;
+
+        // Move to next question after short delay
+        setTimeout(() => {
+            if (questionNum < totalQuestions) {
+                goToQuestion(questionNum + 1);
+            } else {
+                showLoading();
+            }
+        }, 300);
+    };
+
+    function goToQuestion(num) {
+        currentQuestion = num;
+
+        // Update progress
+        document.getElementById('quizProgressBar').style.width = ((num / totalQuestions) * 100) + '%';
+        document.getElementById('currentQ').textContent = num;
+
+        // Switch questions
+        document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+        document.querySelector(`.quiz-question[data-question="${num}"]`).classList.add('active');
+    }
+
+    function showLoading() {
+        document.querySelectorAll('.quiz-question').forEach(q => q.classList.remove('active'));
+        document.getElementById('quizLoading').classList.add('show');
+        document.getElementById('quizProgressBar').style.width = '100%';
+
+        // Show result after "analysis"
+        setTimeout(() => {
+            showResult();
+        }, 1500);
+    }
+
+    function showResult() {
+        document.getElementById('quizLoading').classList.remove('show');
+
+        // Get recommendation based on first answer (primary interest)
+        const primary = answers[1] || 'code';
+        const rec = recommendations[primary];
+
+        // Update result content
+        document.getElementById('resultTitle').textContent = rec.title;
+        document.getElementById('resultDesc').textContent = rec.desc;
+        document.getElementById('resultModule').textContent = rec.module;
+
+        // Show result
+        document.getElementById('quizResult').classList.add('show');
+
+        // Animate match percentage
+        setTimeout(() => {
+            const matchPercent = 88 + Math.floor(Math.random() * 10); // 88-97%
+            document.getElementById('matchFill').style.width = matchPercent + '%';
+            document.getElementById('matchPercent').textContent = matchPercent;
+        }, 200);
+    }
+
+    // Close on overlay click
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('quiz-overlay')) {
+            closeQuizPopup();
+        }
+    });
+
+    // Close on Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeQuizPopup();
+    });
+
+    // Initialize
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initQuizTrigger);
+    } else {
+        initQuizTrigger();
+    }
+})();
+</script>
