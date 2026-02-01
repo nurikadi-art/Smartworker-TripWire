@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Подготовка к Интервью с Американцами | Smartworker</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --system-blue: #0a84ff;
+    --system-blue-dark: #0066cc;
+    --system-blue-light: #5ac8fa;
+    --pure-white: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --apple-grey: #86868b;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --highlight-green: #28cd41;
+    --highlight-red: #ff453a;
+    --highlight-gold: #ffd60a;
+    --highlight-purple: #bf5af2;
+    --bg-dark: #0a0a0c;
+    --bg-card: rgba(255, 255, 255, 0.02);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    body { background: white !important; color: #1a1a1a !important; }
+    .page-break { page-break-before: always; }
+}
+
+body, html {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--pure-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 60px 32px;
+}
+
+/* Header */
+.doc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(191, 90, 242, 0.15);
+    border: 1px solid rgba(191, 90, 242, 0.3);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--highlight-purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.doc-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--pure-white) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.doc-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* Section */
+.section {
+    margin-bottom: 48px;
+}
+
+.section-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--highlight-purple);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--pure-white);
+}
+
+.section-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+/* Question Card */
+.question-grid {
+    display: grid;
+    gap: 24px;
+}
+
+.question-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.question-header {
+    background: linear-gradient(135deg, rgba(191, 90, 242, 0.1) 0%, rgba(10, 132, 255, 0.05) 100%);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.question-number {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--highlight-purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.question-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pure-white);
+}
+
+.question-body {
+    padding: 24px;
+}
+
+.answer-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--highlight-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.answer-template {
+    background: rgba(40, 205, 65, 0.05);
+    border: 1px solid rgba(40, 205, 65, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+.answer-template .variable {
+    background: rgba(10, 132, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--system-blue-light);
+    font-family: monospace;
+}
+
+.answer-tips {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+.answer-tips strong {
+    color: var(--highlight-gold);
+}
+
+/* STAR Method */
+.star-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.star-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+}
+
+.star-letter {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--system-blue) 0%, var(--highlight-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.star-word {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 8px;
+}
+
+.star-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Tip Box */
+.tip-box {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
+    border: 1px solid rgba(10, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.tip-box.warning {
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 214, 10, 0.02) 100%);
+    border-color: rgba(255, 214, 10, 0.2);
+}
+
+.tip-box.success {
+    background: linear-gradient(135deg, rgba(40, 205, 65, 0.08) 0%, rgba(40, 205, 65, 0.02) 100%);
+    border-color: rgba(40, 205, 65, 0.2);
+}
+
+.tip-box.danger {
+    background: linear-gradient(135deg, rgba(255, 69, 58, 0.08) 0%, rgba(255, 69, 58, 0.02) 100%);
+    border-color: rgba(255, 69, 58, 0.2);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tip-icon { font-size: 20px; }
+
+.tip-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--system-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tip-box.warning .tip-title { color: var(--highlight-gold); }
+.tip-box.success .tip-title { color: var(--highlight-green); }
+.tip-box.danger .tip-title { color: var(--highlight-red); }
+
+.tip-content {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+}
+
+/* Checklist */
+.checklist-grid {
+    display: grid;
+    gap: 12px;
+}
+
+.checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+}
+
+.checklist-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--glass-border);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.checklist-text {
+    font-size: 15px;
+    color: var(--pure-white);
+}
+
+.checklist-text span {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+/* Do/Don't Grid */
+.do-dont-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 24px 0;
+}
+
+.do-card, .dont-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.do-card {
+    border: 1px solid rgba(40, 205, 65, 0.3);
+}
+
+.dont-card {
+    border: 1px solid rgba(255, 69, 58, 0.3);
+}
+
+.do-card-header, .dont-card-header {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.do-card-header { color: var(--highlight-green); }
+.dont-card-header { color: var(--highlight-red); }
+
+.do-list, .dont-list {
+    list-style: none;
+    padding: 0;
+}
+
+.do-list li, .dont-list li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.do-list li::before { content: "✓"; color: var(--highlight-green); }
+.dont-list li::before { content: "✗"; color: var(--highlight-red); }
+
+/* Footer */
+.doc-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--system-blue) 0%, var(--highlight-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container { padding: 40px 20px; }
+    .star-grid { grid-template-columns: repeat(2, 1fr); }
+    .do-dont-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="doc-header">
+        <div class="doc-badge">
+            <span>🎤</span>
+            <span>Interview Mastery</span>
+        </div>
+        <h1 class="doc-title">Подготовка к Интервью с Американскими Работодателями</h1>
+        <p class="doc-subtitle">Полный гайд: от подготовки до follow-up. С готовыми ответами на 15 самых частых вопросов.</p>
+    </header>
+
+    <!-- STAR Method -->
+    <section class="section">
+        <div class="section-number">Метод</div>
+        <h2 class="section-title">STAR-Метод: Основа Всех Ответов</h2>
+        <p class="section-intro">Американцы любят структурированные ответы. STAR-метод — это формула, которая работает для 90% behavioral вопросов.</p>
+
+        <div class="star-grid">
+            <div class="star-card">
+                <div class="star-letter">S</div>
+                <div class="star-word">Situation</div>
+                <div class="star-desc">Опиши контекст. Где? Когда? Что происходило?</div>
+            </div>
+            <div class="star-card">
+                <div class="star-letter">T</div>
+                <div class="star-word">Task</div>
+                <div class="star-desc">Какая была твоя задача или цель?</div>
+            </div>
+            <div class="star-card">
+                <div class="star-letter">A</div>
+                <div class="star-word">Action</div>
+                <div class="star-desc">Что конкретно ТЫ сделал? (не команда, а ты)</div>
+            </div>
+            <div class="star-card">
+                <div class="star-letter">R</div>
+                <div class="star-word">Result</div>
+                <div class="star-desc">Какой результат? Лучше с цифрами.</div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Пример STAR</span>
+            </div>
+            <p class="tip-content">
+                <strong>S:</strong> "At my previous company, we were losing 30% of customers during onboarding."<br>
+                <strong>T:</strong> "I was tasked with improving the onboarding experience."<br>
+                <strong>A:</strong> "I analyzed user data, identified 3 key drop-off points, and redesigned the email sequence with personalized content."<br>
+                <strong>R:</strong> "We reduced churn by 45% and increased 30-day retention to 78%."
+            </p>
+        </div>
+    </section>
+
+    <!-- Question 1: Tell me about yourself -->
+    <section class="section">
+        <div class="section-number">ТОП-15 Вопросов</div>
+        <h2 class="section-title">Самые Частые Вопросы + Ответы</h2>
+
+        <div class="question-grid">
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #1</div>
+                    <div class="question-text">"Tell me about yourself"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Шаблон ответа (60-90 секунд)</div>
+                    <div class="answer-template">
+                        "I'm a <span class="variable">[роль]</span> with <span class="variable">[X лет]</span> of experience in <span class="variable">[область]</span>.
+
+Most recently, I worked at <span class="variable">[компания]</span> where I <span class="variable">[главное достижение с цифрой]</span>.
+
+Before that, I <span class="variable">[предыдущий опыт кратко]</span>.
+
+I'm particularly excited about this role because <span class="variable">[почему эта позиция]</span>, and I believe my experience in <span class="variable">[релевантный навык]</span> would be valuable for your team."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Важно:</strong> Это НЕ пересказ резюме. Это твой elevator pitch. Фокус на последнем опыте и почему ты подходишь именно на эту позицию. Заверши связкой с компанией.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #2</div>
+                    <div class="question-text">"Why do you want to work for us?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Шаблон ответа</div>
+                    <div class="answer-template">
+                        "I've been following <span class="variable">[компания]</span> for a while, and I'm impressed by <span class="variable">[конкретный факт о компании: продукт, культура, рост]</span>.
+
+What excites me most is <span class="variable">[что-то специфичное о роли/миссии]</span>.
+
+I believe my experience in <span class="variable">[навык]</span> aligns well with your needs, especially given your focus on <span class="variable">[их приоритет из вакансии]</span>."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Подготовка:</strong> Изучи компанию: About page, LinkedIn, Glassdoor, последние новости. Упомяни что-то конкретное — это показывает genuine interest.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #3</div>
+                    <div class="question-text">"What's your biggest weakness?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Шаблон ответа</div>
+                    <div class="answer-template">
+                        "One area I've been actively working on is <span class="variable">[реальная, но не критичная слабость]</span>.
+
+For example, <span class="variable">[конкретный пример]</span>.
+
+To improve, I've been <span class="variable">[конкретные действия]</span>, and I've already seen progress — <span class="variable">[результат улучшения]</span>."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Хорошие "слабости":</strong> perfectionism (но работаю над балансом), public speaking (прошёл курс), delegating (учусь доверять команде). <strong>Никогда не говори:</strong> "I work too hard" или "I'm a perfectionist" без конкретики — это клише.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #4</div>
+                    <div class="question-text">"Tell me about a time you faced a challenge"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ STAR ответ</div>
+                    <div class="answer-template">
+                        "<strong>Situation:</strong> At <span class="variable">[компания]</span>, we faced <span class="variable">[проблема]</span>.
+
+<strong>Task:</strong> I was responsible for <span class="variable">[твоя роль]</span>.
+
+<strong>Action:</strong> I <span class="variable">[конкретные шаги: 1, 2, 3]</span>.
+
+<strong>Result:</strong> As a result, <span class="variable">[измеримый результат]</span>. I learned that <span class="variable">[вывод]</span>."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Лайфхак:</strong> Выбери историю, где ты показал problem-solving, инициативу и достиг положительного результата. Подготовь 3-4 таких истории заранее.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #5</div>
+                    <div class="question-text">"Why are you leaving your current job?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Шаблон ответа</div>
+                    <div class="answer-template">
+                        "I've learned a lot at <span class="variable">[текущая/прошлая компания]</span> and I'm grateful for the experience.
+
+However, I'm looking for <span class="variable">[что ищешь: рост, новые challenges, remote opportunity]</span>.
+
+This role at <span class="variable">[компания]</span> offers exactly that — <span class="variable">[конкретная причина]</span>."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Никогда:</strong> Не критикуй прошлого работодателя. Даже если он был ужасен — фокусируйся на том, что ищешь, а не от чего убегаешь.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #6</div>
+                    <div class="question-text">"What are your salary expectations?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Варианты ответа</div>
+                    <div class="answer-template">
+                        <strong>Вариант 1 (отложить):</strong>
+"I'd like to learn more about the role and responsibilities first. Could you share the budget range for this position?"
+
+<strong>Вариант 2 (назвать диапазон):</strong>
+"Based on my research and experience, I'm targeting <span class="variable">[$X - $Y]</span> per hour/year. However, I'm open to discussion depending on the full compensation package."
+
+<strong>Вариант 3 (перевести стрелки):</strong>
+"What's the range you have budgeted for this role?"
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Исследуй заранее:</strong> Glassdoor, Levels.fyi, LinkedIn Salary. Называй диапазон на 10-15% выше минимально приемлемого — будет куда "уступить" на переговорах.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #7</div>
+                    <div class="question-text">"Where do you see yourself in 5 years?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Шаблон ответа</div>
+                    <div class="answer-template">
+                        "In 5 years, I see myself as a <span class="variable">[реалистичная позиция роста]</span>, having developed expertise in <span class="variable">[область]</span>.
+
+I'm excited about the opportunity to grow within <span class="variable">[компания]</span> and contribute to <span class="variable">[их цели]</span>.
+
+I believe this role is the perfect foundation for that growth."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Баланс:</strong> Покажи амбиции, но не так, будто используешь их как трамплин. Они хотят знать, что ты останешься надолго.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #8</div>
+                    <div class="question-text">"Do you have any questions for us?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-label">✓ Вопросы, которые нужно задать</div>
+                    <div class="answer-template">
+                        1. "What does success look like in this role in the first 90 days?"
+
+2. "What are the biggest challenges the team is facing right now?"
+
+3. "How would you describe the team culture?"
+
+4. "What do you enjoy most about working here?"
+
+5. "What are the next steps in the interview process?"
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Правило:</strong> Всегда задавай минимум 2-3 вопроса. "No questions" = "I'm not interested". Подготовь 5 вопросов — часть могут ответить в процессе интервью.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Questions -->
+    <section class="section page-break">
+        <div class="section-number">Ещё вопросы</div>
+        <h2 class="section-title">Дополнительные Частые Вопросы</h2>
+
+        <div class="question-grid">
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #9</div>
+                    <div class="question-text">"How do you handle working remotely?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-template">
+                        "I've been working remotely for <span class="variable">[X лет]</span> and have developed a strong system:
+
+• I maintain a dedicated workspace with reliable internet
+• I use <span class="variable">[инструменты: Slack, Asana, etc.]</span> for communication and task management
+• I'm proactive about over-communicating and documenting everything
+• I'm comfortable working in US time zones — I've done it before with <span class="variable">[пример]</span>
+
+Remote work actually helps me be more productive because <span class="variable">[причина]</span>."
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #10</div>
+                    <div class="question-text">"Tell me about a time you made a mistake"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-template">
+                        "<strong>Situation:</strong> <span class="variable">[Контекст]</span>
+
+<strong>Mistake:</strong> I <span class="variable">[что произошло]</span>, which resulted in <span class="variable">[последствие]</span>.
+
+<strong>What I did:</strong> I immediately <span class="variable">[как исправил]</span> and took responsibility.
+
+<strong>What I learned:</strong> This taught me to <span class="variable">[урок]</span>. Since then, I've implemented <span class="variable">[что изменил]</span> to prevent similar issues."
+                    </div>
+                    <div class="answer-tips">
+                        <strong>Ключ:</strong> Выбери реальную, но не катастрофическую ошибку. Покажи ownership (не обвиняй других) и конкретные действия по исправлению.
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #11</div>
+                    <div class="question-text">"How do you prioritize tasks?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-template">
+                        "I use a combination of approaches:
+
+1. <strong>Urgency + Importance matrix</strong> — I categorize tasks by deadline and impact
+2. <strong>Daily planning</strong> — Each morning I identify 3 must-do tasks
+3. <strong>Communication</strong> — When everything seems urgent, I clarify priorities with stakeholders
+
+For example, at <span class="variable">[компания]</span>, I managed <span class="variable">[X задач]</span> simultaneously by <span class="variable">[метод]</span>, which helped me <span class="variable">[результат]</span>."
+                    </div>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question-header">
+                    <div class="question-number">Вопрос #12</div>
+                    <div class="question-text">"What makes you unique?"</div>
+                </div>
+                <div class="question-body">
+                    <div class="answer-template">
+                        "What sets me apart is my combination of <span class="variable">[навык 1]</span> and <span class="variable">[навык 2]</span>.
+
+Most <span class="variable">[твоя роль]</span> professionals focus on <span class="variable">[обычное]</span>, but I also bring <span class="variable">[твоя уникальность]</span>.
+
+For example, <span class="variable">[конкретный пример применения]</span>."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Before Interview -->
+    <section class="section page-break">
+        <div class="section-number">Подготовка</div>
+        <h2 class="section-title">Чек-Лист: До Интервью</h2>
+
+        <div class="checklist-grid">
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Изучи компанию
+                    <span>About page, LinkedIn, Glassdoor отзывы, последние новости, продукты</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Изучи интервьюера
+                    <span>LinkedIn профиль, общие интересы, их роль в компании</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Перечитай описание вакансии
+                    <span>Выдели ключевые требования и подготовь примеры под каждое</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Подготовь 5+ STAR-историй
+                    <span>Challenges, achievements, teamwork, mistakes, leadership</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Проверь технику
+                    <span>Камера, микрофон, интернет, освещение (тест за день до)</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Настрой окружение
+                    <span>Тихое место, нейтральный фон, никаких отвлечений</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Подготовь вопросы для них
+                    <span>Минимум 5 вопросов о роли, команде, компании</span>
+                </div>
+            </div>
+            <div class="checklist-item">
+                <span class="checklist-box"></span>
+                <div class="checklist-text">
+                    Держи под рукой
+                    <span>Резюме, описание вакансии, заметки, воду, ручку</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Do's and Don'ts -->
+    <section class="section page-break">
+        <div class="section-number">Правила</div>
+        <h2 class="section-title">Во Время Интервью</h2>
+
+        <div class="do-dont-grid">
+            <div class="do-card">
+                <div class="do-card-header">✓ Делай</div>
+                <ul class="do-list">
+                    <li>Смотри в камеру (не на экран)</li>
+                    <li>Улыбайся и кивай</li>
+                    <li>Делай паузы перед ответом</li>
+                    <li>Используй имя интервьюера</li>
+                    <li>Приводи конкретные примеры</li>
+                    <li>Задавай уточняющие вопросы</li>
+                    <li>Благодари за время в конце</li>
+                    <li>Отправь follow-up email</li>
+                </ul>
+            </div>
+            <div class="dont-card">
+                <div class="dont-card-header">✗ Не делай</div>
+                <ul class="dont-list">
+                    <li>Не критикуй прошлых работодателей</li>
+                    <li>Не перебивай</li>
+                    <li>Не говори "I don't know" — скажи "Let me think"</li>
+                    <li>Не врай и не преувеличивай</li>
+                    <li>Не спрашивай о зарплате первым</li>
+                    <li>Не отвечай "yes/no" — развивай</li>
+                    <li>Не используй сленг и filler words</li>
+                    <li>Не отвлекайся на телефон</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">⚠️</span>
+                <span class="tip-title">Filler Words</span>
+            </div>
+            <p class="tip-content">Избегай: "um", "like", "you know", "basically", "actually". Американцы замечают это. Лучше сделать паузу, чем заполнять тишину. Практикуйся записывая себя.</p>
+        </div>
+    </section>
+
+    <!-- After Interview -->
+    <section class="section page-break">
+        <div class="section-number">Follow-up</div>
+        <h2 class="section-title">После Интервью</h2>
+
+        <div class="question-card" style="margin-bottom: 24px;">
+            <div class="question-header">
+                <div class="question-number">В течение 24 часов</div>
+                <div class="question-text">Отправь Thank You Email</div>
+            </div>
+            <div class="question-body">
+                <div class="answer-template">
+Subject: Thank you — <span class="variable">[Позиция]</span> Interview
+
+Hi <span class="variable">[Имя]</span>,
+
+Thank you for taking the time to speak with me today about the <span class="variable">[позиция]</span> role at <span class="variable">[компания]</span>.
+
+I enjoyed learning more about <span class="variable">[что-то конкретное из разговора]</span>. Our conversation reinforced my excitement about the opportunity to <span class="variable">[как ты поможешь]</span>.
+
+I'm particularly drawn to <span class="variable">[что запомнилось о компании]</span> and believe my experience in <span class="variable">[навык]</span> would enable me to contribute immediately.
+
+Please don't hesitate to reach out if you need any additional information. I look forward to hearing from you.
+
+Best regards,
+<span class="variable">[Твоё имя]</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box success">
+            <div class="tip-header">
+                <span class="tip-icon">📧</span>
+                <span class="tip-title">Follow-up Timeline</span>
+            </div>
+            <p class="tip-content">
+                <strong>24 часа:</strong> Thank you email<br>
+                <strong>1 неделя:</strong> Если нет ответа — короткий follow-up: "Just checking in..."<br>
+                <strong>2 недели:</strong> Ещё один follow-up, можно спросить о timeline<br>
+                <strong>После этого:</strong> Двигайся дальше, но оставайся открытым
+            </p>
+        </div>
+    </section>
+
+    <!-- Common Mistakes -->
+    <section class="section">
+        <div class="section-number">Ошибки</div>
+        <h2 class="section-title">Частые Ошибки Кандидатов из СНГ</h2>
+
+        <div class="tip-box danger">
+            <div class="tip-header">
+                <span class="tip-icon">1️⃣</span>
+                <span class="tip-title">Слишком скромно</span>
+            </div>
+            <p class="tip-content">В СНГ хвастаться неприлично. В США — это норма. Говори о своих достижениях уверенно. "I led", "I achieved", "I delivered" — не "we" или "the team".</p>
+        </div>
+
+        <div class="tip-box danger">
+            <div class="tip-header">
+                <span class="tip-icon">2️⃣</span>
+                <span class="tip-title">Длинные ответы</span>
+            </div>
+            <p class="tip-content">Американцы ценят краткость. Идеальный ответ: 60-90 секунд. Если видишь, что интервьюер отвлекается — заканчивай. "Would you like me to elaborate?"</p>
+        </div>
+
+        <div class="tip-box danger">
+            <div class="tip-header">
+                <span class="tip-icon">3️⃣</span>
+                <span class="tip-title">Нет конкретики</span>
+            </div>
+            <p class="tip-content">"I'm a hard worker" ничего не значит. "I consistently exceeded targets by 20%" — значит. Цифры, примеры, результаты.</p>
+        </div>
+
+        <div class="tip-box danger">
+            <div class="tip-header">
+                <span class="tip-icon">4️⃣</span>
+                <span class="tip-title">Недостаточно энтузиазма</span>
+            </div>
+            <p class="tip-content">Американцы экспрессивны. Монотонный голос = незаинтересованность. Улыбайся, интонируй, показывай excitement. Это культурная разница — адаптируйся.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+        <div class="footer-logo">Smartworker</div>
+        <p class="footer-text">© 2025 Recrutu Virtual Assistants LLC. Все права защищены.<br>Этот документ предназначен только для личного использования.</p>
+    </footer>
+</div>
+
+</body>
+</html>

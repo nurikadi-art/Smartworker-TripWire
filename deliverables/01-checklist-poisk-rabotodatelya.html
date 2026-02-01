@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Чек-Лист: Поиск Американских Работодателей | Smartworker</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --system-blue: #0a84ff;
+    --system-blue-dark: #0066cc;
+    --system-blue-light: #5ac8fa;
+    --pure-white: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --apple-grey: #86868b;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --highlight-green: #28cd41;
+    --highlight-red: #ff453a;
+    --highlight-gold: #ffd60a;
+    --highlight-purple: #bf5af2;
+    --bg-dark: #0a0a0c;
+    --bg-card: rgba(255, 255, 255, 0.02);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    body { background: white !important; color: #1a1a1a !important; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none !important; }
+    .card, .platform-card, .tip-box {
+        border: 1px solid #ddd !important;
+        background: #f9f9f9 !important;
+        box-shadow: none !important;
+    }
+    a { color: #0066cc !important; }
+}
+
+body, html {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--pure-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 32px;
+}
+
+/* Header */
+.doc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(10, 132, 255, 0.15);
+    border: 1px solid rgba(10, 132, 255, 0.3);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--system-blue-light);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.doc-title {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--pure-white) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.doc-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Section */
+.section {
+    margin-bottom: 48px;
+}
+
+.section-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--system-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--pure-white);
+}
+
+.section-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+/* Platform Cards */
+.platform-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.platform-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.3s ease;
+}
+
+.platform-card:hover {
+    border-color: rgba(10, 132, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+.platform-card.premium {
+    border-color: rgba(255, 214, 10, 0.3);
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.05) 0%, transparent 100%);
+}
+
+.platform-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.platform-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 4px;
+}
+
+.platform-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.platform-tag.hot {
+    background: rgba(255, 69, 58, 0.2);
+    color: var(--highlight-red);
+}
+
+.platform-tag.recommended {
+    background: rgba(40, 205, 65, 0.2);
+    color: var(--highlight-green);
+}
+
+.platform-tag.gold {
+    background: rgba(255, 214, 10, 0.2);
+    color: var(--highlight-gold);
+}
+
+.platform-url {
+    font-size: 13px;
+    color: var(--system-blue);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.platform-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 16px;
+}
+
+.platform-stats {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-value {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--highlight-green);
+}
+
+.stat-label {
+    font-size: 11px;
+    color: var(--apple-grey);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Checklist */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 15px;
+    color: var(--pure-white);
+}
+
+.checklist li:last-child {
+    border-bottom: none;
+}
+
+.check-box {
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--glass-border);
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.check-box.done {
+    background: var(--highlight-green);
+    border-color: var(--highlight-green);
+    color: white;
+}
+
+/* Tip Box */
+.tip-box {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
+    border: 1px solid rgba(10, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.tip-box.warning {
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 214, 10, 0.02) 100%);
+    border-color: rgba(255, 214, 10, 0.2);
+}
+
+.tip-box.success {
+    background: linear-gradient(135deg, rgba(40, 205, 65, 0.08) 0%, rgba(40, 205, 65, 0.02) 100%);
+    border-color: rgba(40, 205, 65, 0.2);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tip-icon {
+    font-size: 20px;
+}
+
+.tip-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--system-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tip-box.warning .tip-title {
+    color: var(--highlight-gold);
+}
+
+.tip-box.success .tip-title {
+    color: var(--highlight-green);
+}
+
+.tip-content {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+}
+
+/* Step Card */
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 80px;
+}
+
+.step-number {
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--system-blue) 0%, var(--system-blue-dark) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+}
+
+.step-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 8px;
+}
+
+.step-content {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Script Template */
+.script-box {
+    background: #0f0f12;
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin: 20px 0;
+    font-family: 'Inter', monospace;
+}
+
+.script-label {
+    font-size: 11px;
+    color: var(--system-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.script-text {
+    font-size: 14px;
+    color: var(--pure-white);
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.script-text .variable {
+    background: rgba(10, 132, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--system-blue-light);
+}
+
+/* Footer */
+.doc-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--system-blue) 0%, var(--highlight-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+    }
+
+    .platform-stats {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .step-card {
+        padding-left: 24px;
+        padding-top: 80px;
+    }
+
+    .step-number {
+        top: 24px;
+        left: 24px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="doc-header">
+        <div class="doc-badge">
+            <span>📋</span>
+            <span>Система Smartworker</span>
+        </div>
+        <h1 class="doc-title">Чек-Лист: Поиск Американских Работодателей</h1>
+        <p class="doc-subtitle">42 проверенных платформы и тактики для поиска удалённой работы в США. Каждая платформа протестирована на 160+ выпускниках.</p>
+    </header>
+
+    <!-- Section 1: Job Boards -->
+    <section class="section">
+        <div class="section-number">Раздел 01</div>
+        <h2 class="section-title">Главные Джоб-Борды США</h2>
+        <p class="section-intro">Эти платформы — основной источник вакансий. Американские компании тратят тысячи долларов на размещение здесь. Начни с них.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card premium">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Indeed.com</div>
+                        <a href="https://indeed.com" class="platform-url" target="_blank">indeed.com</a>
+                    </div>
+                    <span class="platform-tag gold">ТОП-1</span>
+                </div>
+                <p class="platform-desc">Крупнейший агрегатор вакансий в мире. Более 250 млн уникальных посетителей в месяц. Фильтруй по "remote" и ищи компании, которые нанимают worldwide.</p>
+                <div class="platform-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">10M+</span>
+                        <span class="stat-label">Вакансий</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">250M</span>
+                        <span class="stat-label">Посетителей/мес</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">★★★★★</span>
+                        <span class="stat-label">Эффективность</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">LinkedIn Jobs</div>
+                        <a href="https://linkedin.com/jobs" class="platform-url" target="_blank">linkedin.com/jobs</a>
+                    </div>
+                    <span class="platform-tag recommended">Рекомендую</span>
+                </div>
+                <p class="platform-desc">Профессиональная сеть №1. Рекрутеры активно ищут кандидатов здесь. Обязательно заполни профиль на английском и включи "Open to Work".</p>
+                <div class="platform-stats">
+                    <div class="stat-item">
+                        <span class="stat-value">20M+</span>
+                        <span class="stat-label">Активных вакансий</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">900M</span>
+                        <span class="stat-label">Пользователей</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Glassdoor</div>
+                        <a href="https://glassdoor.com" class="platform-url" target="_blank">glassdoor.com</a>
+                    </div>
+                    <span class="platform-tag recommended">Рекомендую</span>
+                </div>
+                <p class="platform-desc">Вакансии + отзывы о компаниях и зарплатах. Используй для проверки работодателей перед откликом. Видишь зарплаты инсайдеров.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">ZipRecruiter</div>
+                        <a href="https://ziprecruiter.com" class="platform-url" target="_blank">ziprecruiter.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">AI-powered платформа, которая сама предлагает твоё резюме работодателям. Загрузи резюме и жди приглашений.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">CareerBuilder</div>
+                        <a href="https://careerbuilder.com" class="platform-url" target="_blank">careerbuilder.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Один из старейших джоб-бордов США. Много вакансий от крупных корпораций.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Monster</div>
+                        <a href="https://monster.com" class="platform-url" target="_blank">monster.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Классический джоб-борд с большой базой вакансий. Хорош для entry-level позиций.</p>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Про-совет</span>
+            </div>
+            <p class="tip-content">Создай аккаунты на всех 6 платформах и настрой job alerts (уведомления о вакансиях). Так ты будешь одним из первых откликающихся — это увеличивает шансы на 3x.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Remote-Specific -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 02</div>
+        <h2 class="section-title">Специализированные Remote-Платформы</h2>
+        <p class="section-intro">Эти сайты специализируются именно на удалённой работе. Здесь работодатели изначально ищут людей из любой точки мира.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card premium">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Remote.co</div>
+                        <a href="https://remote.co/remote-jobs" class="platform-url" target="_blank">remote.co/remote-jobs</a>
+                    </div>
+                    <span class="platform-tag hot">Горячий</span>
+                </div>
+                <p class="platform-desc">Курированные вакансии только от проверенных компаний. Качество > количество. Все вакансии 100% удалённые.</p>
+            </div>
+
+            <div class="platform-card premium">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">We Work Remotely</div>
+                        <a href="https://weworkremotely.com" class="platform-url" target="_blank">weworkremotely.com</a>
+                    </div>
+                    <span class="platform-tag gold">ТОП</span>
+                </div>
+                <p class="platform-desc">Крупнейший remote-only джоб-борд. Компании платят $299+ за размещение — значит, они серьёзно настроены на найм.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">FlexJobs</div>
+                        <a href="https://flexjobs.com" class="platform-url" target="_blank">flexjobs.com</a>
+                    </div>
+                    <span class="platform-tag recommended">Рекомендую</span>
+                </div>
+                <p class="platform-desc">Платная подписка ($9.95/мес), но все вакансии проверены на мошенничество. Окупается быстро качеством.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Remote OK</div>
+                        <a href="https://remoteok.com" class="platform-url" target="_blank">remoteok.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Бесплатный агрегатор remote-вакансий. Много tech-позиций. Показывает зарплатные вилки.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Working Nomads</div>
+                        <a href="https://workingnomads.com" class="platform-url" target="_blank">workingnomads.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Курированный список вакансий для цифровых кочевников. Ежедневная email-рассылка.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Jobspresso</div>
+                        <a href="https://jobspresso.co" class="platform-url" target="_blank">jobspresso.co</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Hand-picked remote позиции в tech, маркетинге и дизайне. Строгий отбор вакансий.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Himalayas</div>
+                        <a href="https://himalayas.app" class="platform-url" target="_blank">himalayas.app</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Новая платформа с красивым интерфейсом. Показывает timezone overlap — удобно для СНГ.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Dynamite Jobs</div>
+                        <a href="https://dynamitejobs.com" class="platform-url" target="_blank">dynamitejobs.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Remote-вакансии для предпринимателей и стартапов. Много позиций VA и operations.</p>
+            </div>
+        </div>
+
+        <div class="tip-box success">
+            <div class="tip-header">
+                <span class="tip-icon">🎯</span>
+                <span class="tip-title">Стратегия поиска</span>
+            </div>
+            <p class="tip-content">Откликайся на 10-15 вакансий в день. Это не много — это минимум для получения результата за 2 недели. Наши успешные выпускники отправляли по 20+ откликов ежедневно.</p>
+        </div>
+    </section>
+
+    <!-- Section 3: Startup Jobs -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 03</div>
+        <h2 class="section-title">Стартап-Платформы</h2>
+        <p class="section-intro">Стартапы охотнее нанимают людей из других стран — это экономит им бюджет. Идеальные первые клиенты.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card premium">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">AngelList / Wellfound</div>
+                        <a href="https://wellfound.com" class="platform-url" target="_blank">wellfound.com</a>
+                    </div>
+                    <span class="platform-tag gold">ТОП для стартапов</span>
+                </div>
+                <p class="platform-desc">Платформа №1 для работы в стартапах. Прозрачные зарплаты, equity, размер команды. Фильтр "Remote" + "Visa Sponsorship Not Required".</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Y Combinator Jobs</div>
+                        <a href="https://workatastartup.com" class="platform-url" target="_blank">workatastartup.com</a>
+                    </div>
+                    <span class="platform-tag hot">Горячий</span>
+                </div>
+                <p class="platform-desc">Вакансии от стартапов YC — самого престижного акселератора в мире. Компании с финансированием, которые активно растут.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Startup.jobs</div>
+                        <a href="https://startup.jobs" class="platform-url" target="_blank">startup.jobs</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Агрегатор стартап-вакансий. Удобные фильтры по стадии компании и размеру.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Otta</div>
+                        <a href="https://otta.com" class="platform-url" target="_blank">otta.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">AI подбирает вакансии под твой профиль. Фокус на tech-стартапах. Показывает culture fit.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Virtual Assistant Platforms -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 04</div>
+        <h2 class="section-title">Платформы для Виртуальных Ассистентов</h2>
+        <p class="section-intro">VA — один из самых быстрых способов начать зарабатывать на американцах. Не требует специфических навыков, только организованность и английский.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card premium">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Belay</div>
+                        <a href="https://belaysolutions.com" class="platform-url" target="_blank">belaysolutions.com</a>
+                    </div>
+                    <span class="platform-tag gold">ТОП для VA</span>
+                </div>
+                <p class="platform-desc">Премиальное VA-агентство. Платят $15-25/час. Ищут надёжных людей на долгосрок. Строгий отбор, но оно того стоит.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Time Etc</div>
+                        <a href="https://timeetc.com" class="platform-url" target="_blank">timeetc.com</a>
+                    </div>
+                    <span class="platform-tag recommended">Рекомендую</span>
+                </div>
+                <p class="platform-desc">UK-based, но много американских клиентов. $11-16/час. Хороший старт для новичков.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Boldly</div>
+                        <a href="https://boldly.com" class="platform-url" target="_blank">boldly.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Premium VA-сервис. Работаешь с руководителями компаний. $20-30/час возможны.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Wishup</div>
+                        <a href="https://wishup.co" class="platform-url" target="_blank">wishup.co</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Индийская компания с американскими клиентами. $10-15/час. Быстрый онбординг.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Prialto</div>
+                        <a href="https://prialto.com" class="platform-url" target="_blank">prialto.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Enterprise-уровень VA. Работа с крупными компаниями. Стабильность и бенефиты.</p>
+            </div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">⚠️</span>
+                <span class="tip-title">Важно</span>
+            </div>
+            <p class="tip-content">VA-агентства часто требуют минимум 20-30 часов в неделю. Убедись, что у тебя есть это время. Также многие работают в американских часовых поясах (EST/PST) — готовься к вечерним сменам.</p>
+        </div>
+    </section>
+
+    <!-- Section 5: Direct Outreach -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 05</div>
+        <h2 class="section-title">Прямой Outreach к Компаниям</h2>
+        <p class="section-intro">Самая эффективная тактика — писать напрямую. 80% наших выпускников нашли работу именно через холодный outreach, а не через отклики на вакансии.</p>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3 class="step-title">Найди Целевые Компании</h3>
+            <p class="step-content">Используй LinkedIn, Crunchbase, BuiltIn для поиска компаний в твоей нише. Ищи стартапы на стадии Series A-B — у них есть деньги, но ещё нет раздутого HR-отдела.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3 class="step-title">Найди Контакт Нужного Человека</h3>
+            <p class="step-content">Ищи Head of Operations, CEO (для малых компаний), Hiring Manager. Используй Hunter.io, Apollo.io, или LinkedIn Sales Navigator для поиска email.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3 class="step-title">Отправь Персонализированное Письмо</h3>
+            <p class="step-content">Не шаблонное! Покажи, что изучил компанию. Предложи конкретную ценность. Попроси 15-минутный звонок.</p>
+        </div>
+
+        <div class="script-box">
+            <div class="script-label">Шаблон Холодного Письма</div>
+            <div class="script-text">Subject: Quick question about <span class="variable">[КОМПАНИЯ]</span> + remote help
+
+Hi <span class="variable">[ИМЯ]</span>,
+
+I noticed <span class="variable">[КОМПАНИЯ]</span> is <span class="variable">[НЕДАВНЕЕ ДОСТИЖЕНИЕ/НОВОСТЬ]</span> — congrats on that!
+
+I help companies like yours with <span class="variable">[ТВОЙ НАВЫК]</span>. Recently, I <span class="variable">[КОНКРЕТНЫЙ РЕЗУЛЬТАТ]</span>.
+
+Would you be open to a quick 15-min call to see if I could help <span class="variable">[КОМПАНИЯ]</span> with <span class="variable">[КОНКРЕТНАЯ ПРОБЛЕМА]</span>?
+
+Best,
+<span class="variable">[ТВОЁ ИМЯ]</span></div>
+        </div>
+
+        <div class="tip-box success">
+            <div class="tip-header">
+                <span class="tip-icon">🚀</span>
+                <span class="tip-title">Результат</span>
+            </div>
+            <p class="tip-content">При отправке 50 персонализированных писем, ожидай 5-10 ответов и 2-3 созвона. Это нормальная конверсия. Главное — persistence. Наш выпускник Дамир отправил 127 писем и получил оффер на $28/час.</p>
+        </div>
+    </section>
+
+    <!-- Section 6: Tools -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 06</div>
+        <h2 class="section-title">Инструменты для Поиска</h2>
+        <p class="section-intro">Эти инструменты ускорят поиск работы в 3-5 раз. Большинство бесплатные или имеют free trial.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Hunter.io</div>
+                        <a href="https://hunter.io" class="platform-url" target="_blank">hunter.io</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Поиск email-адресов по домену компании. 25 бесплатных запросов в месяц.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Apollo.io</div>
+                        <a href="https://apollo.io" class="platform-url" target="_blank">apollo.io</a>
+                    </div>
+                </div>
+                <p class="platform-desc">База контактов + email sequences. Бесплатный план на 100 credits/месяц.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Calendly</div>
+                        <a href="https://calendly.com" class="platform-url" target="_blank">calendly.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Упрощает назначение созвонов. Выглядит профессионально. Бесплатный базовый план.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Loom</div>
+                        <a href="https://loom.com" class="platform-url" target="_blank">loom.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Записывай видео-представления. Выделяет тебя среди других кандидатов. Бесплатно до 25 видео.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Notion</div>
+                        <a href="https://notion.so" class="platform-url" target="_blank">notion.so</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Трекинг откликов и контактов. Создай базу компаний и статусы. Бесплатно.</p>
+            </div>
+
+            <div class="platform-card">
+                <div class="platform-header">
+                    <div>
+                        <div class="platform-name">Grammarly</div>
+                        <a href="https://grammarly.com" class="platform-url" target="_blank">grammarly.com</a>
+                    </div>
+                </div>
+                <p class="platform-desc">Проверка английского в письмах. Обязательно используй перед отправкой. Бесплатная версия достаточна.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Checklist -->
+    <section class="section page-break">
+        <div class="section-number">Раздел 07</div>
+        <h2 class="section-title">Ежедневный Чек-Лист Поиска</h2>
+        <p class="section-intro">Распечатай и используй каждый день. Выполняй все пункты минимум 14 дней подряд.</p>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; padding: 28px;">
+            <ul class="checklist">
+                <li>
+                    <span class="check-box"></span>
+                    <span>Проверил новые вакансии на Indeed, LinkedIn, We Work Remotely (15 мин)</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Откликнулся на 10-15 подходящих вакансий с персонализированным cover letter</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Отправил 5 холодных писем напрямую в компании</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Обновил трекер откликов в Notion/Excel</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Добавил 3 новых контакта в LinkedIn с персональной заметкой</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Проверил ответы на вчерашние отклики и follow-up где нужно</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Потратил 30 мин на улучшение резюме/портфолио</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Подготовился к завтрашним интервью (если есть)</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tip-box success" style="margin-top: 24px;">
+            <div class="tip-header">
+                <span class="tip-icon">📊</span>
+                <span class="tip-title">Статистика успеха</span>
+            </div>
+            <p class="tip-content">Выполняя этот чек-лист ежедневно, наши выпускники получают первый оффер в среднем за 14 дней. 80% получают минимум 2 оффера за месяц активного поиска.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+        <div class="footer-logo">Smartworker</div>
+        <p class="footer-text">© 2025 Recrutu Virtual Assistants LLC. Все права защищены.<br>Этот документ предназначен только для личного использования.</p>
+    </footer>
+</div>
+
+</body>
+</html>

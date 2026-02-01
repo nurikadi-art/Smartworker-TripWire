@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гайд: Настройка LinkedIn для Американского Рынка | Smartworker</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --system-blue: #0a84ff;
+    --linkedin-blue: #0077b5;
+    --system-blue-light: #5ac8fa;
+    --pure-white: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --apple-grey: #86868b;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --highlight-green: #28cd41;
+    --highlight-red: #ff453a;
+    --highlight-gold: #ffd60a;
+    --bg-dark: #0a0a0c;
+    --bg-card: rgba(255, 255, 255, 0.02);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    body { background: white !important; color: #1a1a1a !important; }
+    .page-break { page-break-before: always; }
+    .card, .example-box { border: 1px solid #ddd !important; background: #f9f9f9 !important; }
+}
+
+body, html {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--pure-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 60px 32px;
+}
+
+/* Header */
+.doc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 119, 181, 0.2);
+    border: 1px solid rgba(0, 119, 181, 0.4);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--linkedin-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+.doc-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--pure-white) 0%, var(--text-secondary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.doc-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+/* Section */
+.section {
+    margin-bottom: 48px;
+}
+
+.section-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--linkedin-blue);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.section-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--pure-white);
+}
+
+.section-intro {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+/* Step Card */
+.step-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    padding-left: 90px;
+}
+
+.step-number {
+    position: absolute;
+    left: 28px;
+    top: 28px;
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--linkedin-blue) 0%, #005582 100%);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+}
+
+.step-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--pure-white);
+    margin-bottom: 12px;
+}
+
+.step-content {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.step-content strong {
+    color: var(--pure-white);
+}
+
+/* Example Box */
+.example-box {
+    background: #0a1628;
+    border: 1px solid rgba(0, 119, 181, 0.3);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 20px 0;
+}
+
+.example-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--linkedin-blue);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.example-bad {
+    border-color: rgba(255, 69, 58, 0.3);
+    background: rgba(255, 69, 58, 0.05);
+}
+
+.example-bad .example-label {
+    color: var(--highlight-red);
+}
+
+.example-good {
+    border-color: rgba(40, 205, 65, 0.3);
+    background: rgba(40, 205, 65, 0.05);
+}
+
+.example-good .example-label {
+    color: var(--highlight-green);
+}
+
+.example-text {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+/* Template Box */
+.template-box {
+    background: var(--bg-card);
+    border: 2px dashed var(--glass-border);
+    border-radius: 16px;
+    padding: 28px;
+    margin: 24px 0;
+}
+
+.template-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--highlight-gold);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.template-content {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.8;
+}
+
+.template-content .variable {
+    background: rgba(10, 132, 255, 0.2);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--system-blue-light);
+    font-family: monospace;
+}
+
+/* Tip Box */
+.tip-box {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
+    border: 1px solid rgba(10, 132, 255, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.tip-box.warning {
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 214, 10, 0.02) 100%);
+    border-color: rgba(255, 214, 10, 0.2);
+}
+
+.tip-box.success {
+    background: linear-gradient(135deg, rgba(40, 205, 65, 0.08) 0%, rgba(40, 205, 65, 0.02) 100%);
+    border-color: rgba(40, 205, 65, 0.2);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tip-icon { font-size: 20px; }
+
+.tip-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--system-blue);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tip-box.warning .tip-title { color: var(--highlight-gold); }
+.tip-box.success .tip-title { color: var(--highlight-green); }
+
+.tip-content {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+}
+
+/* Checklist */
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 15px;
+    color: var(--pure-white);
+}
+
+.checklist li:last-child {
+    border-bottom: none;
+}
+
+.check-box {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--glass-border);
+    border-radius: 6px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+/* Profile Preview Mock */
+.profile-mock {
+    background: #1b1f23;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 24px 0;
+    border: 1px solid #30363d;
+}
+
+.profile-banner {
+    height: 100px;
+    background: linear-gradient(135deg, #0077b5 0%, #005582 100%);
+}
+
+.profile-content {
+    padding: 20px;
+    position: relative;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: #2d333b;
+    border-radius: 50%;
+    border: 4px solid #1b1f23;
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.profile-info {
+    margin-left: 100px;
+    margin-top: -20px;
+}
+
+.profile-name {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pure-white);
+}
+
+.profile-headline {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 4px;
+}
+
+.profile-location {
+    font-size: 12px;
+    color: var(--apple-grey);
+    margin-top: 8px;
+}
+
+.open-to-work {
+    display: inline-block;
+    background: rgba(40, 205, 65, 0.2);
+    color: var(--highlight-green);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-top: 12px;
+}
+
+/* Keywords Grid */
+.keywords-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+}
+
+.keyword-tag {
+    background: rgba(0, 119, 181, 0.15);
+    border: 1px solid rgba(0, 119, 181, 0.3);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--pure-white);
+    text-align: center;
+}
+
+/* Footer */
+.doc-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--system-blue) 0%, var(--highlight-green) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container { padding: 40px 20px; }
+    .step-card { padding-left: 24px; padding-top: 80px; }
+    .step-number { top: 24px; left: 24px; }
+    .profile-info { margin-left: 0; margin-top: 50px; }
+    .keywords-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="doc-header">
+        <div class="doc-badge">
+            <span>in</span>
+            <span>LinkedIn Оптимизация</span>
+        </div>
+        <h1 class="doc-title">Настройка LinkedIn для Американского Рынка</h1>
+        <p class="doc-subtitle">Пошаговый гайд по созданию профиля, который привлекает американских рекрутеров. С шаблонами и примерами.</p>
+    </header>
+
+    <!-- Why LinkedIn -->
+    <section class="section">
+        <div class="section-number">Введение</div>
+        <h2 class="section-title">Почему LinkedIn — Главный Инструмент</h2>
+        <p class="section-intro">93% американских рекрутеров используют LinkedIn для поиска кандидатов. Если у тебя нет оптимизированного профиля — ты невидимка для половины работодателей США.</p>
+
+        <div class="tip-box success">
+            <div class="tip-header">
+                <span class="tip-icon">📊</span>
+                <span class="tip-title">Статистика</span>
+            </div>
+            <p class="tip-content">Профили с полной информацией получают <strong>40x больше просмотров</strong> рекрутерами. Профили с профессиональным фото получают <strong>21x больше просмотров</strong> и <strong>36x больше сообщений</strong>.</p>
+        </div>
+    </section>
+
+    <!-- Section 1: Profile Photo -->
+    <section class="section">
+        <div class="section-number">Шаг 01</div>
+        <h2 class="section-title">Профессиональное Фото</h2>
+        <p class="section-intro">Первое впечатление формируется за 7 секунд. Твоё фото — главный фильтр, через который проходят (или не проходят) рекрутеры.</p>
+
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="step-number">✓</div>
+                <h3 class="step-title">Требования к Фото</h3>
+                <div class="step-content">
+                    <strong>Размер:</strong> минимум 400x400 пикселей (идеально 800x800)<br><br>
+                    <strong>Лицо:</strong> занимает 60-70% кадра, смотришь в камеру<br><br>
+                    <strong>Фон:</strong> однотонный или размытый, никаких отвлекающих элементов<br><br>
+                    <strong>Одежда:</strong> business casual минимум (рубашка/блузка), тёмные цвета лучше<br><br>
+                    <strong>Выражение:</strong> лёгкая улыбка, дружелюбный и профессиональный вид<br><br>
+                    <strong>Освещение:</strong> естественный свет, лицо освещено равномерно
+                </div>
+            </div>
+        </div>
+
+        <div class="example-box example-bad">
+            <div class="example-label">❌ Плохие примеры</div>
+            <div class="example-text">• Селфи в зеркале
+• Фото с вечеринки (обрезанное)
+• Фото с пляжа или отпуска
+• Низкое качество / размытое
+• Слишком далеко от камеры
+• Солнечные очки или кепка</div>
+        </div>
+
+        <div class="example-box example-good">
+            <div class="example-label">✅ Хорошие примеры</div>
+            <div class="example-text">• Профессиональная съёмка или качественное фото
+• Нейтральный офисный фон
+• Аккуратный внешний вид
+• Уверенный взгляд в камеру
+• Хорошее освещение
+• Улыбка (не обязательно с зубами)</div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Лайфхак</span>
+            </div>
+            <p class="tip-content">Нет профессионального фото? Попроси друга сфотографировать тебя у белой стены при дневном свете. Обработай через <strong>Remove.bg</strong> (удалить фон) и <strong>Canva</strong> (добавить градиентный фон). Бесплатно и выглядит профессионально.</p>
+        </div>
+    </section>
+
+    <!-- Section 2: Headline -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 02</div>
+        <h2 class="section-title">Заголовок (Headline)</h2>
+        <p class="section-intro">220 символов, которые определяют, кликнет рекрутер на твой профиль или пройдёт мимо. Это первое, что видят в поиске.</p>
+
+        <div class="example-box example-bad">
+            <div class="example-label">❌ Плохие заголовки</div>
+            <div class="example-text">"Looking for new opportunities"
+"Unemployed | Open to Work"
+"Student at Moscow State University"
+"Manager at Company LLC"
+"Freelancer"</div>
+        </div>
+
+        <div class="example-box example-good">
+            <div class="example-label">✅ Отличные заголовки</div>
+            <div class="example-text">"Virtual Assistant | Email & Calendar Management | Helping Busy Entrepreneurs Save 15+ Hours/Week"
+
+"Data Analyst | SQL, Python, Tableau | Turning Raw Data into Business Insights"
+
+"Video Editor for YouTube Creators | 50+ Channels Edited | Premiere Pro & After Effects"
+
+"Remote Customer Support Specialist | SaaS Experience | 98% CSAT Score"
+
+"AI-Powered Content Creator | ChatGPT & Midjourney Expert | Helping Brands Scale Content 10x"</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-title">📝 Формула Заголовка</div>
+            <div class="template-content"><span class="variable">[Твоя роль]</span> | <span class="variable">[Ключевые навыки/инструменты]</span> | <span class="variable">[Ценность/результат для клиента]</span>
+
+<strong>Примеры по формуле:</strong>
+
+Executive VA | Notion, Slack, Google Workspace | Streamlining Operations for Founders
+
+QA Engineer | Manual & Automation Testing | Ensuring Bug-Free Product Launches
+
+Graphic Designer | Figma, Adobe Suite | Creating Scroll-Stopping Social Content</div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">⚠️</span>
+                <span class="tip-title">Важно</span>
+            </div>
+            <p class="tip-content">Не пиши "Looking for job" или "Open to work" в заголовке — это выглядит отчаянно. Вместо этого включи функцию "Open to Work" в настройках (зелёная рамка видна только рекрутерам).</p>
+        </div>
+    </section>
+
+    <!-- Section 3: About Section -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 03</div>
+        <h2 class="section-title">Секция About (О себе)</h2>
+        <p class="section-intro">2600 символов, чтобы рассказать свою историю и показать ценность. Первые 3 строки видны без клика — они должны зацепить.</p>
+
+        <div class="template-box">
+            <div class="template-title">📝 Структура About</div>
+            <div class="template-content"><strong>Строка 1-3 (Hook — видно сразу):</strong>
+Сильное утверждение о том, что ты делаешь и какую проблему решаешь.
+
+<strong>Параграф 1:</strong>
+Твоя история в 2-3 предложениях. Откуда ты пришёл, почему занимаешься этим.
+
+<strong>Параграф 2:</strong>
+Что конкретно ты делаешь. Твои навыки и инструменты.
+
+<strong>Параграф 3:</strong>
+Результаты/достижения. Цифры, если возможно.
+
+<strong>Параграф 4:</strong>
+Call to action — как с тобой связаться.</div>
+        </div>
+
+        <div class="example-box example-good">
+            <div class="example-label">✅ Пример About для VA</div>
+            <div class="example-text">I help busy entrepreneurs reclaim 15+ hours per week by handling the tasks that drain their energy but don't grow their business.
+
+After 3 years supporting founders in e-commerce and SaaS, I've learned that the best virtual assistants don't just complete tasks — they anticipate needs and solve problems before they arise.
+
+What I handle:
+→ Inbox management (zero inbox, every time)
+→ Calendar optimization & meeting scheduling
+→ Travel arrangements & expense tracking
+→ Research & data compilation
+→ CRM management (HubSpot, Salesforce)
+→ Social media scheduling
+
+Tools I master: Google Workspace, Notion, Slack, Asana, Calendly, Zapier
+
+My clients say I'm "the most organized person they've ever worked with" and "worth 10x the investment."
+
+Ready to get your time back? Let's chat: [email] or message me here.</div>
+        </div>
+
+        <div class="example-box example-good">
+            <div class="example-label">✅ Пример About для Video Editor</div>
+            <div class="example-text">I turn raw footage into scroll-stopping content that grows YouTube channels and converts viewers into customers.
+
+In the past 2 years, I've edited 200+ videos for creators and brands, helping channels grow from 0 to 100K+ subscribers through strategic editing that keeps viewers watching till the end.
+
+My editing style:
+→ Fast-paced, engaging cuts (average 70%+ retention)
+→ Custom motion graphics & lower thirds
+→ Color grading that matches your brand
+→ Sound design & music selection
+→ Thumbnail-worthy moments
+
+Software: Premiere Pro, After Effects, DaVinci Resolve, Audition
+
+Recent results:
+• Helped a finance YouTuber increase average view duration by 45%
+• Edited a product launch video that generated $50K in first-week sales
+• Managed weekly content for 3 channels simultaneously
+
+Let's make your content impossible to scroll past. DM me or email: [email]</div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Про-совет</span>
+            </div>
+            <p class="tip-content">Используй эмодзи-стрелки (→) и списки для визуального разделения. Американцы сканируют текст, не читают. Сделай так, чтобы ключевая информация была видна за 5 секунд.</p>
+        </div>
+    </section>
+
+    <!-- Section 4: Experience -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 04</div>
+        <h2 class="section-title">Раздел Experience</h2>
+        <p class="section-intro">Описывай опыт через результаты, не обязанности. Рекрутеры хотят знать, что ты СДЕЛАЛ, а не что входило в твои обязанности.</p>
+
+        <div class="example-box example-bad">
+            <div class="example-label">❌ Плохо: Список обязанностей</div>
+            <div class="example-text">Marketing Manager | ABC Company
+• Responsible for social media
+• Managed email campaigns
+• Worked with design team
+• Analyzed marketing data</div>
+        </div>
+
+        <div class="example-box example-good">
+            <div class="example-label">✅ Хорошо: Результаты с цифрами</div>
+            <div class="example-text">Marketing Manager | ABC Company
+• Grew Instagram following from 5K to 50K in 12 months through strategic content and engagement
+• Launched email automation sequence that increased conversion rate by 34%
+• Reduced design turnaround time by 50% by implementing Notion-based workflow
+• Built analytics dashboard that saved 10 hours/month in manual reporting</div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-title">📝 Формула описания опыта</div>
+            <div class="template-content"><span class="variable">[Глагол действия]</span> + <span class="variable">[Что сделал]</span> + <span class="variable">[Результат с цифрой]</span>
+
+<strong>Примеры:</strong>
+• "Increased sales by 25% through targeted email campaigns"
+• "Reduced response time from 24h to 2h by implementing new ticketing system"
+• "Managed $50K monthly ad budget with 3.5x ROAS"
+• "Trained team of 5 on new CRM, resulting in 40% efficiency gain"</div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">⚠️</span>
+                <span class="tip-title">Нет опыта?</span>
+            </div>
+            <p class="tip-content">Добавь проекты, волонтёрство, фриланс-работы. Даже если делал бесплатно или для себя — это опыт. "Freelance Virtual Assistant" или "Independent Consultant" — вполне валидные позиции.</p>
+        </div>
+    </section>
+
+    <!-- Section 5: Skills & Endorsements -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 05</div>
+        <h2 class="section-title">Skills (Навыки)</h2>
+        <p class="section-intro">Добавь минимум 5 ключевых навыков. Они влияют на то, как часто ты появляешься в поиске рекрутеров.</p>
+
+        <p style="margin-bottom: 16px; color: var(--text-secondary);">Ключевые навыки для популярных ролей:</p>
+
+        <h4 style="color: var(--pure-white); margin: 20px 0 12px; font-size: 16px;">Virtual Assistant:</h4>
+        <div class="keywords-grid">
+            <span class="keyword-tag">Administrative Support</span>
+            <span class="keyword-tag">Calendar Management</span>
+            <span class="keyword-tag">Email Management</span>
+            <span class="keyword-tag">Data Entry</span>
+            <span class="keyword-tag">Google Workspace</span>
+            <span class="keyword-tag">Microsoft Office</span>
+            <span class="keyword-tag">Project Management</span>
+            <span class="keyword-tag">Customer Service</span>
+        </div>
+
+        <h4 style="color: var(--pure-white); margin: 20px 0 12px; font-size: 16px;">Data Analyst:</h4>
+        <div class="keywords-grid">
+            <span class="keyword-tag">SQL</span>
+            <span class="keyword-tag">Python</span>
+            <span class="keyword-tag">Data Analysis</span>
+            <span class="keyword-tag">Data Visualization</span>
+            <span class="keyword-tag">Tableau</span>
+            <span class="keyword-tag">Power BI</span>
+            <span class="keyword-tag">Excel</span>
+            <span class="keyword-tag">Statistics</span>
+        </div>
+
+        <h4 style="color: var(--pure-white); margin: 20px 0 12px; font-size: 16px;">Graphic Designer:</h4>
+        <div class="keywords-grid">
+            <span class="keyword-tag">Graphic Design</span>
+            <span class="keyword-tag">Adobe Photoshop</span>
+            <span class="keyword-tag">Adobe Illustrator</span>
+            <span class="keyword-tag">Figma</span>
+            <span class="keyword-tag">Brand Identity</span>
+            <span class="keyword-tag">Social Media Design</span>
+            <span class="keyword-tag">UI Design</span>
+            <span class="keyword-tag">Typography</span>
+        </div>
+
+        <h4 style="color: var(--pure-white); margin: 20px 0 12px; font-size: 16px;">Video Editor:</h4>
+        <div class="keywords-grid">
+            <span class="keyword-tag">Video Editing</span>
+            <span class="keyword-tag">Adobe Premiere Pro</span>
+            <span class="keyword-tag">After Effects</span>
+            <span class="keyword-tag">DaVinci Resolve</span>
+            <span class="keyword-tag">Color Grading</span>
+            <span class="keyword-tag">Motion Graphics</span>
+            <span class="keyword-tag">Sound Design</span>
+            <span class="keyword-tag">YouTube</span>
+        </div>
+
+        <div class="tip-box success">
+            <div class="tip-header">
+                <span class="tip-icon">🎯</span>
+                <span class="tip-title">Endorsements</span>
+            </div>
+            <p class="tip-content">Попроси 5-10 человек подтвердить твои навыки (endorsements). Это увеличивает доверие. Взаимный обмен endorsements — нормальная практика. Напиши бывшим коллегам или одногруппникам.</p>
+        </div>
+    </section>
+
+    <!-- Section 6: Open to Work -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 06</div>
+        <h2 class="section-title">Настройка "Open to Work"</h2>
+        <p class="section-intro">Скрытая функция, которая показывает рекрутерам, что ты ищешь работу, но не видна всем остальным.</p>
+
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="step-title">Включи Open to Work</h3>
+                <div class="step-content">
+                    Зайди в профиль → кнопка "Open to" → "Finding a new job"<br><br>
+                    Выбери "Recruiters only" — так зелёная рамка не появится на фото, но рекрутеры увидят тебя в поиске.
+                </div>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="step-title">Настрой Параметры</h3>
+                <div class="step-content">
+                    <strong>Job titles:</strong> добавь 3-5 релевантных позиций (Virtual Assistant, Executive Assistant, Remote Assistant)<br><br>
+                    <strong>Location:</strong> выбери "Remote" + добавь США как страну<br><br>
+                    <strong>Start date:</strong> "Immediately" или "Actively applying"<br><br>
+                    <strong>Job types:</strong> Full-time, Part-time, Contract — в зависимости от предпочтений
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-mock">
+            <div class="profile-banner"></div>
+            <div class="profile-content">
+                <div class="profile-avatar">👤</div>
+                <div class="profile-info">
+                    <div class="profile-name">Anna Petrova</div>
+                    <div class="profile-headline">Virtual Assistant | Helping Founders Save 15+ Hours/Week</div>
+                    <div class="profile-location">📍 Remote | Available for US companies</div>
+                    <div class="open-to-work">🟢 Open to work (visible to recruiters)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Connection Strategy -->
+    <section class="section page-break">
+        <div class="section-number">Шаг 07</div>
+        <h2 class="section-title">Стратегия Нетворкинга</h2>
+        <p class="section-intro">LinkedIn — это не просто резюме, это сеть. Активный нетворкинг увеличивает шансы на 10x.</p>
+
+        <div class="step-grid">
+            <div class="step-card">
+                <div class="step-number">📤</div>
+                <h3 class="step-title">Добавляй 5-10 Контактов в День</h3>
+                <div class="step-content">
+                    Ищи: HR-менеджеров, рекрутеров, основателей стартапов, людей с похожими позициями. Всегда добавляй персональную заметку!
+                </div>
+            </div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-title">📝 Шаблон Connection Request</div>
+            <div class="template-content">Hi <span class="variable">[Name]</span>,
+
+I came across your profile while researching <span class="variable">[company/industry]</span>. I'm a <span class="variable">[your role]</span> specializing in <span class="variable">[skill]</span> and would love to connect and learn more about <span class="variable">[their work/company]</span>.
+
+Best,
+<span class="variable">[Your name]</span></div>
+        </div>
+
+        <div class="template-box">
+            <div class="template-title">📝 Шаблон Follow-up после Accept</div>
+            <div class="template-content">Thanks for connecting, <span class="variable">[Name]</span>!
+
+I noticed <span class="variable">[company]</span> is <span class="variable">[growing/hiring/launching]</span>. I help companies with <span class="variable">[your service]</span> and would love to learn if that's something you're exploring.
+
+Either way, happy to be in your network!
+
+<span class="variable">[Your name]</span></div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Engagement</span>
+            </div>
+            <p class="tip-content">Комментируй посты людей из твоей сети — это увеличивает твою видимость. 3-5 осмысленных комментариев в день = ты начинаешь появляться в лентах рекрутеров.</p>
+        </div>
+    </section>
+
+    <!-- Final Checklist -->
+    <section class="section page-break">
+        <div class="section-number">Финал</div>
+        <h2 class="section-title">Чек-Лист Готового Профиля</h2>
+        <p class="section-intro">Пройдись по списку и убедись, что всё сделано.</p>
+
+        <div style="background: var(--bg-card); border: 1px solid var(--glass-border); border-radius: 16px; padding: 28px;">
+            <ul class="checklist">
+                <li>
+                    <span class="check-box"></span>
+                    <span>Профессиональное фото (лицо 60%+ кадра, нейтральный фон)</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Заголовок по формуле: Роль | Навыки | Ценность</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>About секция заполнена (минимум 500 символов)</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Минимум 2 позиции в Experience с результатами</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>5+ навыков добавлено и подтверждено</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>"Open to Work" включен (Recruiters only)</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Location: Remote + USA указаны</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Custom URL профиля (linkedin.com/in/yourname)</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Минимум 100 connections</span>
+                </li>
+                <li>
+                    <span class="check-box"></span>
+                    <span>Профиль на 100% английском языке</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tip-box success" style="margin-top: 24px;">
+            <div class="tip-header">
+                <span class="tip-icon">🚀</span>
+                <span class="tip-title">Готово!</span>
+            </div>
+            <p class="tip-content">Если все пункты выполнены — твой профиль в топ-10% LinkedIn. Теперь рекрутеры будут находить тебя сами. Но не жди — активно откликайся на вакансии и пиши компаниям напрямую!</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+        <div class="footer-logo">Smartworker</div>
+        <p class="footer-text">© 2025 Recrutu Virtual Assistants LLC. Все права защищены.<br>Этот документ предназначен только для личного использования.</p>
+    </footer>
+</div>
+
+</body>
+</html>
