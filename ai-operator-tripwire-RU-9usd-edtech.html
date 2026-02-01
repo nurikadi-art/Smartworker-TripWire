@@ -242,44 +242,6 @@ img, svg, video {
 }
 
 /* ============================================================
-   EDTECH: FLOATING TELEGRAM WIDGET
-   Trust signal - shows human accessibility
-   ============================================================ */
-.messenger-float {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    animation: float 3s ease-in-out infinite;
-}
-
-.messenger-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease;
-    text-decoration: none;
-}
-
-.messenger-btn:hover {
-    transform: scale(1.1);
-}
-
-.messenger-btn.telegram {
-    background-color: #229ED9;
-}
-
-@keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-8px); }
-    100% { transform: translateY(0px); }
-}
-
-/* ============================================================
    EDTECH: STICKY MOBILE CTA
    Always visible buy button on mobile
    ============================================================ */
@@ -336,11 +298,6 @@ img, svg, video {
     /* Adjust body padding for sticky bar */
     body {
         padding-bottom: 80px !important;
-    }
-
-    /* Hide floating messenger on mobile (sticky CTA takes priority) */
-    .messenger-float {
-        bottom: 90px;
     }
 }
 
@@ -3905,18 +3862,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 </script>
-
-<!-- ============================================================
-     EDTECH: FLOATING TELEGRAM WIDGET
-     Trust signal - shows human accessibility
-     ============================================================ -->
-<div class="messenger-float">
-    <a href="https://t.me/nurikadi7182" target="_blank" class="messenger-btn telegram" title="Написать в Telegram">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.293-.603.293l.214-3.054 5.56-5.022c.24-.213-.054-.334-.373-.121l-6.869 4.329-2.96-.924c-.64-.203-.654-.64.135-.954l11.566-4.458c.538-.196 1.006.128.832.941z" fill="#FFF"/>
-        </svg>
-    </a>
-</div>
 
 <!-- ============================================================
      EDTECH: STICKY MOBILE CTA
