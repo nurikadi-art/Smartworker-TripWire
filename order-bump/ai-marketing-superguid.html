@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Супергайд: ИИ-Маркетинг от А до Я | Smartworker</title>
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --system-blue: #0a84ff;
+    --system-blue-dark: #0066cc;
+    --system-blue-light: #5ac8fa;
+    --pure-white: #f5f5f7;
+    --text-secondary: #a1a1aa;
+    --apple-grey: #86868b;
+    --glass-border: rgba(255, 255, 255, 0.12);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --highlight-green: #28cd41;
+    --highlight-red: #ff453a;
+    --highlight-gold: #ffd60a;
+    --highlight-purple: #bf5af2;
+    --highlight-orange: #ff9f0a;
+    --bg-dark: #0a0a0c;
+    --bg-card: rgba(255, 255, 255, 0.02);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@media print {
+    body { background: white !important; color: #1a1a1a !important; }
+    .page-break { page-break-before: always; }
+}
+
+body, html {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--pure-white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.8;
+}
+
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 60px 32px;
+}
+
+/* Header */
+.doc-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.doc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, rgba(255, 159, 10, 0.2) 0%, rgba(191, 90, 242, 0.2) 100%);
+    border: 1px solid rgba(255, 159, 10, 0.4);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--highlight-orange);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.doc-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--highlight-orange) 0%, var(--highlight-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.doc-subtitle {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 650px;
+    margin: 0 auto;
+}
+
+/* What You'll Learn */
+.learn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 40px 0;
+}
+
+.learn-item {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.learn-icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.learn-text {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Chapter */
+.chapter {
+    margin-bottom: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass-border);
+}
+
+.chapter-number {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--highlight-orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+.chapter-title {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    color: var(--pure-white);
+}
+
+.chapter-intro {
+    font-size: 17px;
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+/* Definition Box */
+.definition-box {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.1) 0%, rgba(10, 132, 255, 0.02) 100%);
+    border-left: 4px solid var(--system-blue);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin: 24px 0;
+}
+
+.definition-term {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--system-blue-light);
+    margin-bottom: 8px;
+}
+
+.definition-text {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+}
+
+/* Step Card */
+.step-card {
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.step-header {
+    background: linear-gradient(135deg, rgba(255, 159, 10, 0.1) 0%, transparent 100%);
+    padding: 20px 28px;
+    border-bottom: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.step-number {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--highlight-orange) 0%, var(--highlight-purple) 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+    flex-shrink: 0;
+}
+
+.step-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--pure-white);
+}
+
+.step-body {
+    padding: 28px;
+}
+
+.step-text {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.step-text:last-child {
+    margin-bottom: 0;
+}
+
+.step-text strong {
+    color: var(--pure-white);
+}
+
+/* Substep */
+.substep {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.substep:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.substep-num {
+    width: 28px;
+    height: 28px;
+    background: rgba(255, 159, 10, 0.2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--highlight-orange);
+    flex-shrink: 0;
+}
+
+.substep-content {
+    flex: 1;
+}
+
+.substep-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--pure-white);
+    margin-bottom: 4px;
+}
+
+.substep-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* Prompt Box */
+.prompt-box {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.prompt-header {
+    background: #161b22;
+    padding: 12px 16px;
+    border-bottom: 1px solid #30363d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.prompt-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--highlight-purple);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.prompt-copy {
+    font-size: 11px;
+    color: var(--apple-grey);
+}
+
+.prompt-content {
+    padding: 20px;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 13px;
+    color: #c9d1d9;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.prompt-content .variable {
+    color: var(--highlight-orange);
+    background: rgba(255, 159, 10, 0.15);
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+
+/* Tip Box */
+.tip-box {
+    background: linear-gradient(135deg, rgba(40, 205, 65, 0.08) 0%, rgba(40, 205, 65, 0.02) 100%);
+    border: 1px solid rgba(40, 205, 65, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.tip-box.warning {
+    background: linear-gradient(135deg, rgba(255, 214, 10, 0.08) 0%, rgba(255, 214, 10, 0.02) 100%);
+    border-color: rgba(255, 214, 10, 0.2);
+}
+
+.tip-box.info {
+    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
+    border-color: rgba(10, 132, 255, 0.2);
+}
+
+.tip-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.tip-icon { font-size: 20px; }
+
+.tip-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--highlight-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tip-box.warning .tip-title { color: var(--highlight-gold); }
+.tip-box.info .tip-title { color: var(--system-blue); }
+
+.tip-content {
+    font-size: 15px;
+    color: var(--pure-white);
+    line-height: 1.7;
+}
+
+/* Image Placeholder */
+.img-placeholder {
+    background: rgba(255, 255, 255, 0.02);
+    border: 2px dashed var(--glass-border);
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.img-placeholder-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+    opacity: 0.5;
+}
+
+.img-placeholder-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+/* Checklist */
+.checklist {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--glass-border);
+    font-size: 15px;
+    color: var(--pure-white);
+}
+
+.checklist li:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    color: var(--highlight-green);
+    font-size: 16px;
+    margin-top: 2px;
+}
+
+/* Code Block */
+.code-block {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+    font-family: 'Monaco', 'Menlo', monospace;
+    font-size: 13px;
+    color: #c9d1d9;
+    overflow-x: auto;
+}
+
+/* Workflow */
+.workflow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 30px 0;
+    padding: 30px;
+    background: var(--bg-card);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+.workflow-step {
+    background: linear-gradient(135deg, rgba(255, 159, 10, 0.15) 0%, rgba(191, 90, 242, 0.15) 100%);
+    border: 1px solid rgba(255, 159, 10, 0.3);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.workflow-step-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.workflow-step-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--pure-white);
+}
+
+.workflow-arrow {
+    font-size: 20px;
+    color: var(--highlight-orange);
+}
+
+/* Footer */
+.doc-footer {
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid var(--glass-border);
+    text-align: center;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--highlight-orange) 0%, var(--highlight-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.footer-text {
+    font-size: 13px;
+    color: var(--apple-grey);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container { padding: 40px 20px; }
+    .learn-grid { grid-template-columns: 1fr; }
+    .workflow { flex-direction: column; }
+    .workflow-arrow { transform: rotate(90deg); }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header -->
+    <header class="doc-header">
+        <div class="doc-badge">
+            <span>🚀</span>
+            <span>Order Bump Exclusive</span>
+        </div>
+        <h1 class="doc-title">Супергайд: ИИ-Маркетинг от А до Я</h1>
+        <p class="doc-subtitle">Полная система привлечения клиентов с помощью искусственного интеллекта. От создания контента до запуска рекламы — всё максимально просто.</p>
+    </header>
+
+    <!-- What You'll Learn -->
+    <div class="learn-grid">
+        <div class="learn-item">
+            <div class="learn-icon">🎬</div>
+            <div class="learn-text">AI-Аватары для видео без съёмок</div>
+        </div>
+        <div class="learn-item">
+            <div class="learn-icon">🔥</div>
+            <div class="learn-text">Поиск вирусного контента через ИИ</div>
+        </div>
+        <div class="learn-item">
+            <div class="learn-icon">📱</div>
+            <div class="learn-text">Карусели и посты за минуты</div>
+        </div>
+        <div class="learn-item">
+            <div class="learn-icon">🤖</div>
+            <div class="learn-text">Автоматизация сообщений</div>
+        </div>
+        <div class="learn-item">
+            <div class="learn-icon">🎯</div>
+            <div class="learn-text">Таргетированная реклама</div>
+        </div>
+        <div class="learn-item">
+            <div class="learn-icon">📊</div>
+            <div class="learn-text">Аналитика через ИИ</div>
+        </div>
+    </div>
+
+    <!-- Overall Workflow -->
+    <div class="workflow">
+        <div class="workflow-step">
+            <div class="workflow-step-icon">🔍</div>
+            <div class="workflow-step-text">Исследуй<br>вирусное</div>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+            <div class="workflow-step-icon">✍️</div>
+            <div class="workflow-step-text">Создай<br>контент</div>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+            <div class="workflow-step-icon">🎬</div>
+            <div class="workflow-step-text">Добавь<br>видео</div>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+            <div class="workflow-step-icon">🎯</div>
+            <div class="workflow-step-text">Запусти<br>рекламу</div>
+        </div>
+        <span class="workflow-arrow">→</span>
+        <div class="workflow-step">
+            <div class="workflow-step-icon">💰</div>
+            <div class="workflow-step-text">Получи<br>клиентов</div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 1: HeyGen -->
+    <!-- ============================================ -->
+    <section class="chapter">
+        <div class="chapter-number">📹 Глава 1</div>
+        <h2 class="chapter-title">HeyGen: AI-Аватары для Видео</h2>
+        <p class="chapter-intro">Представь: ты записываешь видео, но не снимаешь себя. Вместо тебя говорит цифровой аватар — он выглядит как настоящий человек, двигает губами синхронно с текстом. Это HeyGen.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое HeyGen?</div>
+            <div class="definition-text">HeyGen — это сервис, который создаёт видео с говорящими AI-аватарами. Ты пишешь текст → выбираешь аватара (цифрового человека) → HeyGen создаёт видео, где аватар произносит твой текст с естественной мимикой и движениями.</div>
+        </div>
+
+        <div class="definition-box">
+            <div class="definition-term">Зачем это нужно?</div>
+            <div class="definition-text">
+                • Не нужно снимать себя на камеру<br>
+                • Не нужно хорошее оборудование и освещение<br>
+                • Можно создавать видео на любом языке<br>
+                • Идеально для рекламы, презентаций, обучения
+            </div>
+        </div>
+
+        <!-- Step 1: Registration -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Регистрация в HeyGen</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Открой сайт heygen.com</div>
+                        <div class="substep-desc">Зайди на <strong>heygen.com</strong> в браузере. Нажми кнопку "Get Started Free" или "Try for Free".</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Создай аккаунт</div>
+                        <div class="substep-desc">Можешь войти через Google (быстрее) или создать аккаунт с email и паролем. Рекомендую через Google — меньше шагов.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Выбери бесплатный план</div>
+                        <div class="substep-desc">На бесплатном плане ты получишь 1 кредит (примерно 1 минута видео). Этого хватит, чтобы попробовать. Платный план от $24/месяц.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Creating Video -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Создание Первого Видео</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Нажми "Create Video"</div>
+                        <div class="substep-desc">После входа ты попадёшь в Dashboard (панель управления). Нажми большую кнопку "Create Video" или "New Video".</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Выбери аватара</div>
+                        <div class="substep-desc">Откроется библиотека аватаров. Есть мужчины, женщины, разные национальности. Выбери того, кто подходит твоей аудитории. Для бизнес-видео — человек в деловой одежде. Для молодёжной аудитории — casual.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Напиши текст</div>
+                        <div class="substep-desc">В поле "Script" (сценарий) напиши, что должен сказать аватар. Пиши как разговариваешь — короткими предложениями. Избегай сложных слов.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">4</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Выбери голос</div>
+                        <div class="substep-desc">Нажми на иконку голоса и выбери язык (русский, английский и т.д.) и тембр голоса. Можешь прослушать превью перед генерацией.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">5</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Сгенерируй видео</div>
+                        <div class="substep-desc">Нажми "Submit" или "Generate". Подожди 2-5 минут. Видео появится в разделе "My Videos". Скачай его.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Create Your Own Avatar -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Создание Своего Аватара (продвинуто)</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Хочешь, чтобы аватар был похож на тебя или твоего клиента? HeyGen позволяет создать персональный аватар.</p>
+
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Запиши 2-минутное видео себя</div>
+                        <div class="substep-desc">Сядь перед камерой, хорошее освещение, нейтральный фон. Говори любой текст 2 минуты, смотри в камеру, двигай головой естественно.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Загрузи в HeyGen</div>
+                        <div class="substep-desc">Раздел "Avatars" → "Create Avatar" → загрузи видео. HeyGen обучит модель на твоём лице и голосе.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Подожди обработку</div>
+                        <div class="substep-desc">Занимает от 30 минут до нескольких часов. После этого твой аватар появится в библиотеке.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💡</span>
+                <span class="tip-title">Идеи использования</span>
+            </div>
+            <div class="tip-content">
+                • <strong>Реклама:</strong> Аватар рассказывает о продукте (30-60 сек)<br>
+                • <strong>Приветствие:</strong> Видео на лендинге "Привет, я Анна..."<br>
+                • <strong>Обучение:</strong> Объяснение сложных тем<br>
+                • <strong>Отзывы:</strong> Сгенерируй "говорящий отзыв" (с разрешения клиента)
+            </div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">⚠️</span>
+                <span class="tip-title">Важно знать</span>
+            </div>
+            <div class="tip-content">
+                Бесплатный план ограничен. Для серьёзной работы нужен платный ($24-48/мес). Но даже один качественный рекламный ролик может окупить подписку на год.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 2: Viral Research -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">🔍 Глава 2</div>
+        <h2 class="chapter-title">Исследование Вирусного Контента через ИИ</h2>
+        <p class="chapter-intro">Не изобретай велосипед. Найди, что уже работает у других, и адаптируй под себя. ИИ поможет анализировать тренды и находить вирусные идеи.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое "вирусный контент"?</div>
+            <div class="definition-text">Контент, который люди массово репостят, комментируют, сохраняют. Он "вирусится" — распространяется как вирус от человека к человеку. Обычно это посты с высоким engagement (вовлечением): лайки + комменты + репосты + сохранения.</div>
+        </div>
+
+        <!-- Step 1: Find Viral Posts Manually -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Найди Вирусные Посты Вручную</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Сначала собери примеры успешного контента в твоей нише:</p>
+
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Открой Instagram/TikTok</div>
+                        <div class="substep-desc">Найди 5-10 аккаунтов конкурентов или лидеров в твоей нише. Посмотри их посты за последние 3 месяца.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Отсортируй по вовлечению</div>
+                        <div class="substep-desc">Найди посты с аномально высоким количеством лайков/комментов по сравнению с обычными постами. Это "выстрелы".</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Скопируй текст постов</div>
+                        <div class="substep-desc">Скопируй текст 10-20 вирусных постов в документ. Это твоя база для анализа.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 2: Analyze with Claude -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Анализ через Claude</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Теперь попроси Claude (или ChatGPT) найти паттерны в успешном контенте:</p>
+
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-label">Промпт для анализа</span>
+                        <span class="prompt-copy">скопируй и вставь</span>
+                    </div>
+                    <div class="prompt-content">Я собрал тексты вирусных постов из Instagram в нише <span class="variable">[твоя ниша]</span>.
+
+Проанализируй эти посты и найди:
+1. Общие темы и форматы, которые повторяются
+2. Структуру постов (как начинаются, развиваются, заканчиваются)
+3. Эмоциональные триггеры (что цепляет людей)
+4. Типы заголовков/хуков, которые работают
+5. Call-to-action (призывы к действию) в конце
+
+Вот посты:
+
+<span class="variable">[вставь сюда тексты 10-20 постов]</span>
+
+Дай мне конкретные паттерны, которые я могу использовать для создания своего контента.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3: Generate Ideas -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Генерация Идей на Основе Анализа</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">После анализа попроси Claude сгенерировать идеи для твоего контента:</p>
+
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-label">Промпт для идей</span>
+                    </div>
+                    <div class="prompt-content">На основе паттернов, которые ты нашёл, сгенерируй 20 идей для постов в моей нише.
+
+Моя ниша: <span class="variable">[опиши свою нишу]</span>
+Моя аудитория: <span class="variable">[опиши целевую аудиторию]</span>
+Мой продукт/услуга: <span class="variable">[что ты продаёшь]</span>
+
+Для каждой идеи дай:
+1. Заголовок/хук (первая строка, которая цепляет)
+2. Краткое описание содержания
+3. Формат (карусель, одиночный пост, reels)
+4. Почему это может стать вирусным</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">🔥</span>
+                <span class="tip-title">Рабочие форматы 2024-2025</span>
+            </div>
+            <div class="tip-content">
+                • <strong>"Я потратил X чтобы ты не тратил"</strong> — опыт и ошибки<br>
+                • <strong>"5 вещей, которые я узнал за..."</strong> — списки с инсайтами<br>
+                • <strong>"Почему [миф] — это ложь"</strong> — разрушение стереотипов<br>
+                • <strong>"Если бы я начинал с нуля..."</strong> — советы новичкам<br>
+                • <strong>Мини-туториалы</strong> — покажи как что-то сделать за 60 сек
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 3: Carousel Posts -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">📱 Глава 3</div>
+        <h2 class="chapter-title">Создание Постов-Каруселей через Claude</h2>
+        <p class="chapter-intro">Карусели (посты из нескольких слайдов) — самый вовлекающий формат в Instagram. Люди листают, задерживаются, алгоритм это любит. Claude напишет тебе карусель за 2 минуты.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое карусель?</div>
+            <div class="definition-text">Пост в Instagram из 2-10 изображений/слайдов, которые листаются вправо. Обычно: обложка с цепляющим заголовком → слайды с контентом → финальный слайд с призывом к действию.</div>
+        </div>
+
+        <!-- Structure -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Структура Вирусной Карусели</div>
+            </div>
+            <div class="step-body">
+                <ul class="checklist">
+                    <li>
+                        <span class="check-icon">1️⃣</span>
+                        <span><strong>Слайд 1 (Обложка):</strong> Цепляющий заголовок. Должен заставить остановиться и кликнуть. Пример: "5 ошибок, из-за которых ты теряешь клиентов"</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">2️⃣</span>
+                        <span><strong>Слайды 2-8 (Контент):</strong> Один слайд = одна идея. Коротко, визуально. Не перегружай текстом.</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">3️⃣</span>
+                        <span><strong>Слайд 9 (Резюме):</strong> Краткое повторение ключевых пунктов или главный вывод.</span>
+                    </li>
+                    <li>
+                        <span class="check-icon">4️⃣</span>
+                        <span><strong>Слайд 10 (CTA):</strong> Призыв к действию: "Сохрани", "Подпишись", "Напиши в директ", "Переходи по ссылке в шапке".</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Claude Prompt -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Промпт для Claude</div>
+            </div>
+            <div class="step-body">
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-label">Мастер-промпт для каруселей</span>
+                    </div>
+                    <div class="prompt-content">Создай Instagram-карусель из 10 слайдов на тему:
+"<span class="variable">[тема карусели]</span>"
+
+Моя ниша: <span class="variable">[ниша]</span>
+Целевая аудитория: <span class="variable">[кто]</span>
+Цель поста: <span class="variable">[вовлечение / продажа / подписка]</span>
+
+Формат ответа для каждого слайда:
+---
+СЛАЙД [номер]
+Заголовок: [крупный текст]
+Подзаголовок/текст: [мелкий текст если нужен]
+Визуальная идея: [что изобразить]
+---
+
+Требования:
+- Слайд 1: цепляющий заголовок (вопрос, провокация или обещание)
+- Слайды 2-8: по одной идее на слайд, коротко
+- Слайд 9: резюме или главный вывод
+- Слайд 10: сильный призыв к действию
+
+Текст должен быть простым, без канцелярита. Как будто друг объясняет другу.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Design in Canva -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Дизайн в Canva за 10 минут</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Открой Canva.com → Instagram Post (квадрат)</div>
+                        <div class="substep-desc">Или сразу ищи "Instagram Carousel" в шаблонах. Там есть готовые наборы из 10 слайдов.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Выбери минималистичный шаблон</div>
+                        <div class="substep-desc">Меньше цветов = лучше. Используй 2-3 цвета максимум. Один шрифт для заголовков, один для текста.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Вставь текст из Claude</div>
+                        <div class="substep-desc">Просто копируй заголовки и тексты для каждого слайда. Добавь иконки из библиотеки Canva для визуала.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">4</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Скачай и публикуй</div>
+                        <div class="substep-desc">Download → PNG → выбери все страницы. Загрузи в Instagram как карусель.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">⚡</span>
+                <span class="tip-title">Скорость = ключ</span>
+            </div>
+            <div class="tip-content">
+                С этой системой ты можешь создавать 1 карусель за 15-20 минут:
+                <br>• 2 мин — промпт в Claude
+                <br>• 3 мин — редактирование текста
+                <br>• 10 мин — дизайн в Canva
+                <br><br>
+                <strong>Это 3-4 карусели в час. 20+ постов в неделю.</strong>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 4: ManyChat -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">🤖 Глава 4</div>
+        <h2 class="chapter-title">ManyChat: Автоматизация Сообщений</h2>
+        <p class="chapter-intro">Когда люди пишут "хочу" под постом или в директ — не отвечай вручную. Настрой бота, который сделает это за тебя 24/7 и соберёт контакты.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое ManyChat?</div>
+            <div class="definition-text">ManyChat — это сервис для создания чат-ботов в Instagram, Facebook, WhatsApp и Telegram. Бот автоматически отвечает на сообщения, собирает email/телефон, отправляет ссылки — без твоего участия.</div>
+        </div>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое "конверсия"?</div>
+            <div class="definition-text">Конверсия — это когда человек совершает целевое действие: оставил контакт, перешёл по ссылке, купил. "Обработка конверсий" = автоматизация этого процесса.</div>
+        </div>
+
+        <!-- Setup -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Настройка ManyChat</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Зарегистрируйся на manychat.com</div>
+                        <div class="substep-desc">Есть бесплатный план до 1000 контактов. Для старта хватит.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Подключи Instagram аккаунт</div>
+                        <div class="substep-desc">ManyChat попросит доступ к твоему Instagram. Это безопасно — нужно для отправки сообщений. Требуется бизнес-аккаунт Instagram.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Создай первый Flow (поток сообщений)</div>
+                        <div class="substep-desc">Flow — это цепочка сообщений. Например: человек пишет "гайд" → бот отвечает "Привет! Вот ссылка на гайд: ..." → бот спрашивает email.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Trigger -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Триггер по Ключевому Слову</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Самый популярный сценарий: человек пишет определённое слово → получает автоответ.</p>
+
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Automation → New Trigger → Keyword</div>
+                        <div class="substep-desc">Выбери "Instagram DM" как канал. В поле Keyword введи слово-триггер, например: "гайд", "хочу", "прайс".</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Добавь сообщение-ответ</div>
+                        <div class="substep-desc">Нажми "+ Add Action" → "Send Message". Напиши текст ответа. Можешь добавить кнопки, картинки, ссылки.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Добавь сбор контакта (опционально)</div>
+                        <div class="substep-desc">После ссылки добавь: "User Input" → спроси email или телефон. Контакты сохранятся в базе ManyChat.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comment Trigger -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Триггер по Комментарию</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Ещё круче: человек комментирует пост → бот автоматически пишет в директ.</p>
+
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Automation → New Trigger → Instagram Comment</div>
+                        <div class="substep-desc">Выбери пост, к которому применить триггер. Укажи ключевое слово в комментарии (например, "хочу").</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Настрой автоответ в директ</div>
+                        <div class="substep-desc">Бот отправит личное сообщение тому, кто оставил комментарий. "Привет! Ты написал 'хочу' — вот ссылка на материал..."</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">💰</span>
+                <span class="tip-title">Пример использования</span>
+            </div>
+            <div class="tip-content">
+                <strong>Пост:</strong> "5 способов увеличить продажи через Instagram. Напиши 'ГАЙД' в комментариях — пришлю бесплатный чек-лист."<br><br>
+                <strong>Что происходит:</strong><br>
+                1. Человек пишет "ГАЙД" в комментариях<br>
+                2. ManyChat автоматически отправляет в директ ссылку на чек-лист<br>
+                3. Бот спрашивает email для рассылки<br>
+                4. Ты получаешь контакт потенциального клиента<br><br>
+                <strong>Результат:</strong> 100 комментариев = 100 контактов в базе. Автоматически.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 5: Facebook Ads -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">🎯 Глава 5</div>
+        <h2 class="chapter-title">Таргетированная Реклама</h2>
+        <p class="chapter-intro">Органический охват — это долго. Таргет — это быстро. Ты платишь Facebook/Instagram, они показывают твой контент нужным людям. Вот как это работает.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое таргетированная реклама?</div>
+            <div class="definition-text">Реклама, которая показывается только определённым людям (target = цель). Ты выбираешь: возраст, пол, интересы, местоположение, поведение — и реклама показывается только им. Не всем подряд, а тем, кто скорее купит.</div>
+        </div>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое "рекламный кабинет"?</div>
+            <div class="definition-text">Ads Manager (Менеджер рекламы) — это панель управления рекламой Facebook/Instagram. Там ты создаёшь рекламу, выбираешь аудиторию, устанавливаешь бюджет, смотришь статистику. Находится: business.facebook.com</div>
+        </div>
+
+        <!-- Create Ad Account -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Создание Рекламного Кабинета</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Зайди на business.facebook.com</div>
+                        <div class="substep-desc">Войди через свой Facebook аккаунт. Если нет бизнес-аккаунта — создай (кнопка "Create Account").</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Добавь способ оплаты</div>
+                        <div class="substep-desc">Settings → Payment Methods → Add. Привяжи карту. Без этого запустить рекламу не получится.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Подключи Instagram аккаунт</div>
+                        <div class="substep-desc">Settings → Instagram Accounts → Add. Теперь можешь запускать рекламу и на Instagram тоже.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Ad with AI -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Создание Рекламного Креатива через Claude</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text"><strong>Фишка:</strong> Попроси Claude создать макет рекламы в HTML/CSS. Сделай скриншот → используй как рекламное изображение. Быстрее, чем возиться с Canva.</p>
+
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-label">Промпт для рекламного креатива</span>
+                    </div>
+                    <div class="prompt-content">Создай HTML/CSS макет рекламного баннера для Instagram/Facebook.
+
+Продукт: <span class="variable">[что рекламируем]</span>
+Целевая аудитория: <span class="variable">[кто]</span>
+Главный оффер: <span class="variable">[что получит человек, какая выгода]</span>
+Call-to-action: <span class="variable">[кнопка - например "Узнать больше"]</span>
+
+Требования к дизайну:
+- Размер: 1080x1080 пикселей (квадрат)
+- Яркий, привлекающий внимание
+- Крупный заголовок (читается за 2 секунды)
+- Минимум текста (правило 20% текста для Facebook)
+- Кнопка CTA внизу
+- Современный, чистый стиль
+
+Выдай полный HTML+CSS код, который я могу открыть в браузере и сделать скриншот.</div>
+                </div>
+
+                <p class="step-text" style="margin-top: 20px;"><strong>После генерации:</strong></p>
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Скопируй код в файл .html</div>
+                        <div class="substep-desc">Создай файл (например, ad.html), вставь код, сохрани.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Открой в браузере</div>
+                        <div class="substep-desc">Дважды кликни на файл — откроется в Chrome/Safari. Ты увидишь свой баннер.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Сделай скриншот</div>
+                        <div class="substep-desc">Windows: Win+Shift+S / Mac: Cmd+Shift+4. Выдели только баннер. Сохрани как PNG.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">4</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Готово — используй в рекламе</div>
+                        <div class="substep-desc">Загрузи этот скриншот как изображение в Ads Manager.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Launch Campaign -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">3</div>
+                <div class="step-title">Запуск Рекламной Кампании</div>
+            </div>
+            <div class="step-body">
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Ads Manager → Create Campaign</div>
+                        <div class="substep-desc">Выбери цель: "Traffic" (трафик на сайт), "Leads" (сбор контактов) или "Messages" (сообщения в директ).</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Настрой аудиторию</div>
+                        <div class="substep-desc">Выбери: страну, возраст, пол, интересы. Начни широко (2-5 млн человек), потом сужай по результатам.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Установи бюджет</div>
+                        <div class="substep-desc">Для теста: $5-10 в день. За неделю поймёшь, работает реклама или нет. Не трать сразу много.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">4</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Загрузи креатив</div>
+                        <div class="substep-desc">Добавь изображение (скриншот из Claude), напиши текст объявления, укажи ссылку.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">5</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Publish → Ждать модерацию</div>
+                        <div class="substep-desc">Facebook проверит рекламу (от 15 минут до 24 часов). После одобрения — начнутся показы.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tip-box warning">
+            <div class="tip-header">
+                <span class="tip-icon">💵</span>
+                <span class="tip-title">Для себя или для клиентов?</span>
+            </div>
+            <div class="tip-content">
+                <strong>Для своих услуг:</strong> Рекламируй свой продукт/услугу. Ты тратишь деньги, получаешь клиентов напрямую.<br><br>
+                <strong>Для клиентов (как услуга):</strong> Клиент платит тебе за настройку + бюджет на рекламу. Ты берёшь $200-500 за настройку + % от бюджета или фиксированную плату за ведение.<br><br>
+                <strong>Совет:</strong> Сначала научись на своей рекламе, потом предлагай клиентам.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- CHAPTER 6: Facebook MCP -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">📊 Глава 6</div>
+        <h2 class="chapter-title">Аналитика Рекламы через ИИ (Facebook MCP)</h2>
+        <p class="chapter-intro">Продвинутая фишка: подключи рекламный кабинет к Claude и спрашивай результаты голосом. "Сколько лидов вчера?" — и получай ответ без лазания по отчётам.</p>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое MCP?</div>
+            <div class="definition-text">MCP (Model Context Protocol) — это способ подключить внешние сервисы к Claude. Например, подключаешь Facebook Ads → теперь Claude может смотреть твою статистику рекламы и отвечать на вопросы о ней.</div>
+        </div>
+
+        <div class="definition-box">
+            <div class="definition-term">Что это даёт?</div>
+            <div class="definition-text">
+                Вместо того чтобы лезть в Ads Manager, искать нужный отчёт, разбираться в цифрах — ты просто спрашиваешь:<br><br>
+                • "Сколько потратили на рекламу за последнюю неделю?"<br>
+                • "Какая реклама работает лучше всего?"<br>
+                • "Сколько стоит один лид в кампании X?"<br><br>
+                Claude смотрит данные и отвечает простым языком.
+            </div>
+        </div>
+
+        <!-- Setup MCP -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">1</div>
+                <div class="step-title">Подключение Facebook MCP к Claude</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">Для этого нужен Claude Desktop (приложение на компьютер) или Claude с поддержкой MCP.</p>
+
+                <div class="substep">
+                    <div class="substep-num">1</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Скачай Claude Desktop</div>
+                        <div class="substep-desc">Зайди на claude.ai → Download → выбери свою операционную систему (Windows/Mac). Установи приложение.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">2</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Открой настройки MCP</div>
+                        <div class="substep-desc">В Claude Desktop: Settings → MCP Servers. Здесь добавляются внешние подключения.</div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">3</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Получи Facebook Access Token</div>
+                        <div class="substep-desc">
+                            Зайди в developers.facebook.com → My Apps → Create App.<br>
+                            Тип: Business → добавь Marketing API.<br>
+                            В Tools → Access Token Tool получи токен с разрешениями ads_read.
+                        </div>
+                    </div>
+                </div>
+                <div class="substep">
+                    <div class="substep-num">4</div>
+                    <div class="substep-content">
+                        <div class="substep-title">Добавь конфигурацию MCP</div>
+                        <div class="substep-desc">В настройках Claude добавь Facebook MCP сервер с твоим токеном. (Точная настройка зависит от версии Claude — смотри документацию MCP.)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Use -->
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">2</div>
+                <div class="step-title">Как Использовать</div>
+            </div>
+            <div class="step-body">
+                <p class="step-text">После подключения просто задавай вопросы в чат с Claude:</p>
+
+                <div class="prompt-box">
+                    <div class="prompt-header">
+                        <span class="prompt-label">Примеры вопросов</span>
+                    </div>
+                    <div class="prompt-content">"Покажи статистику моих рекламных кампаний за последние 7 дней"
+
+"Какая кампания принесла больше всего конверсий?"
+
+"Сколько я потратил на рекламу в этом месяце?"
+
+"Какой CTR у моей рекламы 'Летняя акция'?"
+
+"Сравни эффективность двух последних кампаний"
+
+"Дай рекомендации по оптимизации на основе данных"</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="definition-box">
+            <div class="definition-term">Что такое CTR, CPC, CPM?</div>
+            <div class="definition-text">
+                <strong>CTR (Click-Through Rate)</strong> — процент кликов. Сколько людей из увидевших рекламу кликнули. 1-2% = норма.<br><br>
+                <strong>CPC (Cost Per Click)</strong> — цена за клик. Сколько ты платишь за каждый клик по рекламе.<br><br>
+                <strong>CPM (Cost Per Mille)</strong> — цена за 1000 показов. Сколько стоит показать рекламу 1000 людям.<br><br>
+                <strong>CPA (Cost Per Action)</strong> — цена за действие (заявку, покупку). Главная метрика.
+            </div>
+        </div>
+
+        <div class="tip-box info">
+            <div class="tip-header">
+                <span class="tip-icon">🔮</span>
+                <span class="tip-title">Зачем это нужно</span>
+            </div>
+            <div class="tip-content">
+                Когда ведёшь рекламу для нескольких клиентов — это экономит часы. Вместо залезания в каждый кабинет, ты спрашиваешь Claude: "Покажи сводку по всем клиентам за неделю" — и получаешь отчёт за 10 секунд.
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- FINAL CHECKLIST -->
+    <!-- ============================================ -->
+    <section class="chapter page-break">
+        <div class="chapter-number">✅ Финал</div>
+        <h2 class="chapter-title">Твой План Действий</h2>
+        <p class="chapter-intro">Не пытайся сделать всё сразу. Вот порядок, в котором лучше осваивать:</p>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">📅</div>
+                <div class="step-title">Неделя 1: Контент</div>
+            </div>
+            <div class="step-body">
+                <ul class="checklist">
+                    <li><span class="check-icon">☐</span> Найди 20 вирусных постов в своей нише</li>
+                    <li><span class="check-icon">☐</span> Проанализируй их через Claude</li>
+                    <li><span class="check-icon">☐</span> Создай 5 каруселей по шаблону</li>
+                    <li><span class="check-icon">☐</span> Опубликуй и отследи результаты</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">📅</div>
+                <div class="step-title">Неделя 2: Автоматизация</div>
+            </div>
+            <div class="step-body">
+                <ul class="checklist">
+                    <li><span class="check-icon">☐</span> Зарегистрируйся в ManyChat</li>
+                    <li><span class="check-icon">☐</span> Настрой первый триггер по ключевому слову</li>
+                    <li><span class="check-icon">☐</span> Создай пост с призывом написать слово</li>
+                    <li><span class="check-icon">☐</span> Собери первые 50 контактов</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">📅</div>
+                <div class="step-title">Неделя 3: Видео</div>
+            </div>
+            <div class="step-body">
+                <ul class="checklist">
+                    <li><span class="check-icon">☐</span> Зарегистрируйся в HeyGen</li>
+                    <li><span class="check-icon">☐</span> Создай первое тестовое видео</li>
+                    <li><span class="check-icon">☐</span> Сделай короткий рекламный ролик (30 сек)</li>
+                    <li><span class="check-icon">☐</span> Опубликуй как Reels</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step-card">
+            <div class="step-header">
+                <div class="step-number">📅</div>
+                <div class="step-title">Неделя 4: Реклама</div>
+            </div>
+            <div class="step-body">
+                <ul class="checklist">
+                    <li><span class="check-icon">☐</span> Настрой рекламный кабинет Facebook</li>
+                    <li><span class="check-icon">☐</span> Создай креатив через Claude (HTML → скриншот)</li>
+                    <li><span class="check-icon">☐</span> Запусти тестовую кампанию на $5/день</li>
+                    <li><span class="check-icon">☐</span> Проанализируй результаты через неделю</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <div class="tip-header">
+                <span class="tip-icon">🎯</span>
+                <span class="tip-title">Главный принцип</span>
+            </div>
+            <div class="tip-content">
+                Не усложняй. Лучше сделать 10 простых постов, чем застрять на одном "идеальном". ИИ даёт тебе скорость — используй её. Тестируй много, оставляй то, что работает.
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+        <div class="footer-logo">Smartworker</div>
+        <p class="footer-text">© 2025 Recrutu Virtual Assistants LLC. Все права защищены.<br>Этот документ предназначен только для личного использования.</p>
+    </footer>
+</div>
+
+</body>
+</html>
