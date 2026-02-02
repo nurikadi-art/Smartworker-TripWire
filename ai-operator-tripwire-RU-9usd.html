@@ -4297,6 +4297,148 @@ setTimeout(function() {
         setTimeout(() => { firstItem.style.animation = ''; }, 500);
     }
 }, 3000);
+
+// ============================================================
+// DYNAMIC PRICING - KZ, UZ, KG local currency display
+// ============================================================
+(function() {
+    const currencies = {
+        'KZ': { code: 'KZT', symbol: '₸', rate: 450, name: 'тенге' },
+        'UZ': { code: 'UZS', symbol: 'сум', rate: 12800, name: 'сум' },
+        'KG': { code: 'KGS', symbol: 'сом', rate: 89, name: 'сом' }
+    };
+
+    async function initDynamicPricing() {
+        try {
+            const response = await fetch('https://ipapi.co/json/', {
+                signal: AbortSignal.timeout(3000)
+            });
+            const data = await response.json();
+            const country = data.country_code;
+
+            if (currencies[country]) {
+                applyLocalPricing(currencies[country]);
+            }
+        } catch (e) {
+            // Silent fail - show USD prices
+            console.log('Dynamic pricing: using default USD');
+        }
+    }
+
+    function applyLocalPricing(currency) {
+        const price9 = Math.round(9 * currency.rate);
+        const price582 = Math.round(582 * currency.rate);
+        const price97 = Math.round(97 * currency.rate);
+
+        // Format numbers with spaces for thousands
+        const format = (num) => num.toLocaleString('ru-RU');
+
+        // Add CSS for local price styling
+        const style = document.createElement('style');
+        style.textContent = `
+            .local-price {
+                display: block;
+                font-size: 0.7em;
+                opacity: 0.85;
+                font-weight: 500;
+                margin-top: 2px;
+            }
+            .cta-mega .local-price {
+                font-size: 0.55em;
+            }
+            .floating-price-now .local-price {
+                font-size: 0.5em;
+            }
+            .hook-answer .local-price {
+                font-size: 0.75em;
+                display: inline;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Hook answer "Это реально. За $9."
+        const hookAnswer = document.querySelector('.hook-answer');
+        if (hookAnswer && !hookAnswer.dataset.priced) {
+            hookAnswer.innerHTML = `Это реально. За $9 <span class="local-price">(~${format(price9)} ${currency.symbol})</span>`;
+            hookAnswer.dataset.priced = 'true';
+        }
+
+        // Mega CTA price
+        const megaPrice = document.querySelector('.cta-mega-price');
+        if (megaPrice && !megaPrice.dataset.priced) {
+            megaPrice.innerHTML = `Всего $9 <span class="local-price">~${format(price9)} ${currency.symbol}</span>`;
+            megaPrice.dataset.priced = 'true';
+        }
+
+        // Mega CTA sub (was price)
+        const megaSub = document.querySelector('.cta-mega-sub');
+        if (megaSub && !megaSub.dataset.priced) {
+            megaSub.innerHTML = `вместо $582 (~${format(price582)} ${currency.symbol}) • Гарантия 30 дней`;
+            megaSub.dataset.priced = 'true';
+        }
+
+        // Floating CTA prices
+        const floatingNow = document.querySelector('.floating-price-now');
+        if (floatingNow && !floatingNow.dataset.priced) {
+            floatingNow.innerHTML = `$9 <span class="local-price">~${format(price9)} ${currency.symbol}</span>`;
+            floatingNow.dataset.priced = 'true';
+        }
+
+        const floatingWas = document.querySelector('.floating-price-was');
+        if (floatingWas && !floatingWas.dataset.priced) {
+            floatingWas.textContent = `$582 (~${format(price582)} ${currency.symbol})`;
+            floatingWas.dataset.priced = 'true';
+        }
+
+        // All CTA buttons with $9
+        document.querySelectorAll('.cta-button').forEach(btn => {
+            if (btn.textContent.includes('$9') && !btn.dataset.priced) {
+                btn.innerHTML = btn.innerHTML.replace('$9', `$9 <span class="local-price" style="display:inline;font-size:0.8em;">(~${format(price9)} ${currency.symbol})</span>`);
+                btn.dataset.priced = 'true';
+            }
+        });
+
+        // Book prices ($97)
+        document.querySelectorAll('.stack-book-author').forEach(el => {
+            if (el.textContent.includes('$97') && !el.dataset.priced) {
+                el.innerHTML = `$97 <span style="font-size:0.8em;opacity:0.7;">(~${format(price97)}${currency.symbol})</span>`;
+                el.dataset.priced = 'true';
+            }
+        });
+
+        // Stack label total value
+        const stackLabel = document.querySelector('.stack-label');
+        if (stackLabel && stackLabel.textContent.includes('$582') && !stackLabel.dataset.priced) {
+            stackLabel.innerHTML = `Общая ценность: $582 (~${format(price582)} ${currency.symbol}) → Сегодня: $9 (~${format(price9)} ${currency.symbol})`;
+            stackLabel.dataset.priced = 'true';
+        }
+
+        // Today price in offer stack
+        document.querySelectorAll('.today-price').forEach(el => {
+            if (!el.dataset.priced) {
+                el.innerHTML = el.innerHTML + `<span class="local-price">~${format(price9)} ${currency.symbol}</span>`;
+                el.dataset.priced = 'true';
+            }
+        });
+
+        // Price highlights
+        document.querySelectorAll('.price-highlight').forEach(el => {
+            if (el.textContent.includes('$9') && !el.dataset.priced) {
+                el.innerHTML = `$9 <span class="local-price" style="display:inline;font-size:0.7em;">(~${format(price9)} ${currency.symbol})</span>`;
+                el.dataset.priced = 'true';
+            }
+        });
+
+        console.log(`Dynamic pricing: ${currency.code} applied`);
+    }
+
+    // Run after DOM ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDynamicPricing);
+    } else {
+        initDynamicPricing();
+    }
+})();
 </script>
 
 </body>
