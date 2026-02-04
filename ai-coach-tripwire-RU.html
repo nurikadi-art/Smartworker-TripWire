@@ -738,6 +738,194 @@
         }
         .footer-links a:hover { color: #fff; }
 
+        /* ===================== AS FEATURED IN ===================== */
+        .featured-section {
+            padding: 48px 32px; background: var(--white);
+            border-bottom: 0.5px solid var(--silver-100);
+        }
+        .featured-inner {
+            max-width: 900px; margin: 0 auto; text-align: center;
+        }
+        .featured-label {
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.12em; color: var(--silver-400); margin-bottom: 28px;
+        }
+        .featured-logos {
+            display: flex; align-items: center; justify-content: center;
+            gap: 48px; flex-wrap: wrap; opacity: 0.35;
+            transition: opacity 0.5s;
+        }
+        .featured-logos:hover { opacity: 0.55; }
+        .featured-logo {
+            font-size: 20px; font-weight: 800; letter-spacing: -0.02em;
+            color: var(--titanium); font-family: var(--font);
+            display: flex; align-items: center; gap: 4px;
+        }
+        .featured-logo.serif { font-family: Georgia, 'Times New Roman', serif; font-style: italic; }
+        .featured-logo.sans { font-family: var(--font); font-style: normal; }
+
+        /* ===================== VS CHATGPT ===================== */
+        .vs-section { padding: 140px 32px; background: var(--white); }
+
+        .vs-table {
+            margin-top: 72px; border-radius: 20px; overflow: hidden;
+            border: 1px solid var(--silver-100);
+        }
+        .vs-row {
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 0.5px solid var(--silver-100);
+        }
+        .vs-row:last-child { border-bottom: none; }
+        .vs-row-head {
+            background: var(--silver-50);
+        }
+        .vs-cell {
+            padding: 20px 24px; font-size: 14px; color: var(--silver-600);
+            display: flex; align-items: center; gap: 8px;
+        }
+        .vs-cell:not(:last-child) { border-right: 0.5px solid var(--silver-100); }
+        .vs-cell-head {
+            font-weight: 700; font-size: 13px; text-transform: uppercase;
+            letter-spacing: 0.06em; color: var(--silver-400);
+        }
+        .vs-cell-feature { font-weight: 600; color: var(--titanium); }
+        .vs-cell-highlight {
+            background: rgba(0,113,227,0.03);
+        }
+        .vs-check { color: var(--green); font-weight: 700; }
+        .vs-x { color: var(--silver-300); }
+        .vs-winner-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background: rgba(0,113,227,0.06); color: var(--accent);
+            padding: 3px 10px; border-radius: 980px; font-size: 11px;
+            font-weight: 700; margin-left: 4px;
+        }
+
+        /* ===================== WHAT CAN I DO ===================== */
+        .uses-section { padding: 140px 32px; background: var(--silver-50); }
+
+        .uses-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr);
+            gap: 16px; margin-top: 72px;
+        }
+        .use-card {
+            background: var(--white); border: 1px solid var(--silver-100);
+            border-radius: 16px; padding: 28px 24px; text-align: center;
+            transition: all 0.4s var(--ease);
+        }
+        .use-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
+            border-color: transparent;
+        }
+        .use-emoji {
+            font-size: 32px; margin-bottom: 14px;
+            display: block;
+        }
+        .use-card h4 {
+            font-size: 14px; font-weight: 700; color: var(--titanium);
+            margin-bottom: 6px;
+        }
+        .use-card p {
+            font-size: 12px; color: var(--silver-500); line-height: 1.5;
+        }
+
+        /* ===================== HOW FAST ===================== */
+        .speed-section { padding: 140px 32px; background: var(--titanium); color: #fff; position: relative; overflow: hidden; }
+        .speed-section::before {
+            content: ''; position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%,-50%); width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,113,227,0.1), transparent 65%);
+            pointer-events: none;
+        }
+        .speed-section .s-label { color: #5ac8fa; }
+        .speed-section .s-sub { color: var(--silver-300); }
+
+        .speed-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 24px; margin-top: 72px;
+        }
+        .speed-card {
+            background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px; padding: 40px 32px; text-align: center;
+            transition: all 0.4s var(--ease);
+        }
+        .speed-card:hover {
+            background: rgba(255,255,255,0.07);
+            transform: translateY(-4px);
+            border-color: rgba(0,113,227,0.2);
+        }
+        .speed-big {
+            font-size: clamp(40px, 5vw, 56px); font-weight: 800;
+            letter-spacing: -0.03em; line-height: 1; margin-bottom: 8px;
+            background: linear-gradient(135deg, #5ac8fa, #64d2ff);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .speed-label {
+            font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 8px;
+        }
+        .speed-desc {
+            font-size: 13px; color: var(--silver-400); line-height: 1.5;
+        }
+
+        /* ===================== TRUSTPILOT REVIEWS ===================== */
+        .tp-section { padding: 140px 32px; background: var(--silver-50); }
+
+        .tp-header-bar {
+            display: flex; align-items: center; justify-content: center;
+            gap: 20px; margin-bottom: 48px; flex-wrap: wrap;
+        }
+        .tp-logo {
+            display: flex; align-items: center; gap: 6px;
+        }
+        .tp-star-icon {
+            width: 24px; height: 24px; background: #00b67a; display: inline-flex;
+            align-items: center; justify-content: center; border-radius: 3px;
+        }
+        .tp-star-icon svg { width: 14px; height: 14px; }
+        .tp-brand { font-size: 18px; font-weight: 700; color: var(--titanium); }
+        .tp-rating-box { display: flex; align-items: center; gap: 8px; }
+        .tp-stars-row { display: flex; gap: 3px; }
+        .tp-star {
+            width: 28px; height: 28px; background: #00b67a;
+            display: flex; align-items: center; justify-content: center; border-radius: 3px;
+        }
+        .tp-star svg { width: 14px; height: 14px; }
+        .tp-score { font-size: 14px; font-weight: 600; color: var(--silver-600); }
+
+        .tp-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .tp-card {
+            background: var(--white); border: 1px solid var(--silver-100);
+            border-radius: 16px; padding: 32px 28px;
+            transition: all 0.4s var(--ease); display: flex; flex-direction: column;
+        }
+        .tp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+
+        .tp-card-stars { display: flex; gap: 3px; margin-bottom: 16px; }
+        .tp-card-star {
+            width: 22px; height: 22px; background: #00b67a;
+            display: flex; align-items: center; justify-content: center; border-radius: 2px;
+        }
+        .tp-card-star svg { width: 12px; height: 12px; }
+        .tp-card-title { font-size: 15px; font-weight: 700; color: var(--titanium); margin-bottom: 10px; }
+        .tp-card-text { font-size: 14px; color: var(--silver-500); line-height: 1.65; flex: 1; margin-bottom: 18px; }
+        .tp-card-text em { font-style: normal; color: var(--titanium); font-weight: 600; }
+
+        .tp-card-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-top: 16px; border-top: 0.5px solid var(--silver-100);
+        }
+        .tp-card-author { font-size: 13px; font-weight: 600; color: var(--titanium); }
+        .tp-card-verified {
+            display: flex; align-items: center; gap: 4px;
+            font-size: 11px; color: var(--silver-400);
+        }
+        .tp-card-verified svg { color: #00b67a; }
+        .tp-card-date { font-size: 11px; color: var(--silver-400); }
+
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 960px) {
             .scenario-grid { grid-template-columns: repeat(2, 1fr); }
@@ -745,11 +933,14 @@
             .feat-wide { grid-template-columns: 1fr; }
             .tf-grid { grid-template-columns: 1fr; gap: 16px; }
             .tf-arrow { transform: rotate(90deg); }
-            .test-grid { grid-template-columns: 1fr; }
+            .tp-grid { grid-template-columns: 1fr; }
             .stats-row { grid-template-columns: repeat(2, 1fr); }
+            .uses-grid { grid-template-columns: repeat(2, 1fr); }
+            .speed-grid { grid-template-columns: 1fr; }
+            .vs-row { grid-template-columns: 1fr 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            .scenarios, .how-section, .feat-section, .transform-section, .test-section, .faq-section { padding: 100px 20px; }
+            .scenarios, .how-section, .feat-section, .transform-section, .tp-section, .faq-section, .vs-section, .uses-section, .speed-section { padding: 100px 20px; }
             .hero { padding: 120px 20px 80px; min-height: auto; }
             .steps-row { grid-template-columns: 1fr; gap: 48px; }
             .steps-row::before { display: none; }
@@ -759,6 +950,10 @@
             .cta-box { padding: 40px 24px; }
             .nav-inner { padding: 0 16px; }
             .ticker-item { font-size: 12px; }
+            .featured-logos { gap: 28px; }
+            .featured-logo { font-size: 16px; }
+            .uses-grid { grid-template-columns: repeat(2, 1fr); }
+            .vs-cell { padding: 14px 16px; font-size: 12px; }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 32px; }
@@ -767,6 +962,9 @@
             .hero-ctas { flex-direction: column; }
             .cta-checks { flex-direction: column; align-items: center; }
             .stats-row { grid-template-columns: 1fr 1fr; }
+            .uses-grid { grid-template-columns: 1fr 1fr; }
+            .vs-row { grid-template-columns: 1fr; }
+            .vs-cell:not(:last-child) { border-right: none; border-bottom: 0.5px solid var(--silver-100); }
         }
     </style>
 </head>
@@ -842,6 +1040,21 @@
             <div class="float-tag ft2"><div class="fi" style="background:rgba(52,199,89,0.06)">💪</div> Фитнес</div>
             <div class="float-tag ft3"><div class="fi" style="background:rgba(255,149,0,0.06)">💰</div> Финансы</div>
             <div class="float-tag ft4"><div class="fi" style="background:rgba(175,82,222,0.06)">🎨</div> Креатив</div>
+        </div>
+    </div>
+</section>
+
+<!-- AS FEATURED IN -->
+<section class="featured-section">
+    <div class="featured-inner">
+        <div class="featured-label">Технология, о которой пишут</div>
+        <div class="featured-logos">
+            <span class="featured-logo serif">Forbes</span>
+            <span class="featured-logo sans" style="letter-spacing:0.15em;font-size:16px;">BLOOMBERG</span>
+            <span class="featured-logo sans" style="font-weight:900;font-size:18px;">TechCrunch</span>
+            <span class="featured-logo serif" style="font-size:22px;">The Wall Street Journal</span>
+            <span class="featured-logo sans" style="font-weight:900;letter-spacing:0.05em;">WIRED</span>
+            <span class="featured-logo sans" style="font-weight:300;font-size:22px;letter-spacing:0.08em;">Business Insider</span>
         </div>
     </div>
 </section>
@@ -1149,39 +1362,253 @@
     </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="test-section">
+<!-- WHY BETTER THAN CHATGPT -->
+<section class="vs-section">
     <div class="wrap">
         <div class="s-header">
-            <p class="s-label r">Реальные истории</p>
-            <h2 class="s-title r d1">Они сомневались —<br>потом попробовали</h2>
+            <p class="s-label r">Главный вопрос</p>
+            <h2 class="s-title r d1">«А чем это лучше<br>обычного ChatGPT?»</h2>
+            <p class="s-sub r d2">ChatGPT — гениальный инструмент. Но без настройки под вас он как учебник без учителя. Вот конкретная разница:</p>
         </div>
 
-        <div class="test-grid">
-            <div class="test-card r d1">
-                <div class="test-stars">★★★★★</div>
-                <p class="test-text">«Работала администратором 3 года и не видела выхода. Ментор составил план перехода в Project Management, <em>готовил к каждому собеседованию ролевыми играми</em>. Через 3 месяца получила офер — зарплата ×2.»</p>
-                <div class="test-author">
-                    <div class="test-av">А</div>
-                    <div><div class="test-name">Алия К.</div><div class="test-role">PM, Алматы</div></div>
+        <div class="vs-table r">
+            <div class="vs-row vs-row-head">
+                <div class="vs-cell vs-cell-head">Функция</div>
+                <div class="vs-cell vs-cell-head">ChatGPT</div>
+                <div class="vs-cell vs-cell-head vs-cell-highlight">AI-Ментор <span class="vs-winner-badge">Наш</span></div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Знает ваши цели и контекст</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Нет — каждый раз с нуля</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Да — всё из анкеты</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Помнит прошлые разговоры</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Ограниченно</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Полная память</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Стиль общения под вас</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Одинаковый для всех</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Адаптирован под психотип</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Методики коучинга</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Не обучен</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Лучшие практики</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Персональный план действий</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Только если попросить</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Встроен с первого дня</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Ролевые тренировки</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Базовые</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Под ваши задачи</div>
+            </div>
+            <div class="vs-row">
+                <div class="vs-cell vs-cell-feature">Сообщество и поддержка</div>
+                <div class="vs-cell"><span class="vs-x">✕</span> Нет</div>
+                <div class="vs-cell vs-cell-highlight"><span class="vs-check">✓</span> Telegram-группа</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT CAN I DO WITH IT -->
+<section class="uses-section">
+    <div class="wrap">
+        <div class="s-header">
+            <p class="s-label r">Применение</p>
+            <h2 class="s-title r d1">Что можно делать<br>с AI-Ментором?</h2>
+            <p class="s-sub r d2">Вот лишь часть того, что ваш персональный наставник умеет делать каждый день.</p>
+        </div>
+
+        <div class="uses-grid">
+            <div class="use-card r d1">
+                <span class="use-emoji">📝</span>
+                <h4>Составить резюме</h4>
+                <p>Под конкретную вакансию, с вашим опытом</p>
+            </div>
+            <div class="use-card r d2">
+                <span class="use-emoji">🎤</span>
+                <h4>Подготовиться к собесу</h4>
+                <p>Ролевая игра с реальными вопросами HR</p>
+            </div>
+            <div class="use-card r d3">
+                <span class="use-emoji">📊</span>
+                <h4>Сделать бизнес-план</h4>
+                <p>Финмодель, стратегия, план действий</p>
+            </div>
+            <div class="use-card r d4">
+                <span class="use-emoji">🇬🇧</span>
+                <h4>Выучить английский</h4>
+                <p>Разговорная практика каждый день</p>
+            </div>
+            <div class="use-card r d5">
+                <span class="use-emoji">🏋️</span>
+                <h4>План тренировок</h4>
+                <p>Питание + спорт под ваш график</p>
+            </div>
+            <div class="use-card r d6">
+                <span class="use-emoji">💰</span>
+                <h4>Финансовый план</h4>
+                <p>Бюджет, накопления, закрытие кредитов</p>
+            </div>
+            <div class="use-card r d7">
+                <span class="use-emoji">🎨</span>
+                <h4>Освоить Figma</h4>
+                <p>От нуля до портфолио за 3 месяца</p>
+            </div>
+            <div class="use-card r d8">
+                <span class="use-emoji">🗣</span>
+                <h4>Навыки переговоров</h4>
+                <p>Скрипты, ролевые игры, обратная связь</p>
+            </div>
+            <div class="use-card r d1">
+                <span class="use-emoji">💻</span>
+                <h4>Научиться коду</h4>
+                <p>Python, JavaScript — с задачами</p>
+            </div>
+            <div class="use-card r d2">
+                <span class="use-emoji">📱</span>
+                <h4>Запустить SMM</h4>
+                <p>Контент-план, тексты, стратегия</p>
+            </div>
+            <div class="use-card r d3">
+                <span class="use-emoji">🧘</span>
+                <h4>Управлять стрессом</h4>
+                <p>Техники, привычки, ежедневные практики</p>
+            </div>
+            <div class="use-card r d4">
+                <span class="use-emoji">📈</span>
+                <h4>Просить повышение</h4>
+                <p>Скрипт разговора + подготовка аргументов</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HOW FAST -->
+<section class="speed-section">
+    <div class="wrap">
+        <div class="s-header">
+            <p class="s-label r">Скорость</p>
+            <h2 class="s-title r d1">Как быстро<br>я получу ментора?</h2>
+            <p class="s-sub r d2">Мы не заставляем ждать месяцами. Всё происходит быстро — потому что технология позволяет.</p>
+        </div>
+
+        <div class="speed-grid">
+            <div class="speed-card r d1">
+                <div class="speed-big">24ч</div>
+                <div class="speed-label">Настройка за 24 часа</div>
+                <div class="speed-desc">После заполнения анкеты и демо-звонка ваш персональный AI-ментор будет готов в течение суток.</div>
+            </div>
+            <div class="speed-card r d2">
+                <div class="speed-big">∞</div>
+                <div class="speed-label">Доступ навсегда</div>
+                <div class="speed-desc">Один раз настроили — пользуетесь всю жизнь. Ментор растёт вместе с вами, обновляя контекст.</div>
+            </div>
+            <div class="speed-card r d3">
+                <div class="speed-big">💬</div>
+                <div class="speed-label">Telegram-сообщество</div>
+                <div class="speed-desc">Доступ в закрытую группу с другими участниками. Обмен опытом, мотивация, поддержка от живых людей.</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUSTPILOT REVIEWS -->
+<section class="tp-section">
+    <div class="wrap">
+        <div class="s-header">
+            <p class="s-label r">Отзывы</p>
+            <h2 class="s-title r d1">Что говорят<br>наши клиенты</h2>
+        </div>
+
+        <!-- Trustpilot header bar -->
+        <div class="tp-header-bar r">
+            <div class="tp-logo">
+                <div class="tp-star-icon"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                <span class="tp-brand">Trustpilot</span>
+            </div>
+            <div class="tp-rating-box">
+                <div class="tp-stars-row">
+                    <div class="tp-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                </div>
+                <span class="tp-score">4.9 из 5 — на основе 127 отзывов</span>
+            </div>
+        </div>
+
+        <div class="tp-grid">
+            <div class="tp-card r d1">
+                <div class="tp-card-stars">
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                </div>
+                <div class="tp-card-title">Зарплата выросла в 2 раза</div>
+                <p class="tp-card-text">Работала администратором 3 года и не видела выхода. Ментор составил пошаговый план перехода в PM, <em>готовил к каждому собеседованию ролевыми играми</em>. Через 3 месяца получила офер.</p>
+                <div class="tp-card-footer">
+                    <div>
+                        <div class="tp-card-author">Алия К.</div>
+                        <div class="tp-card-date">Январь 2026</div>
+                    </div>
+                    <div class="tp-card-verified">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Проверено
+                    </div>
                 </div>
             </div>
 
-            <div class="test-card r d2">
-                <div class="test-stars">★★★★★</div>
-                <p class="test-text">«Перепробовал десятки курсов — ничего не доходил. Ментор узнал, что я фанат футбола, и <em>объясняет всё через спортивные метафоры</em>. Впервые в жизни прошёл программу обучения до конца.»</p>
-                <div class="test-author">
-                    <div class="test-av">Д</div>
-                    <div><div class="test-name">Данияр М.</div><div class="test-role">Маркетолог, Астана</div></div>
+            <div class="tp-card r d2">
+                <div class="tp-card-stars">
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                </div>
+                <div class="tp-card-title">Впервые не бросил обучение</div>
+                <p class="tp-card-text">Перепробовал десятки курсов — ничего не доходил до конца. Ментор узнал, что я фанат футбола, и <em>объясняет всё через спортивные метафоры</em>. Наконец-то система работает.</p>
+                <div class="tp-card-footer">
+                    <div>
+                        <div class="tp-card-author">Данияр М.</div>
+                        <div class="tp-card-date">Декабрь 2025</div>
+                    </div>
+                    <div class="tp-card-verified">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Проверено
+                    </div>
                 </div>
             </div>
 
-            <div class="test-card r d3">
-                <div class="test-stars">★★★★★</div>
-                <p class="test-text">«В декрете чувствовала себя оторванной от мира. Ментор <em>определил мои сильные стороны и выстроил план</em> выхода на фриланс. Сейчас веду 3 проекта удалённо, не выходя из дома.»</p>
-                <div class="test-author">
-                    <div class="test-av">М</div>
-                    <div><div class="test-name">Мадина Т.</div><div class="test-role">Фрилансер, Шымкент</div></div>
+            <div class="tp-card r d3">
+                <div class="tp-card-stars">
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                    <div class="tp-card-star"><svg viewBox="0 0 24 24" fill="white"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+                </div>
+                <div class="tp-card-title">Из декрета — на фриланс</div>
+                <p class="tp-card-text">В декрете чувствовала себя оторванной от мира. Ментор <em>определил мои сильные стороны и выстроил план</em> выхода на фриланс. Сейчас веду 3 проекта удалённо.</p>
+                <div class="tp-card-footer">
+                    <div>
+                        <div class="tp-card-author">Мадина Т.</div>
+                        <div class="tp-card-date">Январь 2026</div>
+                    </div>
+                    <div class="tp-card-verified">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                        Проверено
+                    </div>
                 </div>
             </div>
         </div>
