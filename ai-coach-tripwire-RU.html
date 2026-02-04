@@ -927,6 +927,8 @@
         .tp-card-date { font-size: 11px; color: var(--silver-400); }
 
         /* ===================== RESPONSIVE ===================== */
+
+        /* -- Tablet landscape & small desktop -- */
         @media (max-width: 960px) {
             .scenario-grid { grid-template-columns: repeat(2, 1fr); }
             .feat-grid { grid-template-columns: 1fr; }
@@ -935,36 +937,227 @@
             .tf-arrow { transform: rotate(90deg); }
             .tp-grid { grid-template-columns: 1fr; }
             .stats-row { grid-template-columns: repeat(2, 1fr); }
-            .uses-grid { grid-template-columns: repeat(2, 1fr); }
+            .uses-grid { grid-template-columns: repeat(3, 1fr); }
             .speed-grid { grid-template-columns: 1fr; }
             .vs-row { grid-template-columns: 1fr 1fr 1fr; }
+            .hero-mockup { max-width: 340px; }
+            .skills-cloud { gap: 8px; }
+            .sk-pill { font-size: 12px; padding: 6px 14px; }
         }
+
+        /* -- Tablet portrait -- */
         @media (max-width: 768px) {
-            .scenarios, .how-section, .feat-section, .transform-section, .tp-section, .faq-section, .vs-section, .uses-section, .speed-section { padding: 100px 20px; }
-            .hero { padding: 120px 20px 80px; min-height: auto; }
-            .steps-row { grid-template-columns: 1fr; gap: 48px; }
-            .steps-row::before { display: none; }
-            .scenario-grid { grid-template-columns: 1fr; }
+            /* Sections padding */
+            .scenarios, .how-section, .feat-section, .transform-section,
+            .tp-section, .faq-section, .vs-section, .uses-section,
+            .speed-section, .cta-section { padding: 80px 20px; }
+            .featured-section { padding: 40px 20px; }
+
+            /* Hero */
+            .hero { padding: 100px 20px 60px; min-height: auto; }
+            .hero h1 { font-size: 36px; line-height: 1.15; }
+            .hero-sub { font-size: 16px; }
+            .hero-mockup-wrap { margin-top: 40px; }
+            .hero-mockup { max-width: 300px; border-radius: 20px; }
+            .hero-content { gap: 20px; }
             .float-tag { display: none; }
-            .hero-mockup-wrap { margin-top: 48px; }
-            .cta-box { padding: 40px 24px; }
+
+            /* Nav */
             .nav-inner { padding: 0 16px; }
-            .ticker-item { font-size: 12px; }
-            .featured-logos { gap: 28px; }
-            .featured-logo { font-size: 16px; }
-            .uses-grid { grid-template-columns: repeat(2, 1fr); }
-            .vs-cell { padding: 14px 16px; font-size: 12px; }
+            .nav-logo-mark { width: 30px; height: 30px; }
+            .nav-cta-btn { font-size: 12px; padding: 8px 16px; }
+
+            /* Featured */
+            .featured-logos { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .featured-logo { font-size: 15px; }
+            .featured-label { font-size: 11px; }
+
+            /* Ticker */
+            .ticker-item { font-size: 12px; padding: 0 20px; }
+
+            /* Scenarios */
+            .scenario-grid { grid-template-columns: 1fr; gap: 12px; }
+            .scenario-card { padding: 24px; }
+
+            /* Steps */
+            .steps-row { grid-template-columns: 1fr; gap: 40px; }
+            .steps-row::before { display: none; }
+            .step { text-align: center; }
+            .step-vis { margin: 0 auto 16px; }
+
+            /* Features */
+            .feat-card { padding: 28px; }
+            .ai-core-wrap { width: 140px; height: 140px; }
+            .stats-row { gap: 12px; }
+
+            /* Transform */
+            .tf-col { padding: 24px; }
+
+            /* VS Table */
+            .vs-cell { padding: 12px 14px; font-size: 12px; }
+            .vs-winner-badge { font-size: 10px; padding: 3px 8px; }
+
+            /* Uses */
+            .uses-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .use-card { padding: 20px; }
+            .use-emoji { font-size: 28px; }
+
+            /* Speed */
+            .speed-card { padding: 28px; }
+            .speed-big { font-size: 40px; }
+
+            /* Trustpilot */
+            .tp-logo { flex-direction: column; gap: 12px; text-align: center; }
+            .tp-card { padding: 24px; }
+
+            /* CTA */
+            .cta-box { padding: 36px 20px; }
+
+            /* FAQ */
+            .faq-q { font-size: 15px; padding: 18px 0; }
+            .faq-a-inner { font-size: 14px; }
+
+            /* Section headers */
+            .s-title { font-size: 28px; }
+            .s-sub { font-size: 15px; }
+            .s-label { font-size: 11px; letter-spacing: 1.5px; }
         }
+
+        /* -- Mobile -- */
         @media (max-width: 480px) {
-            .hero h1 { font-size: 32px; }
-            .s-title { font-size: 26px; }
-            .btn-main { width: 100%; justify-content: center; padding: 15px 28px; font-size: 15px; }
-            .hero-ctas { flex-direction: column; }
-            .cta-checks { flex-direction: column; align-items: center; }
-            .stats-row { grid-template-columns: 1fr 1fr; }
-            .uses-grid { grid-template-columns: 1fr 1fr; }
+            /* Hero */
+            .hero { padding: 90px 16px 50px; }
+            .hero h1 { font-size: 28px; }
+            .hero-sub { font-size: 14px; }
+            .hero-chip { font-size: 11px; padding: 6px 14px; }
+            .hero-mockup { max-width: 260px; border-radius: 16px; padding: 16px; }
+            .hero-mockup-wrap { margin-top: 32px; }
+            .mock-name { font-size: 13px; }
+            .cb { font-size: 13px; padding: 10px 14px; max-width: 88%; }
+
+            /* Buttons */
+            .btn-main { width: 100%; justify-content: center; padding: 14px 24px; font-size: 14px; }
+            .btn-ghost { width: 100%; justify-content: center; padding: 14px 24px; font-size: 14px; }
+            .hero-ctas { flex-direction: column; gap: 10px; }
+            .cta-checks { flex-direction: column; align-items: center; gap: 6px; }
+            .cta-check { font-size: 13px; }
+
+            /* Sections */
+            .scenarios, .how-section, .feat-section, .transform-section,
+            .tp-section, .faq-section, .vs-section, .uses-section,
+            .speed-section, .cta-section { padding: 60px 16px; }
+            .featured-section { padding: 30px 16px; }
+
+            /* Section headers */
+            .s-title { font-size: 24px; }
+            .s-sub { font-size: 14px; line-height: 1.5; }
+            .s-header { gap: 10px; margin-bottom: 36px; }
+
+            /* Nav */
+            .nav-inner { padding: 0 12px; }
+            .nav-logo-mark { width: 26px; height: 26px; }
+            .nav-cta-btn { font-size: 11px; padding: 7px 14px; }
+
+            /* Featured */
+            .featured-logos { gap: 16px; }
+            .featured-logo { font-size: 13px; }
+
+            /* Ticker */
+            .ticker-item { font-size: 11px; padding: 0 16px; }
+            .ticker-section { padding: 10px 0; }
+
+            /* Scenarios */
+            .scenario-card { padding: 20px; }
+            .scenario-card h3 { font-size: 16px; }
+            .scenario-card p { font-size: 13px; }
+
+            /* Steps */
+            .step-num { width: 40px; height: 40px; font-size: 16px; }
+
+            /* Features */
+            .feat-card { padding: 24px; }
+            .feat-card h3 { font-size: 16px; }
+            .feat-ico { font-size: 28px; }
+            .ai-core-wrap { width: 120px; height: 120px; }
+            .stats-row { grid-template-columns: 1fr 1fr; gap: 8px; }
+            .stat-n { font-size: 28px; }
+            .stat-d { font-size: 11px; }
+            .skills-cloud { gap: 6px; }
+            .sk-pill { font-size: 11px; padding: 5px 12px; }
+
+            /* Transform */
+            .tf-col { padding: 20px; }
+            .tf-label { font-size: 11px; }
+            .tf-list li { font-size: 13px; }
+            .tf-arrow { width: 36px; height: 36px; }
+
+            /* VS Table — stack to single column */
             .vs-row { grid-template-columns: 1fr; }
+            .vs-row-head { display: none; }
+            .vs-cell { padding: 12px 16px; font-size: 13px; text-align: left; }
+            .vs-cell::before { font-weight: 600; display: block; margin-bottom: 4px; font-size: 11px; color: var(--silver-400); }
             .vs-cell:not(:last-child) { border-right: none; border-bottom: 0.5px solid var(--silver-100); }
+
+            /* Uses */
+            .uses-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .use-card { padding: 16px; }
+            .use-card h4 { font-size: 13px; }
+            .use-emoji { font-size: 24px; }
+
+            /* Speed */
+            .speed-card { padding: 24px; }
+            .speed-big { font-size: 36px; }
+            .speed-label { font-size: 14px; }
+            .speed-desc { font-size: 13px; }
+
+            /* Trustpilot */
+            .tp-card { padding: 20px; }
+            .tp-card p { font-size: 13px; }
+            .tp-card-author { font-size: 12px; }
+            .tp-score { font-size: 28px; }
+
+            /* CTA */
+            .cta-box { padding: 32px 16px; border-radius: 20px; }
+            .cta-box h2 { font-size: 22px; }
+            .cta-box p { font-size: 14px; }
+
+            /* FAQ */
+            .faq-q { font-size: 14px; padding: 16px 0; gap: 12px; }
+            .faq-a-inner { font-size: 13px; padding: 0 0 16px; }
+            .faq-chev { width: 18px; height: 18px; }
+
+            /* Footer */
+            .footer { padding: 30px 16px; }
+            .footer-links { gap: 16px; flex-wrap: wrap; justify-content: center; }
+            .footer-links a { font-size: 12px; }
+
+            /* Mini chat in features */
+            .mini-chat { padding: 16px; border-radius: 14px; }
+            .mc { font-size: 12px; padding: 8px 12px; }
+
+            /* Analysis bars */
+            .a-bars { gap: 8px; }
+        }
+
+        /* -- Very small phones -- */
+        @media (max-width: 360px) {
+            .hero h1 { font-size: 24px; }
+            .hero-sub { font-size: 13px; }
+            .s-title { font-size: 21px; }
+            .s-sub { font-size: 13px; }
+            .hero-mockup { max-width: 220px; }
+            .uses-grid { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr; }
+            .featured-logos { gap: 12px; }
+            .featured-logo { font-size: 12px; }
+            .scenario-card { padding: 16px; }
+            .btn-main { font-size: 13px; padding: 13px 20px; }
+            .cta-box h2 { font-size: 20px; }
+            .speed-big { font-size: 30px; }
+            .tp-score { font-size: 24px; }
+            .vs-cell { font-size: 12px; padding: 10px 12px; }
+            .use-card { padding: 14px; }
+            .use-card h4 { font-size: 12px; }
         }
     </style>
 </head>
