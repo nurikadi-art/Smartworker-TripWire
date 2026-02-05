@@ -457,6 +457,56 @@
             color: var(--green);
         }
 
+        /* FOMO Billboard Ticker */
+        .fomo-billboard {
+            background: linear-gradient(135deg, rgba(52,199,89,0.08) 0%, rgba(0,113,227,0.08) 100%);
+            border: 1px solid rgba(52,199,89,0.15);
+            border-radius: 12px;
+            padding: 14px 20px;
+            margin-bottom: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        .fomo-billboard::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 200%; }
+        }
+        .fomo-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--titanium);
+            min-height: 24px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .fomo-content.fade-out {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        .fomo-content .emoji {
+            font-size: 18px;
+        }
+        .fomo-content .highlight {
+            color: var(--green);
+            font-weight: 700;
+        }
+        .fomo-content .accent {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
         /* Loading Spinner */
         .loading-spinner {
             width: 18px;
@@ -505,6 +555,14 @@
         </div>
         <h1>Персональная диагностика</h1>
         <p>Ответьте на несколько вопросов, чтобы мы подготовили персональные рекомендации для вас</p>
+    </div>
+
+    <!-- FOMO Billboard -->
+    <div class="fomo-billboard">
+        <div class="fomo-content" id="fomoBillboard">
+            <span class="emoji">📊</span>
+            <span><span class="highlight">87%</span> людей с AI-ментором достигают целей в 3 раза быстрее</span>
+        </div>
     </div>
 
     <!-- Progress -->
@@ -1396,6 +1454,41 @@ ${getReadableAnswer('time', data.time)}
 
 // Initialize
 updateProgress();
+
+// FOMO Billboard Rotating Stats
+const fomoMessages = [
+    { emoji: '📊', text: '<span class="highlight">87%</span> людей с AI-ментором достигают целей в <span class="accent">3 раза быстрее</span>' },
+    { emoji: '⏱️', text: 'Средний пользователь экономит <span class="highlight">4-5 часов</span> в день с AI-помощником' },
+    { emoji: '💰', text: '<span class="highlight">+47%</span> к доходу у клиентов через <span class="accent">6 месяцев</span> работы с ментором' },
+    { emoji: '🚀', text: '<span class="highlight">2,847</span> человек уже используют персонального AI-ментора' },
+    { emoji: '⚡', text: 'AI автоматизирует <span class="highlight">40%</span> рутинных задач за вас' },
+    { emoji: '🎯', text: '<span class="highlight">92%</span> клиентов рекомендуют AI-ментора друзьям и коллегам' },
+    { emoji: '📈', text: 'Рынок AI-коучинга вырос на <span class="highlight">340%</span> за <span class="accent">2025 год</span>' },
+    { emoji: '🧠', text: '<span class="highlight">73%</span> специалистов будут заменены AI к <span class="accent">2027 году</span>' },
+    { emoji: '💡', text: 'Люди с AI-навыками зарабатывают на <span class="highlight">35%</span> больше' },
+    { emoji: '🏆', text: '<span class="highlight">5 человек</span> прошли эту анкету за последний час' }
+];
+
+let currentFomoIndex = 0;
+const fomoElement = document.getElementById('fomoBillboard');
+
+function rotateFomoBillboard() {
+    // Fade out
+    fomoElement.classList.add('fade-out');
+
+    setTimeout(() => {
+        // Update content
+        currentFomoIndex = (currentFomoIndex + 1) % fomoMessages.length;
+        const msg = fomoMessages[currentFomoIndex];
+        fomoElement.innerHTML = `<span class="emoji">${msg.emoji}</span><span>${msg.text}</span>`;
+
+        // Fade in
+        fomoElement.classList.remove('fade-out');
+    }, 300);
+}
+
+// Rotate every 4 seconds
+setInterval(rotateFomoBillboard, 4000);
 </script>
 
 </body>

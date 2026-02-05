@@ -248,66 +248,199 @@
             height: 20px;
         }
 
-        /* Video Section */
-        .video-section {
-            margin-top: 48px;
-            padding-top: 32px;
-            border-top: 1px solid var(--silver-100);
+        /* Urgency Section */
+        .urgency-section {
+            margin-top: 32px;
             animation: fadeUp 0.5s 0.6s ease backwards;
         }
-        .video-label {
-            font-size: 12px;
+        .urgency-card {
+            background: linear-gradient(135deg, #1d1d1f 0%, #2d2d2f 100%);
+            border-radius: 20px;
+            padding: 28px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .urgency-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .urgency-card h3 .emoji {
+            font-size: 22px;
+        }
+        .urgency-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .urgency-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .urgency-list li:last-child {
+            border-bottom: none;
+        }
+        .urgency-list .icon {
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+        .stat-highlight {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        .stat-box {
+            flex: 1;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 14px;
+            text-align: center;
+        }
+        .stat-box .number {
+            font-size: 24px;
+            font-weight: 800;
+            color: #5ac8fa;
+            line-height: 1;
+        }
+        .stat-box .label {
+            font-size: 10px;
+            color: rgba(255,255,255,0.7);
+            margin-top: 4px;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, rgba(255,59,48,0.08) 0%, rgba(255,149,0,0.08) 100%);
+            border: 1px solid rgba(255,59,48,0.2);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .warning-box h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ff3b30;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .warning-box p {
+            font-size: 13px;
+            color: var(--titanium);
+            line-height: 1.6;
+        }
+        .warning-box strong {
+            color: #ff3b30;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            margin-bottom: 20px;
+            border: 1px solid rgba(0,113,227,0.1);
+        }
+        .countdown-label {
+            font-size: 11px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--accent);
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
-        .video-title {
-            font-size: 18px;
-            font-weight: 600;
+        .countdown-timer {
+            font-size: 32px;
+            font-weight: 800;
             color: var(--titanium);
-            margin-bottom: 20px;
+            font-variant-numeric: tabular-nums;
         }
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: var(--silver-50);
-            border-radius: 16px;
+        .countdown-sub {
+            font-size: 12px;
+            color: var(--silver-400);
+            margin-top: 6px;
+        }
+
+        /* Dynamic Stats Ticker */
+        .fomo-ticker {
+            background: linear-gradient(135deg, var(--green-light) 0%, rgba(0,113,227,0.06) 100%);
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(52,199,89,0.2);
+        }
+        .fomo-stat {
             display: flex;
             align-items: center;
             justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--titanium);
+            animation: fadeInOut 4s ease-in-out infinite;
         }
-        .video-placeholder:hover {
-            background: var(--silver-100);
+        .fomo-stat .highlight {
+            color: var(--green);
+            font-weight: 700;
         }
-        .video-placeholder::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(0,113,227,0.05) 0%, rgba(94,92,230,0.05) 100%);
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            15%, 85% { opacity: 1; transform: translateY(0); }
         }
-        .play-btn {
-            width: 72px;
-            height: 72px;
+
+        /* Preparation Card */
+        .prep-card {
             background: var(--white);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+            border: 1px solid var(--silver-100);
+        }
+        .prep-card h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--titanium);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .prep-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .prep-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 13px;
+            color: var(--silver-400);
+        }
+        .prep-list .check {
+            width: 20px;
+            height: 20px;
+            background: var(--green-light);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            position: relative;
-            z-index: 1;
-        }
-        .play-btn svg {
-            width: 28px;
-            height: 28px;
-            fill: var(--titanium);
-            margin-left: 4px;
+            color: var(--green);
+            font-size: 10px;
+            flex-shrink: 0;
         }
 
         /* Footer */
@@ -408,14 +541,82 @@
         </a>
     </div>
 
-    <!-- Video Section -->
-    <div class="video-section">
-        <p class="video-label">Пока ждёте</p>
-        <p class="video-title">Посмотрите, как Айгуль построила своего AI-ментора за 24 часа</p>
-        <div class="video-placeholder" onclick="playVideo()">
-            <div class="play-btn">
-                <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <!-- Urgency Section - Hardcore Warmup -->
+    <div class="urgency-section">
+        <!-- Dynamic FOMO Stats Ticker -->
+        <div class="fomo-ticker">
+            <div class="fomo-stat" id="fomoStat">
+                <span>🚀</span> <span class="highlight">87%</span> наших клиентов достигают цели за 90 дней
             </div>
+        </div>
+
+        <!-- Warning Box - Scarcity -->
+        <div class="warning-box">
+            <h4>⚠️ Важно прочитать перед консультацией</h4>
+            <p>Мы работаем только с <strong>10-15 клиентами в месяц</strong>, потому что каждому уделяем персональное внимание. Если вы не придёте на консультацию — ваше место займёт кто-то из очереди, и повторная запись будет через <strong>2-3 недели</strong>.</p>
+        </div>
+
+        <!-- Urgency Card - What You'll Lose -->
+        <div class="urgency-card">
+            <h3><span class="emoji">⏰</span> Что вы теряете каждый день без системы</h3>
+            <ul class="urgency-list">
+                <li>
+                    <span class="icon">📉</span>
+                    <span><strong>3-5 часов</strong> на задачи, которые AI делает за 15 минут</span>
+                </li>
+                <li>
+                    <span class="icon">💸</span>
+                    <span><strong>30-50%</strong> потенциального дохода уходит конкурентам, которые уже используют AI</span>
+                </li>
+                <li>
+                    <span class="icon">🎯</span>
+                    <span>Каждый месяц без ментора = ещё <strong>один год</strong> до вашей цели</span>
+                </li>
+                <li>
+                    <span class="icon">🧠</span>
+                    <span>Пока вы думаете — <strong>рынок меняется</strong>, и ваши навыки устаревают</span>
+                </li>
+            </ul>
+            <div class="stat-highlight">
+                <div class="stat-box">
+                    <div class="number">73%</div>
+                    <div class="label">сотрудников будут заменены AI к 2027</div>
+                </div>
+                <div class="stat-box">
+                    <div class="number">4x</div>
+                    <div class="label">рост продуктивности с AI-ментором</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Timer -->
+        <div class="countdown-section">
+            <p class="countdown-label">Ваш слот зарезервирован на</p>
+            <div class="countdown-timer" id="countdown">23:59:59</div>
+            <p class="countdown-sub">После этого времени ваша заявка перейдёт в очередь</p>
+        </div>
+
+        <!-- Preparation Checklist -->
+        <div class="prep-card">
+            <h4>📋 Подготовьтесь к консультации</h4>
+            <ul class="prep-list">
+                <li>
+                    <span class="check">✓</span>
+                    <span>Запишите свою главную цель на ближайшие 90 дней</span>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <span>Подумайте, что мешало вам достичь её раньше</span>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <span>Будьте готовы говорить честно — это в ваших интересах</span>
+                </li>
+                <li>
+                    <span class="check">✓</span>
+                    <span>Выделите 20-30 минут без отвлечений</span>
+                </li>
+            </ul>
         </div>
     </div>
 
@@ -454,14 +655,68 @@ function createConfetti() {
 // Run confetti on load
 setTimeout(createConfetti, 500);
 
-// Video placeholder
-function playVideo() {
-    // Replace with actual video embed
-    alert('Здесь будет видео-кейс');
-}
-
 // Calendar button - replace with your Calendly or booking link
 document.getElementById('calendarBtn').href = 'https://calendly.com/your-link';
+
+// Countdown timer (24 hours from now)
+function startCountdown() {
+    // Get stored end time or create new one
+    let endTime = localStorage.getItem('consultationSlotEnd');
+    if (!endTime) {
+        endTime = Date.now() + 24 * 60 * 60 * 1000; // 24 hours
+        localStorage.setItem('consultationSlotEnd', endTime);
+    }
+
+    function updateTimer() {
+        const now = Date.now();
+        const diff = endTime - now;
+
+        if (diff <= 0) {
+            document.getElementById('countdown').textContent = '00:00:00';
+            return;
+        }
+
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('countdown').textContent =
+            String(hours).padStart(2, '0') + ':' +
+            String(mins).padStart(2, '0') + ':' +
+            String(secs).padStart(2, '0');
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 1000);
+}
+startCountdown();
+
+// Dynamic FOMO stats ticker
+const fomoStats = [
+    { emoji: '🚀', text: '<span class="highlight">87%</span> наших клиентов достигают цели за 90 дней' },
+    { emoji: '⏱️', text: 'Средний клиент экономит <span class="highlight">4 часа</span> в день с AI-ментором' },
+    { emoji: '💰', text: '<span class="highlight">+47%</span> к доходу у клиентов через 6 месяцев' },
+    { emoji: '📈', text: '<span class="highlight">3 человека</span> записались на консультацию за последний час' },
+    { emoji: '🎯', text: '<span class="highlight">92%</span> клиентов рекомендуют нас друзьям' },
+    { emoji: '⚡', text: 'AI заменил <span class="highlight">40%</span> рутинных задач у наших клиентов' },
+    { emoji: '🏆', text: '<span class="highlight">2,847</span> человек уже используют AI-ментора' }
+];
+
+let currentStatIndex = 0;
+function rotateFomoStats() {
+    const fomoEl = document.getElementById('fomoStat');
+    fomoEl.style.opacity = '0';
+
+    setTimeout(() => {
+        const stat = fomoStats[currentStatIndex];
+        fomoEl.innerHTML = `<span>${stat.emoji}</span> ${stat.text}`;
+        fomoEl.style.opacity = '1';
+        currentStatIndex = (currentStatIndex + 1) % fomoStats.length;
+    }, 500);
+}
+
+// Rotate stats every 4 seconds
+setInterval(rotateFomoStats, 4000);
 </script>
 
 </body>
