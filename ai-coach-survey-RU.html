@@ -457,6 +457,20 @@
             color: var(--green);
         }
 
+        /* Loading Spinner */
+        .loading-spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: inline-block;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
         /* Responsive */
         @media (max-width: 600px) {
             .survey-container { padding: 24px 16px 40px; }
@@ -1106,9 +1120,31 @@ function checkContactForm() {
     btn.disabled = name.length < 2 || phone.length < 10;
 }
 
+// ============================================================
+// GHL CONFIGURATION - REPLACE WITH YOUR ACTUAL VALUES
+// ============================================================
+const GHL_CONFIG = {
+    // Your GHL Webhook URL (Automation → Workflows → Create Workflow → Add Trigger → Webhook)
+    webhookUrl: 'https://services.leadconnectorhq.com/hooks/YOUR_WEBHOOK_ID_HERE',
+
+    // Your thank you page URLs (can be GHL funnel pages or these HTML files)
+    qualifiedRedirect: 'ai-coach-thank-you-qualified-RU.html',
+    nurtureRedirect: 'ai-coach-thank-you-nurture-RU.html',
+
+    // Minimum score to be considered "qualified" (0-70 scale)
+    qualifyThreshold: 40
+};
+// ============================================================
+
 // Form submission
-document.getElementById('surveyForm').addEventListener('submit', function(e) {
+document.getElementById('surveyForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+
+    // Show loading state
+    const submitBtn = document.getElementById('submitBtn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<span class="loading-spinner"></span> Отправка...';
+    submitBtn.disabled = true;
 
     // Collect all data
     const formData = new FormData(this);
@@ -1125,9 +1161,7 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
         }
     });
 
-    console.log('Survey Data:', data);
-
-    // Calculate score
+    // Calculate lead score
     let score = 0;
     if (['months', 'year_plus', 'years_no_result'].includes(data.q2)) score += 10;
     if (['5_10h', '10h_plus'].includes(data.q3)) score += 10;
@@ -1136,14 +1170,73 @@ document.getElementById('surveyForm').addEventListener('submit', function(e) {
     if (['30min', '1h', 'whatever_needed'].includes(data.q8)) score += 10;
     if (parseInt(data.q9) >= 7) score += 15;
 
-    console.log('Lead Score:', score);
+    const isQualified = score >= GHL_CONFIG.qualifyThreshold;
 
-    // Redirect based on score
-    // Replace these URLs with your actual thank you page URLs
-    if (score >= 40) {
-        window.location.href = 'ai-coach-thank-you-qualified-RU.html';
-    } else {
-        window.location.href = 'ai-coach-thank-you-nurture-RU.html';
+    // Prepare payload for GHL
+    // GHL expects specific field names for contact creation
+    const ghlPayload = {
+        // Contact fields (GHL standard)
+        first_name: data.name,
+        phone: data.phone,
+        email: data.email || '',
+
+        // Custom fields - these will appear in GHL as custom fields
+        // You can map these in GHL workflow to your custom fields
+        survey_reason: data.q1,
+        survey_time_trying: data.q2,
+        survey_wasted_hours: data.q3,
+        survey_areas: Array.isArray(data.q4) ? data.q4.join(', ') : data.q4,
+        survey_goal: data.q5,
+        survey_mentor_benefits: Array.isArray(data.q6) ? data.q6.join(', ') : data.q6,
+        survey_tried_before: Array.isArray(data.q7) ? data.q7.join(', ') : data.q7,
+        survey_time_commit: data.q8,
+        survey_readiness: data.q9,
+        survey_preferred_time: data.time,
+
+        // Scoring
+        lead_score: score,
+        lead_status: isQualified ? 'qualified' : 'nurture',
+
+        // Source tracking
+        source: 'AI Coach Survey',
+        form_name: 'ai-coach-qualification-survey'
+    };
+
+    console.log('Sending to GHL:', ghlPayload);
+
+    // Send to GHL webhook
+    try {
+        const response = await fetch(GHL_CONFIG.webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(ghlPayload)
+        });
+
+        // Store name for thank you page personalization
+        localStorage.setItem('surveyName', data.name);
+        localStorage.setItem('surveyScore', score);
+
+        // Redirect based on qualification
+        if (isQualified) {
+            window.location.href = GHL_CONFIG.qualifiedRedirect + '?name=' + encodeURIComponent(data.name);
+        } else {
+            window.location.href = GHL_CONFIG.nurtureRedirect;
+        }
+
+    } catch (error) {
+        console.error('Error submitting to GHL:', error);
+
+        // Still redirect even if webhook fails (data is in console for debugging)
+        // In production, you might want to show an error message instead
+        localStorage.setItem('surveyName', data.name);
+
+        if (isQualified) {
+            window.location.href = GHL_CONFIG.qualifiedRedirect + '?name=' + encodeURIComponent(data.name);
+        } else {
+            window.location.href = GHL_CONFIG.nurtureRedirect;
+        }
     }
 });
 
