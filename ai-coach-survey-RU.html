@@ -1172,26 +1172,86 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
 
     const isQualified = score >= GHL_CONFIG.qualifyThreshold;
 
-    // Prepare payload for GHL
-    // GHL expects specific field names for contact creation
+    // Human-readable answer mappings
+    const answerLabels = {
+        q1: {
+            growth_start: 'Хочу развиваться, но не знаю с чего начать',
+            stuck: 'Застрял на одном уровне и не вижу роста',
+            need_mentor: 'Нужен наставник, но нет бюджета на дорогого коуча',
+            new_skill: 'Хочу освоить новый навык или профессию',
+            faster_goals: 'Ищу способ достигать целей быстрее',
+            curious: 'Просто интересно, что это такое'
+        },
+        q2: {
+            just_starting: 'Только начинаю думать об этом',
+            weeks: 'Несколько недель',
+            months: 'Несколько месяцев',
+            year_plus: 'Больше года',
+            years_no_result: 'Уже несколько лет, но безрезультатно'
+        },
+        q3: {
+            less_1h: 'Меньше 1 часа',
+            '1_3h': '1-3 часа',
+            '3_5h': '3-5 часов',
+            '5_10h': '5-10 часов',
+            '10h_plus': 'Больше 10 часов'
+        },
+        q4: {
+            career: '💼 Карьера и профессиональный рост',
+            money: '💰 Финансы и заработок',
+            learning: '📚 Обучение и новые навыки',
+            health: '🏋️ Здоровье и фитнес',
+            productivity: '🧠 Продуктивность',
+            business: '💡 Запуск своего дела',
+            creative: '🎨 Творчество и креатив',
+            personal: '🎯 Личные цели'
+        },
+        q6: {
+            start_action: 'Наконец-то начал бы действовать',
+            save_time: 'Перестал бы тратить время на поиск информации',
+            clear_plan: 'Получил бы чёткий план',
+            accountability: 'Был бы кто-то, кто держит в тонусе',
+            no_shame: 'Смог бы задавать вопросы без стеснения',
+            faster: 'Двигался бы к цели в 2-3 раза быстрее'
+        },
+        q7: {
+            books: 'Читал книги и статьи',
+            free_courses: 'Смотрел YouTube / бесплатные курсы',
+            paid_courses: 'Покупал платные курсы',
+            coach: 'Работал с коучем/ментором',
+            chatgpt_failed: 'Пробовал ChatGPT, но не получил результата',
+            nothing: 'Ничего серьёзного пока не пробовал'
+        },
+        q8: {
+            '10_15min': '10-15 минут в день',
+            '30min': '30 минут в день',
+            '1h': '1 час в день',
+            whatever_needed: 'Столько, сколько нужно для результата',
+            not_sure: 'Пока не уверен'
+        },
+        time: {
+            morning: 'Утро (9:00 - 12:00)',
+            day: 'День (12:00 - 18:00)',
+            evening: 'Вечер (18:00 - 21:00)',
+            anytime: 'В любое время'
+        }
+    };
+
+    // Helper to get readable answer
+    function getReadableAnswer(question, value) {
+        if (!value) return '';
+        if (Array.isArray(value)) {
+            return value.map(v => answerLabels[question]?.[v] || v).join('; ');
+        }
+        return answerLabels[question]?.[value] || value;
+    }
+
+    // Prepare payload for GHL with full Q&A
     const ghlPayload = {
         // Contact fields (GHL standard)
         first_name: data.name,
         phone: data.phone,
         email: data.email || '',
-
-        // Custom fields - these will appear in GHL as custom fields
-        // You can map these in GHL workflow to your custom fields
-        survey_reason: data.q1,
-        survey_time_trying: data.q2,
-        survey_wasted_hours: data.q3,
-        survey_areas: Array.isArray(data.q4) ? data.q4.join(', ') : data.q4,
-        survey_goal: data.q5,
-        survey_mentor_benefits: Array.isArray(data.q6) ? data.q6.join(', ') : data.q6,
-        survey_tried_before: Array.isArray(data.q7) ? data.q7.join(', ') : data.q7,
-        survey_time_commit: data.q8,
-        survey_readiness: data.q9,
-        survey_preferred_time: data.time,
 
         // Scoring
         lead_score: score,
@@ -1199,7 +1259,101 @@ document.getElementById('surveyForm').addEventListener('submit', async function(
 
         // Source tracking
         source: 'AI Coach Survey',
-        form_name: 'ai-coach-qualification-survey'
+        form_name: 'ai-coach-qualification-survey',
+
+        // ============ FULL QUESTIONS & ANSWERS ============
+
+        // Q1
+        q1_question: 'Что привело вас сюда сегодня?',
+        q1_answer_value: data.q1,
+        q1_answer_text: getReadableAnswer('q1', data.q1),
+
+        // Q2
+        q2_question: 'Как давно вы пытаетесь решить эту задачу?',
+        q2_answer_value: data.q2,
+        q2_answer_text: getReadableAnswer('q2', data.q2),
+
+        // Q3
+        q3_question: 'Сколько времени в неделю тратите на поиск информации, которая не помогает?',
+        q3_answer_value: data.q3,
+        q3_answer_text: getReadableAnswer('q3', data.q3),
+
+        // Q4
+        q4_question: 'В какой сфере нужна помощь больше всего?',
+        q4_answer_value: Array.isArray(data.q4) ? data.q4.join(', ') : data.q4,
+        q4_answer_text: getReadableAnswer('q4', data.q4),
+
+        // Q5
+        q5_question: 'Главная цель на ближайшие 6 месяцев',
+        q5_answer_text: data.q5,
+
+        // Q6
+        q6_question: 'Что бы изменилось с персональным ментором 24/7?',
+        q6_answer_value: Array.isArray(data.q6) ? data.q6.join(', ') : data.q6,
+        q6_answer_text: getReadableAnswer('q6', data.q6),
+
+        // Q7
+        q7_question: 'Что уже пробовали для достижения целей?',
+        q7_answer_value: Array.isArray(data.q7) ? data.q7.join(', ') : data.q7,
+        q7_answer_text: getReadableAnswer('q7', data.q7),
+
+        // Q8
+        q8_question: 'Сколько времени готовы уделять работе с AI-ментором?',
+        q8_answer_value: data.q8,
+        q8_answer_text: getReadableAnswer('q8', data.q8),
+
+        // Q9
+        q9_question: 'По шкале от 1 до 10, насколько готовы изменить жизнь в ближайшие 30 дней?',
+        q9_answer_value: data.q9,
+        q9_answer_text: data.q9 + ' из 10',
+
+        // Q10 - Contact preferences
+        q10_question: 'Удобное время для звонка',
+        q10_answer_value: data.time,
+        q10_answer_text: getReadableAnswer('time', data.time),
+
+        // ============ SUMMARY FOR QUICK VIEW ============
+        survey_summary: `
+📋 АНКЕТА AI-МЕНТОР
+
+👤 ${data.name}
+📱 ${data.phone}
+📧 ${data.email || 'не указан'}
+
+🎯 LEAD SCORE: ${score}/70 (${isQualified ? '✅ QUALIFIED' : '⏳ NURTURE'})
+
+━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ Что привело сюда?
+${getReadableAnswer('q1', data.q1)}
+
+2️⃣ Как давно пытается решить?
+${getReadableAnswer('q2', data.q2)}
+
+3️⃣ Время на бесполезный поиск в неделю:
+${getReadableAnswer('q3', data.q3)}
+
+4️⃣ Сферы интереса:
+${getReadableAnswer('q4', data.q4)}
+
+5️⃣ Цель на 6 месяцев:
+${data.q5}
+
+6️⃣ Что изменится с ментором:
+${getReadableAnswer('q6', data.q6)}
+
+7️⃣ Что уже пробовал:
+${getReadableAnswer('q7', data.q7)}
+
+8️⃣ Готовность по времени:
+${getReadableAnswer('q8', data.q8)}
+
+9️⃣ Готовность к изменениям:
+${data.q9}/10
+
+🕐 Удобное время для звонка:
+${getReadableAnswer('time', data.time)}
+`.trim()
     };
 
     console.log('Sending to GHL:', ghlPayload);
