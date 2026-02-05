@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Спасибо! | Персональный AI-Ментор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --snow: #fbfbfd;
+            --silver-50: #f5f5f7;
+            --silver-100: #e8e8ed;
+            --silver-200: #d2d2d7;
+            --silver-300: #b0b0b5;
+            --silver-400: #86868b;
+            --titanium: #1d1d1f;
+            --accent: #0071e3;
+            --purple: #5e5ce6;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--snow);
+            color: var(--titanium);
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bg-glow::before {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            background: radial-gradient(circle, rgba(0,113,227,0.12) 0%, transparent 70%);
+            top: -200px; right: -100px;
+            animation: floatSlow 20s ease-in-out infinite;
+        }
+        .bg-glow::after {
+            content: '';
+            position: absolute;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+            background: radial-gradient(circle, rgba(94,92,230,0.1) 0%, transparent 70%);
+            bottom: -150px; left: -100px;
+            animation: floatSlow 25s ease-in-out infinite reverse;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.05); }
+        }
+
+        /* Container */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        /* Icon */
+        .icon-wrap {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 32px;
+            background: linear-gradient(135deg, rgba(0,113,227,0.1), rgba(94,92,230,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .icon-wrap svg {
+            width: 36px;
+            height: 36px;
+            stroke: var(--accent);
+            stroke-width: 2;
+        }
+        @keyframes scaleIn {
+            from { transform: scale(0); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Text */
+        h1 {
+            font-size: clamp(26px, 5vw, 34px);
+            font-weight: 700;
+            color: var(--titanium);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            animation: fadeUp 0.5s 0.2s ease backwards;
+        }
+        .lead {
+            font-size: 17px;
+            color: var(--silver-400);
+            margin-bottom: 40px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeUp 0.5s 0.3s ease backwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Resources Card */
+        .resources-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+            text-align: left;
+            margin-bottom: 32px;
+            animation: fadeUp 0.5s 0.4s ease backwards;
+        }
+        .resources-card h2 {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--titanium);
+            margin-bottom: 20px;
+        }
+
+        /* Resource Items */
+        .resource-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px;
+            background: var(--silver-50);
+            border-radius: 14px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s ease;
+            margin-bottom: 12px;
+        }
+        .resource-item:last-child { margin-bottom: 0; }
+        .resource-item:hover {
+            background: var(--white);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .resource-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 24px;
+        }
+        .resource-content {
+            flex: 1;
+        }
+        .resource-content h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--titanium);
+            margin-bottom: 2px;
+        }
+        .resource-content p {
+            font-size: 13px;
+            color: var(--silver-400);
+        }
+        .resource-arrow {
+            width: 20px;
+            height: 20px;
+            color: var(--silver-300);
+            transition: all 0.2s ease;
+        }
+        .resource-item:hover .resource-arrow {
+            color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--titanium), #2d2d2f);
+            border-radius: 20px;
+            padding: 32px;
+            text-align: center;
+            animation: fadeUp 0.5s 0.5s ease backwards;
+        }
+        .cta-section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 8px;
+        }
+        .cta-section p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 32px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            text-decoration: none;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--white);
+            color: var(--titanium);
+        }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .btn svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Social Links */
+        .social-section {
+            margin-top: 40px;
+            animation: fadeUp 0.5s 0.6s ease backwards;
+        }
+        .social-label {
+            font-size: 13px;
+            color: var(--silver-400);
+            margin-bottom: 16px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .social-link svg {
+            width: 24px;
+            height: 24px;
+        }
+        .social-link.tg svg { fill: #0088cc; }
+        .social-link.ig svg { fill: #E4405F; }
+        .social-link.yt svg { fill: #FF0000; }
+
+        /* Footer */
+        .footer-note {
+            margin-top: 40px;
+            font-size: 13px;
+            color: var(--silver-300);
+            animation: fadeUp 0.5s 0.7s ease backwards;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container { padding: 32px 20px; }
+            .resources-card { padding: 24px 20px; }
+            .cta-section { padding: 28px 20px; }
+            .btn { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="container">
+    <!-- Icon -->
+    <div class="icon-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+        </svg>
+    </div>
+
+    <!-- Text -->
+    <h1>Спасибо за ваши ответы!</h1>
+    <p class="lead">Похоже, сейчас персональный AI-ментор может быть не лучшим решением для вас. Но у нас есть бесплатные материалы, которые помогут вам начать.</p>
+
+    <!-- Resources -->
+    <div class="resources-card">
+        <h2>Бесплатные материалы для старта</h2>
+
+        <a href="#" class="resource-item">
+            <div class="resource-icon">📚</div>
+            <div class="resource-content">
+                <h3>Гайд: 10 способов использовать ChatGPT</h3>
+                <p>Практические примеры для работы и жизни</p>
+            </div>
+            <svg class="resource-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="#" class="resource-item">
+            <div class="resource-icon">🎬</div>
+            <div class="resource-content">
+                <h3>Мини-курс: AI для начинающих</h3>
+                <p>5 видео-уроков для быстрого старта</p>
+            </div>
+            <svg class="resource-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <a href="#" class="resource-item">
+            <div class="resource-icon">💡</div>
+            <div class="resource-content">
+                <h3>Чек-лист промптов на каждый день</h3>
+                <p>50 готовых запросов для продуктивности</p>
+            </div>
+            <svg class="resource-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h3>Готовы к серьёзным изменениям?</h3>
+        <p>Когда будете готовы инвестировать время и ресурсы в свой рост — возвращайтесь</p>
+        <a href="ai-coach-tripwire-RU.html" class="btn">
+            Узнать больше об AI-менторе
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+    </div>
+
+    <!-- Social -->
+    <div class="social-section">
+        <p class="social-label">Следите за нами в соцсетях</p>
+        <div class="social-links">
+            <a href="#" class="social-link tg">
+                <svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+            </a>
+            <a href="#" class="social-link ig">
+                <svg viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+            </a>
+            <a href="#" class="social-link yt">
+                <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <p class="footer-note">
+        До встречи! 👋
+    </p>
+</div>
+
+</body>
+</html>

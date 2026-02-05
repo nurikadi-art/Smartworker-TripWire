@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анкета | Персональный AI-Ментор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --white: #ffffff;
+            --snow: #fbfbfd;
+            --silver-50: #f5f5f7;
+            --silver-100: #e8e8ed;
+            --silver-200: #d2d2d7;
+            --silver-300: #b0b0b5;
+            --silver-400: #86868b;
+            --titanium: #1d1d1f;
+            --accent: #0071e3;
+            --accent-hover: #0077ed;
+            --green: #34c759;
+            --grad-1: rgba(0, 113, 227, 0.08);
+            --grad-2: rgba(94, 92, 230, 0.06);
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--snow);
+            color: var(--titanium);
+            line-height: 1.5;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Background */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .bg-glow::before, .bg-glow::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.5;
+        }
+        .bg-glow::before {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(0,113,227,0.12) 0%, transparent 70%);
+            top: -200px; right: -100px;
+            animation: floatSlow 20s ease-in-out infinite;
+        }
+        .bg-glow::after {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(94,92,230,0.1) 0%, transparent 70%);
+            bottom: -150px; left: -100px;
+            animation: floatSlow 25s ease-in-out infinite reverse;
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.05); }
+        }
+
+        /* Container */
+        .survey-container {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 40px 24px 60px;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .survey-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .survey-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 32px;
+        }
+        .survey-logo-mark {
+            width: 40px; height: 40px;
+            background: linear-gradient(135deg, var(--titanium) 0%, #424245 100%);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .survey-logo-mark svg { width: 22px; height: 22px; }
+        .survey-logo-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--titanium);
+        }
+        .survey-header h1 {
+            font-size: clamp(28px, 5vw, 36px);
+            font-weight: 700;
+            color: var(--titanium);
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+        .survey-header p {
+            font-size: 16px;
+            color: var(--silver-400);
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        /* Progress */
+        .progress-wrap {
+            margin-bottom: 40px;
+        }
+        .progress-bar {
+            height: 4px;
+            background: var(--silver-100);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent), #5e5ce6);
+            border-radius: 2px;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 0%;
+        }
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--silver-400);
+        }
+        .progress-text span:last-child {
+            font-weight: 500;
+            color: var(--titanium);
+        }
+
+        /* Question Card */
+        .question-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.03);
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .question-card.active { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .q-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+        .q-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--titanium);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .q-subtitle {
+            font-size: 14px;
+            color: var(--silver-400);
+            margin-bottom: 28px;
+        }
+
+        /* Options */
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option-item {
+            position: relative;
+        }
+        .option-item input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .option-item label {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 20px;
+            background: var(--silver-50);
+            border: 1.5px solid transparent;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 15px;
+            color: var(--titanium);
+        }
+        .option-item label:hover {
+            background: var(--white);
+            border-color: var(--silver-200);
+        }
+        .option-item input:checked + label {
+            background: rgba(0, 113, 227, 0.06);
+            border-color: var(--accent);
+        }
+        .option-check {
+            width: 22px; height: 22px;
+            border: 2px solid var(--silver-200);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .option-check svg {
+            width: 12px; height: 12px;
+            stroke: var(--white);
+            stroke-width: 3;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.2s ease;
+        }
+        .option-item input:checked + label .option-check {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .option-item input:checked + label .option-check svg {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Multi-select */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+        .options-grid .option-item label {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 18px;
+        }
+        .options-grid .option-emoji {
+            font-size: 24px;
+        }
+        .options-grid .option-text {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .options-grid .option-check {
+            position: absolute;
+            top: 14px; right: 14px;
+            width: 20px; height: 20px;
+            border-radius: 6px;
+        }
+
+        /* Text Input */
+        .text-input-wrap {
+            margin-bottom: 0;
+        }
+        .text-input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 15px;
+            font-family: inherit;
+            border: 1.5px solid var(--silver-200);
+            border-radius: 12px;
+            background: var(--white);
+            color: var(--titanium);
+            resize: none;
+            transition: all 0.2s ease;
+        }
+        .text-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+        .text-input::placeholder {
+            color: var(--silver-300);
+        }
+
+        /* Scale */
+        .scale-wrap {
+            padding: 10px 0;
+        }
+        .scale-row {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .scale-item {
+            flex: 1;
+        }
+        .scale-item input { display: none; }
+        .scale-item label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 52px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--silver-400);
+            background: var(--silver-50);
+            border: 1.5px solid transparent;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .scale-item label:hover {
+            background: var(--white);
+            border-color: var(--silver-200);
+            color: var(--titanium);
+        }
+        .scale-item input:checked + label {
+            background: var(--accent);
+            border-color: var(--accent);
+            color: var(--white);
+        }
+        .scale-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--silver-400);
+        }
+
+        /* Contact Fields */
+        .contact-fields {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .field-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .field-label {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--titanium);
+        }
+        .field-input {
+            padding: 14px 18px;
+            font-size: 15px;
+            font-family: inherit;
+            border: 1.5px solid var(--silver-200);
+            border-radius: 10px;
+            background: var(--white);
+            color: var(--titanium);
+            transition: all 0.2s ease;
+        }
+        .field-input:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(0, 113, 227, 0.1);
+        }
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* Navigation */
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 32px;
+        }
+        .btn {
+            flex: 1;
+            padding: 16px 28px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn-back {
+            background: var(--silver-50);
+            color: var(--silver-400);
+            flex: 0 0 auto;
+            padding: 16px 24px;
+        }
+        .btn-back:hover {
+            background: var(--silver-100);
+            color: var(--titanium);
+        }
+        .btn-next {
+            background: var(--titanium);
+            color: var(--white);
+        }
+        .btn-next:hover {
+            background: #2d2d2f;
+            transform: translateY(-1px);
+        }
+        .btn-next:disabled {
+            background: var(--silver-200);
+            color: var(--silver-400);
+            cursor: not-allowed;
+            transform: none;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, var(--accent) 0%, #5e5ce6 100%);
+            color: var(--white);
+        }
+        .btn-submit:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(0, 113, 227, 0.3);
+        }
+        .btn svg {
+            width: 18px; height: 18px;
+        }
+
+        /* Animations */
+        .question-card.slide-out {
+            animation: slideOut 0.3s ease forwards;
+        }
+        @keyframes slideOut {
+            to { opacity: 0; transform: translateX(-30px); }
+        }
+        .question-card.slide-in {
+            animation: slideIn 0.4s ease forwards;
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Trust Badge */
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+            font-size: 13px;
+            color: var(--silver-400);
+        }
+        .trust-badge svg {
+            width: 16px; height: 16px;
+            color: var(--green);
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .survey-container { padding: 24px 16px 40px; }
+            .question-card { padding: 28px 20px; border-radius: 16px; }
+            .q-title { font-size: 18px; }
+            .options-grid { grid-template-columns: 1fr; }
+            .option-item label { padding: 14px 16px; font-size: 14px; }
+            .nav-buttons { flex-direction: column-reverse; }
+            .btn-back { flex: 1; }
+            .scale-row { gap: 6px; }
+            .scale-item label { height: 46px; font-size: 16px; }
+            .field-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+
+<div class="survey-container">
+    <!-- Header -->
+    <div class="survey-header">
+        <div class="survey-logo">
+            <div class="survey-logo-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                    <path d="M2 17l10 5 10-5"/>
+                    <path d="M2 12l10 5 10-5"/>
+                </svg>
+            </div>
+            <span class="survey-logo-text">AI Mentor</span>
+        </div>
+        <h1>Персональная диагностика</h1>
+        <p>Ответьте на несколько вопросов, чтобы мы подготовили персональные рекомендации для вас</p>
+    </div>
+
+    <!-- Progress -->
+    <div class="progress-wrap">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-text">
+            <span>Вопрос <span id="currentQ">1</span> из <span id="totalQ">10</span></span>
+            <span id="progressPercent">0%</span>
+        </div>
+    </div>
+
+    <!-- Questions -->
+    <form id="surveyForm">
+
+        <!-- Q1 -->
+        <div class="question-card active" data-question="1">
+            <span class="q-label">Начнём знакомство</span>
+            <h2 class="q-title">Что привело вас сюда сегодня?</h2>
+            <p class="q-subtitle">Выберите наиболее подходящий вариант</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_1" value="growth_start" required>
+                    <label for="q1_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Хочу развиваться, но не знаю с чего начать</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_2" value="stuck">
+                    <label for="q1_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Застрял на одном уровне и не вижу роста</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_3" value="need_mentor">
+                    <label for="q1_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Нужен наставник, но нет бюджета на дорогого коуча</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_4" value="new_skill">
+                    <label for="q1_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Хочу освоить новый навык или профессию</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_5" value="faster_goals">
+                    <label for="q1_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Ищу способ достигать целей быстрее</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q1" id="q1_6" value="curious">
+                    <label for="q1_6">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Просто интересно, что это такое</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-next" onclick="nextQuestion(1)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" data-question="2">
+            <span class="q-label">Понимаем ситуацию</span>
+            <h2 class="q-title">Как давно вы пытаетесь решить эту задачу?</h2>
+            <p class="q-subtitle">Будьте честны — это поможет нам помочь вам</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="radio" name="q2" id="q2_1" value="just_starting" required>
+                    <label for="q2_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Только начинаю думать об этом</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" id="q2_2" value="weeks">
+                    <label for="q2_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Несколько недель</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" id="q2_3" value="months">
+                    <label for="q2_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Несколько месяцев</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" id="q2_4" value="year_plus">
+                    <label for="q2_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Больше года</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q2" id="q2_5" value="years_no_result">
+                    <label for="q2_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Уже несколько лет, но безрезультатно</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(2)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(2)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" data-question="3">
+            <span class="q-label">Важный момент</span>
+            <h2 class="q-title">Сколько времени в неделю вы тратите на поиск информации, которая в итоге не помогает?</h2>
+            <p class="q-subtitle">YouTube, статьи, курсы без результата...</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="radio" name="q3" id="q3_1" value="less_1h" required>
+                    <label for="q3_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Меньше 1 часа</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" id="q3_2" value="1_3h">
+                    <label for="q3_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>1-3 часа</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" id="q3_3" value="3_5h">
+                    <label for="q3_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>3-5 часов</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" id="q3_4" value="5_10h">
+                    <label for="q3_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>5-10 часов</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q3" id="q3_5" value="10h_plus">
+                    <label for="q3_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Больше 10 часов (постоянно что-то ищу)</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(3)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(3)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" data-question="4">
+            <span class="q-label">Ваши направления</span>
+            <h2 class="q-title">В какой сфере вам нужна помощь больше всего?</h2>
+            <p class="q-subtitle">Выберите до 3 направлений</p>
+            <div class="options-grid">
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_1" value="career">
+                    <label for="q4_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">💼</span>
+                        <span class="option-text">Карьера и профессиональный рост</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_2" value="money">
+                    <label for="q4_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">💰</span>
+                        <span class="option-text">Финансы и заработок</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_3" value="learning">
+                    <label for="q4_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">📚</span>
+                        <span class="option-text">Обучение и новые навыки</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_4" value="health">
+                    <label for="q4_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">🏋️</span>
+                        <span class="option-text">Здоровье и фитнес</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_5" value="productivity">
+                    <label for="q4_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">🧠</span>
+                        <span class="option-text">Продуктивность</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_6" value="business">
+                    <label for="q4_6">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">💡</span>
+                        <span class="option-text">Запуск своего дела</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_7" value="creative">
+                    <label for="q4_7">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">🎨</span>
+                        <span class="option-text">Творчество и креатив</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q4" id="q4_8" value="personal">
+                    <label for="q4_8">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span class="option-emoji">🎯</span>
+                        <span class="option-text">Личные цели</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(4)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(4)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" data-question="5">
+            <span class="q-label">Ваша цель</span>
+            <h2 class="q-title">Опишите вашу главную цель на ближайшие 6 месяцев</h2>
+            <p class="q-subtitle">Чем конкретнее — тем лучше мы сможем помочь</p>
+            <div class="text-input-wrap">
+                <textarea class="text-input" name="q5" id="q5" rows="4" placeholder="Например: Хочу освоить графический дизайн и начать брать первые заказы на фрилансе..." oninput="checkTextInput(5)"></textarea>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(5)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(5)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card" data-question="6">
+            <span class="q-label">Визуализация</span>
+            <h2 class="q-title">Представьте, что у вас есть персональный ментор 24/7. Что бы изменилось?</h2>
+            <p class="q-subtitle">Выберите все подходящие варианты</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_1" value="start_action">
+                    <label for="q6_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Наконец-то начал бы действовать, а не откладывать</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_2" value="save_time">
+                    <label for="q6_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Перестал бы тратить время на поиск информации</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_3" value="clear_plan">
+                    <label for="q6_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Получил бы чёткий план вместо хаоса в голове</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_4" value="accountability">
+                    <label for="q6_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Был бы кто-то, кто держит меня в тонусе</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_5" value="no_shame">
+                    <label for="q6_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Смог бы задавать "глупые" вопросы без стеснения</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q6" id="q6_6" value="faster">
+                    <label for="q6_6">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Двигался бы к цели в 2-3 раза быстрее</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(6)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(6)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card" data-question="7">
+            <span class="q-label">Ваш опыт</span>
+            <h2 class="q-title">Что вы уже пробовали для достижения своих целей?</h2>
+            <p class="q-subtitle">Выберите все подходящие варианты</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_1" value="books">
+                    <label for="q7_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Читал книги и статьи</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_2" value="free_courses">
+                    <label for="q7_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Смотрел YouTube / проходил бесплатные курсы</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_3" value="paid_courses">
+                    <label for="q7_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Покупал платные курсы</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_4" value="coach">
+                    <label for="q7_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Работал с коучем/ментором</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_5" value="chatgpt_failed">
+                    <label for="q7_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Пробовал ChatGPT, но не получил результата</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" name="q7" id="q7_6" value="nothing">
+                    <label for="q7_6">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Ничего серьёзного пока не пробовал</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(7)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(7)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q8 -->
+        <div class="question-card" data-question="8">
+            <span class="q-label">Готовность</span>
+            <h2 class="q-title">Сколько времени вы готовы уделять работе с AI-ментором?</h2>
+            <p class="q-subtitle">Для достижения результата важна регулярность</p>
+            <div class="options-list">
+                <div class="option-item">
+                    <input type="radio" name="q8" id="q8_1" value="10_15min" required>
+                    <label for="q8_1">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>10-15 минут в день</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" id="q8_2" value="30min">
+                    <label for="q8_2">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>30 минут в день</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" id="q8_3" value="1h">
+                    <label for="q8_3">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>1 час в день</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" id="q8_4" value="whatever_needed">
+                    <label for="q8_4">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Столько, сколько нужно для результата</span>
+                    </label>
+                </div>
+                <div class="option-item">
+                    <input type="radio" name="q8" id="q8_5" value="not_sure">
+                    <label for="q8_5">
+                        <span class="option-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+                        <span>Пока не уверен, что буду использовать регулярно</span>
+                    </label>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(8)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(8)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q9 -->
+        <div class="question-card" data-question="9">
+            <span class="q-label">Финальный вопрос</span>
+            <h2 class="q-title">По шкале от 1 до 10, насколько вы готовы изменить свою жизнь в ближайшие 30 дней?</h2>
+            <p class="q-subtitle">Будьте честны с собой</p>
+            <div class="scale-wrap">
+                <div class="scale-row">
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_1" value="1" required><label for="q9_1">1</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_2" value="2"><label for="q9_2">2</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_3" value="3"><label for="q9_3">3</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_4" value="4"><label for="q9_4">4</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_5" value="5"><label for="q9_5">5</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_6" value="6"><label for="q9_6">6</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_7" value="7"><label for="q9_7">7</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_8" value="8"><label for="q9_8">8</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_9" value="9"><label for="q9_9">9</label></div>
+                    <div class="scale-item"><input type="radio" name="q9" id="q9_10" value="10"><label for="q9_10">10</label></div>
+                </div>
+                <div class="scale-labels">
+                    <span>Просто смотрю</span>
+                    <span>Мне нужно это вчера</span>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(9)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="button" class="btn btn-next" onclick="nextQuestion(9)" disabled>
+                    Продолжить
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Q10 - Contact -->
+        <div class="question-card" data-question="10">
+            <span class="q-label">Последний шаг</span>
+            <h2 class="q-title">Как с вами связаться для персональной консультации?</h2>
+            <p class="q-subtitle">Мы свяжемся в течение 24 часов с персональными рекомендациями</p>
+            <div class="contact-fields">
+                <div class="field-group">
+                    <label class="field-label" for="name">Ваше имя</label>
+                    <input type="text" class="field-input" id="name" name="name" placeholder="Как к вам обращаться?" required oninput="checkContactForm()">
+                </div>
+                <div class="field-row">
+                    <div class="field-group">
+                        <label class="field-label" for="phone">WhatsApp / Telegram</label>
+                        <input type="tel" class="field-input" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required oninput="checkContactForm()">
+                    </div>
+                    <div class="field-group">
+                        <label class="field-label" for="email">Email</label>
+                        <input type="email" class="field-input" id="email" name="email" placeholder="your@email.com" oninput="checkContactForm()">
+                    </div>
+                </div>
+                <div class="field-group">
+                    <label class="field-label" for="time">Удобное время для звонка</label>
+                    <select class="field-input" id="time" name="time">
+                        <option value="morning">Утро (9:00 - 12:00)</option>
+                        <option value="day" selected>День (12:00 - 18:00)</option>
+                        <option value="evening">Вечер (18:00 - 21:00)</option>
+                        <option value="anytime">В любое время</option>
+                    </select>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button type="button" class="btn btn-back" onclick="prevQuestion(10)">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                </button>
+                <button type="submit" class="btn btn-submit" id="submitBtn" disabled>
+                    Получить консультацию
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+    <!-- Trust Badge -->
+    <div class="trust-badge">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <span>Ваши данные защищены и не будут переданы третьим лицам</span>
+    </div>
+</div>
+
+<script>
+const totalQuestions = 10;
+let currentQuestion = 1;
+
+// Update progress
+function updateProgress() {
+    const percent = Math.round(((currentQuestion - 1) / totalQuestions) * 100);
+    document.getElementById('progressFill').style.width = percent + '%';
+    document.getElementById('currentQ').textContent = currentQuestion;
+    document.getElementById('totalQ').textContent = totalQuestions;
+    document.getElementById('progressPercent').textContent = percent + '%';
+}
+
+// Show question
+function showQuestion(num) {
+    document.querySelectorAll('.question-card').forEach(card => {
+        card.classList.remove('active', 'slide-in', 'slide-out');
+    });
+    const target = document.querySelector(`[data-question="${num}"]`);
+    target.classList.add('active', 'slide-in');
+    currentQuestion = num;
+    updateProgress();
+}
+
+// Next question
+function nextQuestion(current) {
+    const currentCard = document.querySelector(`[data-question="${current}"]`);
+    currentCard.classList.add('slide-out');
+    setTimeout(() => {
+        showQuestion(current + 1);
+    }, 300);
+}
+
+// Previous question
+function prevQuestion(current) {
+    showQuestion(current - 1);
+}
+
+// Check radio/checkbox selection
+document.querySelectorAll('input[type="radio"]').forEach(input => {
+    input.addEventListener('change', function() {
+        const question = this.closest('.question-card').dataset.question;
+        const btn = this.closest('.question-card').querySelector('.btn-next');
+        if (btn) btn.disabled = false;
+    });
+});
+
+// Check checkbox selection (at least 1 selected)
+document.querySelectorAll('input[type="checkbox"]').forEach(input => {
+    input.addEventListener('change', function() {
+        const card = this.closest('.question-card');
+        const question = card.dataset.question;
+        const checked = card.querySelectorAll('input[type="checkbox"]:checked').length;
+        const btn = card.querySelector('.btn-next');
+        if (btn) btn.disabled = checked === 0;
+
+        // Limit to 3 for Q4
+        if (question === '4' && checked > 3) {
+            this.checked = false;
+        }
+    });
+});
+
+// Check text input
+function checkTextInput(question) {
+    const textarea = document.querySelector(`[data-question="${question}"] textarea`);
+    const btn = document.querySelector(`[data-question="${question}"] .btn-next`);
+    if (btn) btn.disabled = textarea.value.trim().length < 10;
+}
+
+// Check contact form
+function checkContactForm() {
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = name.length < 2 || phone.length < 10;
+}
+
+// Form submission
+document.getElementById('surveyForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    // Collect all data
+    const formData = new FormData(this);
+    const data = {};
+    formData.forEach((value, key) => {
+        if (data[key]) {
+            if (Array.isArray(data[key])) {
+                data[key].push(value);
+            } else {
+                data[key] = [data[key], value];
+            }
+        } else {
+            data[key] = value;
+        }
+    });
+
+    console.log('Survey Data:', data);
+
+    // Calculate score
+    let score = 0;
+    if (['months', 'year_plus', 'years_no_result'].includes(data.q2)) score += 10;
+    if (['5_10h', '10h_plus'].includes(data.q3)) score += 10;
+    if (data.q7 && data.q7.includes('chatgpt_failed')) score += 15;
+    if (data.q7 && data.q7.includes('paid_courses')) score += 10;
+    if (['30min', '1h', 'whatever_needed'].includes(data.q8)) score += 10;
+    if (parseInt(data.q9) >= 7) score += 15;
+
+    console.log('Lead Score:', score);
+
+    // Redirect based on score
+    // Replace these URLs with your actual thank you page URLs
+    if (score >= 40) {
+        window.location.href = 'ai-coach-thank-you-qualified-RU.html';
+    } else {
+        window.location.href = 'ai-coach-thank-you-nurture-RU.html';
+    }
+});
+
+// Initialize
+updateProgress();
+</script>
+
+</body>
+</html>
