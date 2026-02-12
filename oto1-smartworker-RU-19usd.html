@@ -946,6 +946,14 @@ body, html {
     justify-content: center;
 }
 
+.story-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+}
+
 .story-photo .placeholder {
     font-size: 10px;
     color: var(--apple-grey);
@@ -997,8 +1005,8 @@ body, html {
 .story-image-placeholder {
     width: 100%;
     height: 180px;
-    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
-    border: 2px dashed rgba(10, 132, 255, 0.3);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -1006,6 +1014,16 @@ body, html {
     margin: 20px 0;
     flex-direction: column;
     gap: 8px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.story-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .story-image-placeholder span {
@@ -1312,7 +1330,7 @@ body, html {
                 <div class="story-header">
                     <div class="story-photo">
                         <!-- IMAGE PLACEHOLDER: Founder photo -->
-                        <div class="placeholder">📷 Фото</div>
+                        <img src="https://lh3.googleusercontent.com/d/1fGet2v15q7RZCy9ugtRBSiXXFJeCDaXS=w1200" alt="Нурсултан — фото автора" loading="eager">
                     </div>
                     <div class="story-intro">
                         <h3>Почему Я Создал Эту Систему</h3>
@@ -1321,27 +1339,26 @@ body, html {
                 </div>
 
                 <div class="story-content">
-                    <p>Когда-то я был в той же ситуации — <strong>долги, неудачные бизнесы, и никакого просвета.</strong> Пробовал дропшиппинг, Амазон, крипто... Ничего не работало.</p>
+                    <p>Мне было 24, я жил в Атланте во время ковида — без денег и без высшего образования. Пробовал дропшиппинг, Амазон, крипто — и всё закончилось долгами.</p>
 
                     <div class="story-image-placeholder">
-                        <span class="icon">😔</span>
-                        <span>IMAGE PLACEHOLDER: Фото "до" — рабочее место фрилансера, ночная работа</span>
+                        <img src="https://lh3.googleusercontent.com/d/1VCLSUAvL1pddhW7YDsXyRRJFqESKqvw6=w1200" alt="Период поиска и сомнений" loading="eager" style="object-position: 50% 30%;">
                     </div>
 
-                    <p>Потом я нашёл способ <strong>выйти напрямую на американских работодателей</strong> — без бирж, без демпинга, без конкуренции с тысячами других.</p>
+                    <p>Я ходил по кругу — отклики, молчание, непонятно что не так. Перелом случился, когда работодатель из Вирджинии предложил удалённую работу за <strong>$15/час</strong>.</p>
+                    <p>Тогда я понял: американским компаниям нужны надёжные люди. Старт может быть $7–$12/час, средняя ставка в США — около $22, а с опытом легко выйти на $15–$20+.</p>
 
                     <div class="story-highlight">
-                        <p>💡 Я сначала устроил себя на работу. Потом жену. Потом моих друзей. <strong>Так родилась Система Smartworker.</strong></p>
+                        <p>💡 Я сначала устроил себя на работу. Потом жену. Потом друзей. <strong>Так родилась Система Smartworker — пошаговая схема поиска, резюме и интервью.</strong></p>
                     </div>
 
                     <div class="story-image-placeholder">
-                        <span class="icon">🏆</span>
-                        <span>IMAGE PLACEHOLDER: Скриншот выплат / первый оффер / с семьёй</span>
+                        <img src="https://lh3.googleusercontent.com/d/1jSg8R2wKuJLrhvq3ie61eiDar_uidnpC=w1200" alt="Семья и новые возможности" loading="eager" style="object-position: 50% 45%;">
                     </div>
 
-                    <p>Сейчас я зарабатываю <strong>3 млн+ тенге в месяц</strong>. Моя система работает уже 4 года. И мы с командой <strong>трудоустроили более 160 человек</strong> по этой же методике.</p>
+                    <p>Я закрыл долги, устроил жену к тому же работодателю и продолжил выстраивать систему. Сейчас я зарабатываю <strong>3 млн+ тенге в месяц</strong>, а ребята из Казахстана, России, Италии, Филиппин и Латинской Америки выходят на удалённую работу в долларах.</p>
 
-                    <p><strong>Эта система — не теория. Это то, что сработало у меня и десятков других ребят.</strong></p>
+                    <p><strong>Эта система — не теория.</strong> Это то, что сработало у меня и у тех, кто прошёл путь вместе со мной.</p>
                 </div>
             </div>
         </div>

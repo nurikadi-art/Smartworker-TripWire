@@ -1007,6 +1007,14 @@ body, html {
     justify-content: center;
 }
 
+.story-snippet-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    display: block;
+}
+
 .story-snippet-photo .placeholder {
     font-size: 9px;
     color: var(--apple-grey);
@@ -1032,8 +1040,8 @@ body, html {
 .story-image-placeholder {
     width: 100%;
     height: 140px;
-    background: linear-gradient(135deg, rgba(10, 132, 255, 0.08) 0%, rgba(10, 132, 255, 0.02) 100%);
-    border: 2px dashed rgba(10, 132, 255, 0.3);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -1041,6 +1049,16 @@ body, html {
     margin: 16px 0 0;
     flex-direction: column;
     gap: 6px;
+    overflow: hidden;
+    padding: 0;
+}
+
+.story-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
 }
 
 .story-image-placeholder span {
@@ -1320,14 +1338,13 @@ body, html {
             <div class="story-snippet-box">
                 <div class="story-snippet-photo">
                     <!-- IMAGE PLACEHOLDER: Founder photo -->
-                    <div class="placeholder">📷 Фото</div>
+                    <img src="https://lh3.googleusercontent.com/d/1fGet2v15q7RZCy9ugtRBSiXXFJeCDaXS=w1200" alt="Нурсултан — фото автора" loading="eager">
                 </div>
                 <div class="story-snippet-content">
-                    <p>Я сам был на твоём месте — <strong>долги, неудачи, потолок в зарплате.</strong></p>
-                    <p>Потом нашёл способ выйти напрямую на американцев. Сначала устроил себя. Потом жену. Потом друзей. <strong>160+ человек уже работают по этой системе.</strong></p>
+                    <p>Мне было 24, я жил в Атланте во время ковида — без денег и диплома. Пробовал дропшиппинг, Амазон, крипто — и только копил долги.</p>
+                    <p>Перелом случился, когда работодатель из Вирджинии предложил удалённую работу за $15/час. Я устроил себя, потом жену и друзей — и систематизировал шаги поиска, резюме и интервью.</p>
                     <div class="story-image-placeholder">
-                        <span class="icon">🏆</span>
-                        <span>IMAGE PLACEHOLDER: Скриншот выплат / фото с семьёй</span>
+                        <img src="https://lh3.googleusercontent.com/d/1mwNThgpT3TqvpoMe9hqSOG6tx0wr8bPe=w1200" alt="Семья и первые результаты" loading="eager" style="object-position: 50% 25%;">
                     </div>
                 </div>
             </div>
